@@ -10,7 +10,7 @@ This directory does **not** solve `R(5,5)` and does not improve the world bound.
 
 `43 <= R(5,5) <= 46`.
 
-The graph studied here is an old 41-vertex circulant Ramsey graph; the contribution of this release is the exact structural mathematics recovered and mined around that graph, plus a sharp non-extension theorem.
+The graph studied here is an old 41-vertex circulant Ramsey graph; the contribution of this release is the exact structural mathematics recovered and mined around that graph, plus sharp extension theorems.
 
 ## The graph
 
@@ -132,6 +132,7 @@ Translations act regularly; for a nontrivial prime-degree Cayley graph the Burns
 ## Stronger results in this directory
 
 - `ONE-VERTEX-EXTENSION.md`: the unique 41-vertex circulant class cannot be extended by **one arbitrary new vertex** to a 42-vertex `(5,5)` Ramsey graph.
+- `K-VERTEX-EXTENSION-CRITERION.md`: a general exact theorem for retaining any fixed mono-`K5`-free base while adding `k` new vertices; one- and two-vertex criteria are special cases, and fixed-`k` extension gets a compact SAT encoding.
 - `SPECTRAL-AND-CODING.md`: exact circular/fractional coloring, strong-square code, Shannon capacity, dual `K4`/independent-set resolutions, and the exact spectral symmetry polynomial.
 - `SAT-INTERFACE.md`: the honest finite `n=42/43` global Ramsey decision interface and its two unfilled proof obligations.
 
