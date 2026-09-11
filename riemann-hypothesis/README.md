@@ -4,7 +4,7 @@
 **Campaign dates:** 2026-08-11 and 2026-09-11  
 **Public extraction:** 2026-09-11
 
-This directory now exposes **three distinct research lanes** around the Riemann zeta function. None is presented as a proof of the Riemann Hypothesis.
+This directory exposes **three distinct research lanes** around the Riemann zeta function. None is presented as a proof of the Riemann Hypothesis.
 
 The point of this front door is to make the mathematics discoverable without asking a reader to infer status from historical workflow filenames or from whether a larger conjecture remains open.
 
@@ -14,11 +14,11 @@ Primary historical record:
 
 `RH-TERMINAL-ENCIRCLEMENT-2026-08-11.md`
 
-New adversarial extraction from the 2026-09-11 MSL snapshot:
+Adversarial extraction from the 2026-09-11 MSL snapshot:
 
 `determinant-curvature-2026-09-11/`
 
-The program studies the entire function
+The program studies
 
 `G(z) = (1/8) xi(1/2 + sqrt(z)/2)`
 
@@ -26,23 +26,38 @@ through its moment coefficients and consecutive Toeplitz determinants
 
 `D_{r,k} = det[a_{k+j-i}]`.
 
-Surviving mathematical assets include:
+### Exact results now surfaced
 
-- transformed-zero / Toeplitz criteria and exact determinant identities;
-- a positive-atom representation for `G` and a positive-measure determinant lift;
-- an exact sign obstruction to the most direct pointwise-integrand positivity route at `r=2`;
-- a rectangular Schur-function interpretation of `D_{r,k}`;
-- an exact tilted-measure / cumulant coordinate for normalized determinants;
-- the exact Desnanot–Jacobi curvature identity
-  `Z = (r/k) Q/(1-Q)`;
-- an exact reciprocal/Jacobi–Trudi duality
-  `Z_a(r,k) Z_b(k,r) = 1`;
-- reproduced fixed-slope numerical evidence at `theta = 1/2, 2/3, 3/4`, where a positive-limit model strongly out-fits a vanishing-limit model on the available finite tails;
-- five successful kernel-checked Lean fragments from the exported campaign.
+- **Desnanot–Jacobi curvature identity**
+  `Z = (r/k) Q/(1-Q)`.
+- **Reciprocal/Jacobi–Trudi duality**
+  `Z_a(r,k) Z_b(k,r) = 1`, exchanging compactified ratio `theta` with `1-theta`.
+- **Strict consecutive Toeplitz positivity does not imply simple zeros.** The explicit entire function
+  `(1+z)^2 e^z`
+  has a double zero at `-1`, yet every consecutive Toeplitz minor is strictly positive. The global proof is in
+  `determinant-curvature-2026-09-11/MULTIPLICITY-BLINDNESS-THEOREM.md`.
+- **Rigorous order-one curvature anchor.** Combining the exact curvature identity with Michalowski's published coefficient-curvature window gives, for every `k>=2`,
+  `1/[k(exp(4/k)-1)] < Z_{1,k} < 1/[k(exp(1/(2k))-1)]`,
+  so asymptotically the order-one corridor lies between `1/4` and `2`. See
+  `determinant-curvature-2026-09-11/ORDER-ONE-CURVATURE-COROLLARY.md`.
+- Five successful kernel-checked Lean fragments from the exported campaign, including an empty-axiom abstract falsifier for a universal “determinant positivity implies simplicity” implication.
 
-The 2026-09-11 extraction also corrects two overclaims in the active source state: a gamma-factor envelope was incorrectly promoted to a global pointwise asymptotic, and a numerically observed lowest-zero velocity sign was promoted beyond what its derivation established. The exact reusable identities are retained; the overclaims are not.
+### Computational frontier
 
-The live mathematical target remains ratio-uniform asymptotic control strong enough to connect determinant curvature to the relevant total-positivity / zero-simplicity criterion. The finite fits do not supply that theorem.
+The extracted fixed-slope computation was independently rerun against its carried coefficient cache. At `theta=1/2, 2/3, 3/4`, a positive-limit model strongly out-fits a vanishing-limit model on the available finite tails, with residual ratios about `169`, `159`, and `137` respectively.
+
+That is finite numerical evidence, not an asymptotic theorem. The live target is still ratio-uniform control as `r,k` grow together.
+
+### Audit corrections
+
+The source state was not accepted as an authority ledger without review. In particular:
+
+- a gamma-factor envelope had been promoted to a global pointwise asymptotic without controlling the zeta factor;
+- a tested lowest-zero velocity sign had been promoted beyond what its derivation established;
+- an exact curvature equivalence had been marked stale only because of a non-load-bearing dependency on a retracted fit;
+- a finite tested repeated-zero example had been promoted to a universal theorem without proof — the missing all-minors proof has now been supplied separately.
+
+The corrected release keeps the exact reusable mathematics and drops the overclaims.
 
 ## 2. Simple-zero proportion candidate
 
@@ -92,15 +107,15 @@ The recovered material includes:
 
 - the frozen terminal-close record and explicit implication chain;
 - a ten-mechanism close-anatomy campaign contract;
-- a rigorous interval-arithmetic certifier for small-x boxes;
+- the recovered interval-arithmetic certifier, preserved with source hashes and deterministic reconstruction instructions;
 - historical records of three point certificates at `t=0.2` and three uniform t-box certificates over `t in [0.1,0.2]`;
 - a direct-quadrature scaling wall and the resulting large-x representation problem.
 
-During this public extraction the recovered certifier's built-in self-test was rerun from the exported source and passed **8/8, exit 0**. The original export did not carry all 23 historical receipt JSONs as named public artifacts, so those finite certificate claims are preserved as source-campaign records rather than falsely described as freshly reproduced here.
+During this public extraction the certifier's built-in self-test was rerun from the exported source and passed **8/8, exit 0**. The export did not carry all 23 historical receipt JSONs as named public artifacts, so those finite certificate claims are preserved as source-campaign records rather than falsely described as freshly reproduced here.
 
 ## Repository status
 
-These three lanes now form one coherent **Riemann-zeta research program** rather than archive debris:
+These three lanes form one coherent **Riemann-zeta research program** rather than archive debris:
 
 1. determinant / total positivity and fixed-slope curvature;
 2. simple-zero proportion computation;
@@ -110,4 +125,4 @@ They have different proof obligations and evidence classes. They belong together
 
 ## Reading rule
 
-Use the exact theorem, computation, candidate, or target statement you are citing. A large RH-related campaign does not upgrade a candidate into a theorem. Conversely, the fact that RH remains open does not erase exact determinant identities, kernel-checked fragments, finite certified inequalities, or a reproducible certifier that survives its stated tests.
+Use the exact theorem, computation, candidate, or target statement you are citing. A large RH-related campaign does not upgrade a candidate into a theorem. Conversely, the fact that RH remains open does not erase exact determinant identities, proven structural separations, kernel-checked fragments, finite certified inequalities, or a reproducible certifier that survives its stated tests.
