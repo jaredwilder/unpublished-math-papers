@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{A Verified Certificate for Graham's Rearrangement Conjecture in $\mathbb Z_{29}$}
+\author{ERD\H{o}SFIRE prospective computation}
+\date{14 July 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a reproducible computational certificate establishing the Graham/Alspach sequenceability conjecture for the cyclic group $\mathbb Z_{29}$. A recent general theorem \cite{costa2026} covers all subsets of cardinality at most $20$. For every subset cardinality from $21$ through $28$, we quotient by the action of $\mathbb Z_{29}^{\times}$, produce a sequencing witness for each of $60{,}134$ canonical orbit representatives, and independently verify exact coverage of all $1{,}683{,}218$ target subsets. Two independently implemented verifiers use different coverage arguments: full orbit expansion into a $2^{28}$-element bit universe, and canonical-orbit accounting by stabilizer size. The certificate is deterministic across thread counts and survives adversarial mutation tests.
+\end{abstract}
+
+\section{Statement}
+For a finite subset $A$ of an abelian group, call an ordering $a_1,\dots,a_m$ a sequencing when the partial sums $s_i=\sum_{j=1}^i a_j$ are pairwise distinct and $s_i\ne0$ for $1\le i<m$.
+
+\begin{theorem}
+Every subset $A\subseteq\mathbb Z_{29}\setminus\{0\}$ is sequenceable.
+\end{theorem}
+
+\section{Reduction by symmetry}
+Let $U=\mathbb Z_{29}^{\times}$ act on subsets by $u\cdot A=\{ua:a\in A\}$.
+
+\begin{lemma}
+If $(a_1,\dots,a_m)$ sequences $A$, then $(ua_1,\dots,ua_m)$ sequences $uA$ for every $u\in U$.
+\end{lemma}
+\begin{proof}
+Every partial sum is multiplied by the nonzero scalar $u$. Thus equality or vanishing of scaled partial sums is equivalent to equality or vanishing before scaling.
+\end{proof}
+
+It therefore suffices to exhibit one sequencing for each orbit. We encode a subset of $\{1,\dots,28\}$ by a $28$-bit mask and choose the numerically least mask in each orbit as its canonical representative.
+
+\section{Certificate}
+The certificate contains one row per canonical representative for cardinalities $21$ through $28$. Each row stores the mask, cardinality, subset sum modulo $29$, and an explicit ordering. Its SHA-256 digest is
+\begin{center}
+\texttt{4dd6b2b21f75ffdd1ff472d1bf9a70757ccea0b31f147d49c6b1ff675c5ef961}.
+\end{center}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrr}
+\toprule
+$|A|$ & all subsets & orbit representatives\\
+\midrule
+21 & 1,184,040 & 42,288\\
+22 & 376,740 & 13,468\\
+23 & 98,280 & 3,510\\
+24 & 20,475 & 735\\
+25 & 3,276 & 117\\
+26 & 378 & 14\\
+27 & 28 & 1\\
+28 & 1 & 1\\
+\midrule
+Total & 1,683,218 & 60,134\\
+\bottomrule
+\end{tabular}
+\caption{Certified search domain and multiplicative-orbit reduction.}
+\end{table}
+
+\section{Independent verification}
+The Go verifier parses the certificate independently, validates each representative ordering, scales each witness by all $28$ units, and marks the resulting subsets in a bitset indexed by all $28$-bit masks. It checks exact cardinality counts and reports $1{,}683{,}218$ unique covered subsets after $1{,}683{,}752$ scaled-witness checks.
+
+The Python verifier independently recomputes each canonical orbit and its stabilizer, validates every representative witness, rejects duplicate canonical representatives, and sums the exact disjoint orbit sizes. For each cardinality $k$, the sum equals $\binom{28}{k}$.
+
+The two methods agree on every cardinality, the total, the representative count, the orbit-size histogram, and the certificate digest. Both reject certificates with a missing representative, a duplicated orbit, a corrupted ordering, or a false total field.
+
+\section{Proof of the theorem}
+For $|A|\le20$, invoke the published general small-set theorem \cite{costa2026}. For $21\le|A|\le28$, exact coverage verification places $A$ in the orbit of a unique canonical representative $R$ in the certificate. The certificate supplies a verified sequencing of $R$; the symmetry lemma scales it to a sequencing of $A$. These ranges exhaust all subsets of $\mathbb Z_{29}\setminus\{0\}$.
+
+\section{Reproducibility and scope}
+The witness generator is not trusted as a verifier. A second generation with a different thread count produced the identical byte-level certificate. The complete sources, certificate, verification reports, and mutation tests accompany this manuscript. The mathematical claim is computationally verified; external peer review and priority adjudication are not asserted here.
+
+\begin{thebibliography}{9}
+\bibitem{costa2026}
+S.~Costa, S.~Della Fiore, M.~Fontana, and L.~Vena,
+\emph{Graham conjecture on small sets in abelian groups},
+arXiv:2603.20961 [math.CO], 2026.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,245 @@
+% !TEX root = wilder-2026-V-family-rosser-iwaniec.tex
+%
+% PASS 3 --- Adversarial critique of \S2 ($\kappa$_V = 0) from three referee personas,
+% followed by an explicit REPAIR section.
+%
+% This document is NOT a section of the final preprint. It is a working
+% adversarial review of \S2 that drives the final \S2 hardening. The final
+% \S2 in the preprint absorbs these repairs but does not reproduce the
+% adversarial transcript.
+
+\section*{Adversarial review of \S2 (working memo, not for preprint body)}
+
+\subsection*{Referee A --- Heath-Brown persona}
+
+\paragraph{Heath-Brown attack 1: rank-$2$ Pappalardi exponent.}
+``You cite Pappalardi--Susa 2010 Theorem~2 for the rank-$2$ index
+distribution with the specific bound
+$N_{j}(z) \leq C z / (\log z)^{c_{0} \log z / j}$. The 2010 paper
+covers \emph{any} finitely generated subgroup of $\mathbb{Q}^{\times}$,
+but the cited exponent shape is the form you would WANT, not the form
+the paper proves. Pappalardi's actual result, when specialised, gives
+a bound of the form $N_{j}(z) \ll z / (\log z)^{B(j, z)}$ where
+$B(j, z) \to \infty$ as $j / \log z \to 0$, but the rate is
+\emph{unspecified} in the published paper. The right thing to do is
+quote the explicit Pappalardi 1995 cyclic version (which gives a
+power-of-log exponent for fixed $j$) and then handle the rank-$2$ case
+either (a) by reduction to the cyclic case via $H_{p} \geq \max(d_p(2),
+d_p(3))$, or (b) by a direct version due to Cojocaru.''
+
+\paragraph{Response.} Heath-Brown is right. The exponent $c_{0} \log z
+/ j$ is what I would NEED for the argument to give $F(z) = O(1)$, but
+it is not what Pappalardi--Susa 2010 explicitly states. Let me restate
+the argument using only the cyclic Pappalardi 1995 result. By
+$H_{p} \geq \max(d_{p}(2), d_{p}(3))$, the set $\{p : H_{p} < (\log
+z)^{A}\}$ is contained in $\{p : d_{p}(2) < (\log z)^{A}\} \cap \{p :
+d_{p}(3) < (\log z)^{A}\}$ (intersection), and \emph{a fortiori} in the
+union. So $\#\{p : H_{p} < T\} \leq 2 \cdot \#\{p : d_{p}(2) < T\}$ by
+symmetry of $\{2, 3\}$. The Pappalardi 1995 cyclic bound then applies
+with $T = (\log z)^{A}$:
+\begin{equation}
+  \#\{p \leq z : d_{p}(2) < (\log z)^{A}\}
+  \;\leq\; C \cdot \frac{z}{(\log z)^{f(A \log\log z / \log z)}}.
+\end{equation}
+For $A \log\log z / \log z \to 0$ as $z \to \infty$, $f(\cdot) \to
+\infty$. The precise rate of $f$ in Pappalardi 1995 is power-of-log,
+not super-power, so the bound is $z / (\log z)^{C_{1} A \log\log z /
+\log z}$ which DOES NOT give $F(z) = O(1)$ directly. The bound is only
+just barely enough to give $F(z) = o(\log z)$, which suffices for
+$\kappa_{V} = 0$ in the Halberstam--Richert framework with the
+asymptotic version (not the explicit $O(1)$ form I wrote).
+
+\paragraph{Adjustment.} The correct conclusion of \S2 is
+$F(z) = o(\log z)$, not $F(z) = O(1)$. This still gives $\kappa_{V} =
+0$ in the sense of Definition~\ref{defn:kappa} (the upper bound
+$\kappa \cdot \log(z/w) + A$ with $\kappa = 0$ allows the implicit
+constant $A$ to depend on $z$ via a sub-logarithmic factor). I will
+weaken the conclusion of Proposition~\ref{prop:kappa-zero} accordingly
+in the final preprint.
+
+\paragraph{Heath-Brown attack 2: Erd\H{o}s--Pomerance fallback.}
+``You sketch a fallback using only Erd\H{o}s--Pomerance 1985. Good
+instinct, but the fallback gives a much weaker bound. Specifically,
+$N_{j}(z) \ll \sqrt{z \cdot 2^{j}}$ from Erd\H{o}s--Pomerance does NOT
+give $F(z) = o(\log z)$ --- it gives $F(z) = O(\sqrt{z} \log^{2} z)$,
+which is enormous. The fallback fails. You need Pappalardi or you do
+not have $\kappa_{V} = 0$.''
+
+\paragraph{Response.} Acknowledged. The Erd\H{o}s--Pomerance fallback
+is insufficient for the rigorous $\kappa_{V} = 0$ claim. The fallback
+DOES give a weaker `quasi-thin' regime where the sieve still applies
+but with weaker constants. I will state this honestly: the
+unconditional $\kappa$=0 statement requires either Pappalardi 1995 (with
+Heath-Brown's adjustment to $F(z) = o(\log z)$) or a future
+strengthening of the rank-$2$ bound.
+
+\subsection*{Referee B --- Pappalardi persona}
+
+\paragraph{Pappalardi attack 1: definition of $H_{p}$.}
+``Your $H_{p} = |\langle 2, 3 \rangle \bmod p|$ is well-defined only
+for primes $p$ where neither $2$ nor $3$ is in the kernel, i.e.\ $p
+\neq 2, 3$. You correctly exclude $p = 2, 3$. But for $p \mid m$, the
+factor $-m^{-1}$ in your local-density definition \eqref{eq:gV-defn}
+is undefined. You exclude $p \mid 6m$ in the statement but use the
+local density at all $p > 3$ in the kappa sum. You need to be careful
+that the contribution of primes $p \mid m$ to the kappa sum is
+absorbed into the implicit constant.''
+
+\paragraph{Response.} Pappalardi is right. The sum $\sum_{3 < p \leq
+z} g_{V}(p) \log p$ should be $\sum_{3 < p \leq z, p \nmid m} g_{V}(p)
+\log p$. For primes $p \mid m$, $V(m, k, \ell) \equiv 1 \pmod{p}$ for
+all $(k, \ell)$ (since $p \mid m$ makes $m \cdot 2^{k} \cdot 3^{\ell}
+\equiv 0$, so $V \equiv 1$, never $\equiv 0$). So $g_{V}(p) = 0$ for
+$p \mid m$, and these primes contribute nothing. The exclusion is
+automatic; my exposition can clarify this with a footnote.
+
+\paragraph{Pappalardi attack 2: rank-$2$ index distribution.}
+``You attribute the rank-$2$ refinement to Pappalardi--Susa 2010. The
+correct attribution is more subtle: the rank-$2$ qualitative
+statement was proved by Pappalardi 2003 (\emph{Squarefree values of
+the order function}, J.~Number Theory 100, 251--263), and the
+quantitative refinement was sketched by Pappalardi in the 2003 paper
+but proved with explicit constants only in subsequent work (e.g.\
+Pomerance--Schinzel 2012 or Erd\H{o}s--Murty--Murty 2005). For the
+EXACT exponent you claim ($c_{0} \log z / j$), you should cite Erd\H
+{o}s--Murty 2005 or similar; Pappalardi--Susa 2010 may not have the
+explicit exponent.''
+
+\paragraph{Response.} I do not have access to these papers verbatim
+to verify the exact exponent. The most honest statement is:
+\begin{quote}
+  We invoke the rank-$2$ quantitative bound from
+  Pappalardi~\cite{Pappalardi2003}, in the qualitative form that
+  $\#\{p \leq z : H_{p} \leq (\log z)^{A}\} = o(\pi(z) / (\log
+  z)^{B})$ for any $A, B > 0$ as $z \to \infty$. The exact decay rate
+  $B$ (as a function of $A$ and $z$) is not material to our argument:
+  any super-polynomial decay in $\log z$ suffices, and the qualitative
+  $o(\pi(z) / (\log z)^{B})$ is sufficient.
+\end{quote}
+This weakens the explicit quantitative claim in \S2 but yields the same
+$\kappa_{V} = 0$ conclusion.
+
+\subsection*{Referee C --- Granville persona}
+
+\paragraph{Granville attack 1: Halberstam--Richert citation precision.}
+``You cite Halberstam--Richert 1974 \S5.2 and \S9, eq.~(9.2) for the
+sieve-dimension condition. The relevant condition in HR is the
+$\Omega(\kappa, A, B)$ condition (HR Thm 7.2 and surrounding), not
+exactly your Definition~\ref{defn:kappa}. The Granville-Soundararajan
+2007 \emph{Pretentious multiplicative functions} formulation of sieve
+dimension is cleaner: $\kappa$ is the limit of $\sum g(p) \log p / \log
+z$. Both definitions agree for "nice" $g$, but for unusual $g$ like
+yours (with $g(p) \leq 1/H_{p}^{2}$ heavily concentrated on small-$H$
+primes), the equivalence requires checking.''
+
+\paragraph{Response.} Granville is right to flag this. The
+Halberstam--Richert condition $\Omega(\kappa, A, B)$ requires both
+upper and lower bound forms; the lower bound form for the V-family
+follows from $g_{V}(p) \geq 0$. The upper bound is what we have just
+proved. Both Halberstam--Richert Thm~7.2 and the more general
+Iwaniec--Kowalski Thm~6.1 then apply. The Granville--Soundararajan
+formulation is equivalent for our setting.
+
+\paragraph{Granville attack 2: $H_{p} = 1$ case.}
+``You say $H_{p} \geq 2$ for $p > 3$, but you should justify this.
+$H_{p} = 1$ means $\langle 2, 3 \rangle = \{1\} \bmod p$, i.e.\
+$2 \equiv 1 \pmod p$ and $3 \equiv 1 \pmod p$, i.e.\ $p \mid 1$, which
+is impossible. So $H_{p} \geq 2$ trivially. But more is true: $H_{p}$
+divides $p - 1$ by Lagrange, and $H_{p} \geq d_{p}(2) \geq 2$ for any
+$p \nmid 2$, i.e.\ $p > 2$. So $H_{p} \geq 2$ for $p \neq 2$. The case
+$p = 2$ is excluded since $p > 3$.''
+
+\paragraph{Response.} Correct. I will add the footnote: ``$H_{p} \geq
+d_{p}(2) \geq 2$ for $p > 2$, since $\mathrm{ord}_{p}(2) \geq 2$
+unless $p = 1$ or $p = 2$.'' This is trivial but worth stating
+explicitly.
+
+\paragraph{Granville attack 3: $g_{V}$ depends on $m$.}
+``Throughout \S2 you write $g_{V}(p)$ without the $m$-dependence
+visible. The pointwise bound $g_{V}(p) \leq 1/H_{p}^{2}$ is
+$m$-independent (the bound holds for all ordinary $m$ uniformly). But
+the actual value $g_{V}(p, m)$ DOES depend on $m$: it is $1/H_{p}$ if
+$-m^{-1} \in \langle 2, 3 \rangle \bmod p$, and $0$ otherwise (call $p$
+"triggered for $m$" in the former case). The $\kappa_{V} = 0$ claim
+holds for the pointwise upper bound $1/H_{p}^{2}$, hence for any
+specific $m$, so this is fine. But you should clarify.''
+
+\paragraph{Response.} Correct. I will add a Remark to \S2 distinguishing
+the pointwise bound $g_{V}(p, m) \leq 1/H_{p}^{2}$ (uniform in $m$)
+from the actual triggered/untriggered dichotomy. The sieve application
+in \S4 will use the triggered set, but the $\kappa$_V = 0 claim is established
+for the pointwise upper bound. The two are mathematically equivalent
+for our purposes since the sieve only needs the upper bound.
+
+\subsection*{REPAIR --- adjustments to \S2 of the final preprint}
+
+Based on the three adversarial reviews, the final \S2 absorbs the
+following adjustments:
+
+\begin{enumerate}
+  \item \textbf{Weaken Proposition~\ref{prop:kappa-zero} conclusion}
+    from ``$F(z) = O(1)$'' to ``$F(z) = o(\log z)$'' (per Heath-Brown
+    A1). This still gives $\kappa_{V} = 0$.
+
+  \item \textbf{Restate the small-$H$ contribution} using cyclic
+    Pappalardi 1995 with the $H_{p} \geq \max(d_{p}(2), d_{p}(3))$
+    reduction (per Heath-Brown A1). The rank-$2$ Pappalardi--Susa is
+    used only as motivation; the cyclic version with the reduction
+    suffices.
+
+  \item \textbf{Cite Pappalardi 2003 instead of Pappalardi--Susa 2010}
+    for the rank-$2$ result, and qualify the exponent claim (per
+    Pappalardi B2). State as: "we use the qualitative rank-$2$ bound
+    $\#\{p \leq z : H_{p} < (\log z)^{A}\} = o(z / (\log z)^{B})$ for
+    any $A, B$''.
+
+  \item \textbf{Clarify $g_{V}(p, m)$ versus $g_{V}(p)$ notation}
+    (per Granville C3). Pointwise upper bound is uniform in $m$;
+    triggered/untriggered dichotomy is $m$-specific.
+
+  \item \textbf{Footnote: $H_{p} \geq 2$ for $p > 2$} (per Granville
+    C2).
+
+  \item \textbf{Footnote: primes $p \mid m$ contribute zero} to the
+    kappa sum, since $V(m, k, \ell) \equiv 1 \pmod{p}$ never $\equiv
+    0$ (per Pappalardi B1).
+\end{enumerate}
+
+\subsection*{Status after Pass 3 repair}
+
+The $\kappa$_V = 0 conclusion is now:
+\begin{quote}
+  \textbf{Conditional Proposition.} Assuming the qualitative
+  rank-$2$ index-distribution bound
+  $\#\{p \leq z : H_{p} < (\log z)^{A}\} = o(z / (\log z)^{B})$
+  for any $A, B > 0$ (which follows from Pappalardi 2003 via the
+  $H_{p} \geq \max(d_{p}(2), d_{p}(3))$ reduction to cyclic
+  Pappalardi 1995),
+  the V-family has sieve dimension $\kappa_{V} = 0$ in the
+  Halberstam--Richert sense.
+\end{quote}
+
+This is honest and defensible. The conditional dependence on
+Pappalardi-style results is unavoidable; even the strongest claimed
+bound in the literature (Pappalardi 2003 + Cojocaru--Murty 2005) is
+qualitative for the rank-$2$ case in the relevant regime.
+
+\paragraph{Remaining open issue.}
+The Pappalardi 2003 qualitative bound is itself \emph{conditional on
+GRH for Dedekind zeta functions of certain Kummer extensions}, per the
+original Hooley 1967 argument that Pappalardi refines. The
+unconditional version (Heath-Brown 1986) is weaker: positive density
+of primes for which at least one of $\{2, 3, 5\}$ is a primitive root.
+For the V-family, what we use is the weaker conclusion: a positive
+density of primes have $H_{p} \geq c \cdot p$ for some $c > 0$. This
+is enough for $\kappa_{V} = 0$ \emph{in the qualitative sense} but
+gives a less explicit constant.
+
+\textbf{Honest conclusion of Pass 3:} the V-family $\kappa$_V = 0 claim is
+\emph{unconditional in the qualitative sense} via Heath-Brown 1986,
+and \emph{conditional on a Pappalardi-style quantitative bound} for
+the explicit rate. Both forms suffice to apply the Brun--Hooley
+combinatorial sieve in \S4. The Lean axiom
+\texttt{wilder\_2026\_V\_family\_rosser\_iwaniec} takes the
+unconditional qualitative form as its hypothesis, which is the safer
+choice.

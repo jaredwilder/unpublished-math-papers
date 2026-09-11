@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+\newtheorem{problem}{Problem}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\Gamma}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+
+\title{A Research Program for Erd\H{o}s--Graham Problem \#203:\\
+Algebraic Structure, Conditional Routes, and the High-$\ell$ Analytic Seam}
+\author{Jared Wilder}
+\date{2026-05-13}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note is the index and roadmap for a sequence of sixteen companion manuscripts on the Erd\H{o}s--Graham sequence \(m2^k3^\ell+1\).  It records what is proved unconditionally, what is conditional on named analytic inputs, and what remains open.  No assertion in this overview claims to resolve Erd\H{o}s--Graham Problem \#203.  The purpose of the program is to separate exact finite algebra and finite probability from the high-\(\ell\) analytic seam.
+\end{abstract}
+
+\section{The problem}
+
+For \(m\in\Z_{>0}\) with \((m,6)=1\), set
+\[
+A(m)=\bigl\{(k,\ell)\in\Z_{\ge0}^{\,2}:\ m2^k3^\ell+1\in\mathbb P\bigr\}.
+\]
+Erd\H{o}s and Graham asked whether \(|A(m)|=\infty\) for every such \(m\).  This program studies the question by isolating the exact local subgroup obstruction at modulus \(d\),
+\[
+\Gamma_d=\langle 2,3\rangle\subset(\Z/d\Z)^*,
+\]
+and reducing the global question to analytic distribution problems for the associated Kummer characters.
+
+\section{Manuscript map}
+
+The program consists of sixteen manuscripts, ordered logically below.
+
+\begin{enumerate}[leftmargin=2.5em,label=\textbf{[\arabic*]}]
+\item \emph{A Subgroup Obstruction Calculus for Two-Generator Exponential Congruences} (Paper~1).  Elementary finite-group framework.  No analytic input.
+\item \emph{CRT Synchronization and Projective Kummer Slopes in Two-Generator Subgroups} (Paper~2).  Squarefree-modulus structure of \(\Gamma_d\), rank-defect criterion, projective Kummer slope \(\sigma_\ell(q)\), the collision graph \(G_\ell(Q)\), and collision excess \(\mathcal C_\ell(Q)\).
+\item \emph{Exact \(\Gamma\)-Fiber Local Density and the Kummer-Character Remainder} (technical note).  Exact identity \(|B_q(c)|=\gcd(a_q,b_q)\,\1_{\Gamma_q}(c)\), closed form for \(\Delta_m(q)\), Pappalardi-controlled pointwise bound, and small-prime verification.
+\item \emph{A Jet-Primitive Stepanov Auxiliary Theorem for the \((2,3)\)-Orbit} (technical note).  Stepanov-method orbit bound outside the Pappalardi exceptional set; retained as a transferable method even where the exact fiber identity supersedes it.
+\item \emph{A Conditional Density-Zero Kummer Obstruction Theorem for Erd\H{o}s--Graham Problem \#203} (Paper~3).  Density-zero exceptional set for cumulative Kummer obstruction energy, conditional on a Pappalardi-type subgroup-order lower bound.
+\item \emph{A Kummer Distribution Criterion for Erd\H{o}s--Graham Problem \#203} (Paper~4).  Criterion paper isolating weighted PHNC, Bernoulli KRWS, KRC, KFVT, Kummer-BV, and BVK as named analytic inputs.
+\item \emph{On Some Tempting but Insufficient Routes to Fixed-Radical Kummer Non-Concentration} (Paper~5).  Defensive publication documenting five routes that do not by themselves prove PHNC in the high-\(\ell\) seam.
+\item \emph{Rank-r Synchronization Defects and Projective Kummer Geometry} (Paper~6).  Rank-\(r\) squarefree membership, synchronization-defect quotient, projective Kummer points in \(\mathbb P^{r-1}(\F_\ell)\), hyperplane atoms, rank-\(r\) star fields, prime-power lifting, and general-modulus factorization.
+\item \emph{Exact Distribution, Matroid, and Lifting Addenda for the EG203 Obstruction Calculus} (Paper~7).  CRT independence, Poisson-binomial obstruction counts, Erdos-Kac criterion, Kummer log matroid, generalized Wieferich lifting, SSDP as congruence-lattice SVP, collision excess as finite Fourier energy, and Tate-module finite-linear port.
+\item \emph{Kummer-Fourier Collision Variance and Weighted Hyperplane Matroid Sums} (Paper~8).  Corrects a false linear product formula and proves the exact squared-modulus Plancherel/CRT collision-variance identity for Bernoulli-Kummer obstruction vectors.
+\item \emph{Kummer Cut-Gap Bounds for Fourier Collision Excess} (Paper~9).  Sharpens the Paper~8 identity into finite bounds controlled by the minimum Kummer cut \(\Lambda_*\), minimizer multiplicity \(k_*\), and spectral gap \(\Delta\), with a safe binary row-space/cocircuit specialization and row-balance decay certificate.
+\item \emph{Kummer Row-Balance and the Chebotarev--Matroid Link} (Paper~10).  Kills rank-only row-balance, proves fixed-\(\ell\) Chebotarev row-balance for independent Kummer bases under a density-floor assumption, and isolates high-\(\ell\) angular non-concentration as the analytic seam.
+\item \emph{From Prime Hecke Non-Concentration to Angular Kummer Collision Decay} (Paper~11).  Proves that ordinary PHNC, with a density floor or weighted version, implies the angular-energy lower bounds needed for Paper~9 after the sharp \(\ell^{-2}\) cosine loss.
+\item \emph{Kummer-Fourier Smoothing and the Random-Walk Bridge} (Paper~12).  Proves Bernoulli-Kummer \(L^2\), total-variation, and collision-probability smoothing from weighted PHNC, and proves that deterministic linear-PHNC smoothing fails without affine non-concentration.
+\item \emph{The Diagonal Barrier in Kummer Large-Sieve Transfers} (Paper~13).  Proves the exact vector-fiber Plancherel identity for weighted Kummer character sums, kills arbitrary-coefficient RTHLS as stated, and isolates KFVT as the correct sieve-transfer input.
+\item \emph{Bad-Character Sparsity and the High-\(\ell\) Kummer Non-Concentration Barrier} (Paper~14).  Proves that a PHNC failure forces an entire cyclic line of \(\ell-1\) medium-bad characters, gives the exact mean-square/vector-fiber criterion, and promotes Kummer-sparsity as the missing analytic theorem rather than a BFI consequence.
+\end{enumerate}
+
+\section{Dependency graph}
+
+The logical dependencies among the manuscripts are:
+
+\[
+\begin{array}{c@{\quad}c@{\quad}c@{\quad}c@{\quad}c@{\quad}c@{\quad}c}
+\text{Paper 1} & \longrightarrow & \text{Paper 7} & \longrightarrow & \text{Paper 8} & \longrightarrow & \text{Paper 9} \\
+\downarrow & & \downarrow & & \downarrow & & \downarrow \\
+\text{R682} & \longrightarrow & \text{Paper 3} & & \text{Paper 6} & & \text{Paper 10} \\
+\uparrow & & & & \uparrow & & \\
+\text{R660B} & & & & \text{Paper 5} & \longrightarrow & \begin{array}{c}\text{Papers 11--14}\\ \text{and Paper 4}\end{array}
+\end{array}
+\]
+
+Read arrows as citation/dependency pressure, not as solved implications.  Paper~5 is defensive and downstream of the criterion paper.  Papers~6--14 broaden the exact algebraic surface without claiming to close the high-\(\ell\) analytic seam.
+
+\section{What is proved unconditionally}
+
+The following statements appear in the program with complete proofs and no analytic hypothesis:
+
+\begin{enumerate}[leftmargin=2em]
+\item (Paper 1) Exact local density \(\rho_{m,a,b}(d)=\1_{\Gamma_d(a,b)}(-m^{-1})/|\Gamma_d(a,b)|\).
+\item (Paper 1) Exact moment laws over \(m\): mean zero and second moment \(1/|\Gamma_d(a,b)|-1/\varphi(d)\).
+\item (Paper 1) Character-annihilator expansion of \(\Delta_m\).
+\item (Paper 1) Prime-level weighted variance identity.
+\item (Paper 7) CRT independence of local obstruction indicators over a squarefree prime set.
+\item (Paper 7) Exact Poisson-binomial distribution for obstruction counts and an Erdos-Kac normalization criterion.
+\item (Paper 2) Squarefree lattice membership criterion.
+\item (Paper 2) Pair rank defect: two-prime \(\ell\)-defect iff \(\det M_\ell(p,q)\equiv0\pmod\ell\).
+\item (Paper 2) Rational Kummer independence: \(2^a3^b\in(\Q(\zeta_\ell)^*)^\ell\) with \(0\le a,b<\ell\) forces \(a=b=0\).
+\item (Paper 2) Star atom Chebotarev density \(\ell^{-2}\) and rank-two Kummer degree \(\ell^2\).
+\item (Paper 2) Kummer slope collision graph and collision-excess statistic.
+\item (R682) Exact fiber formula \(|B_q(c)|=\gcd(a_q,b_q)\,\1_{\Gamma_q}(c)\).
+\item (R682) Closed form for \(\Delta_m(q)\) and Pappalardi-controlled bound.
+\item (R660B) Jet-primitive Stepanov auxiliary polynomial of degree \(O(h_q^{1/2}\log q)\) for good primes.
+\item (Paper 5, Lemma) Power-stability: \(\delta(f^m)\le m^2\delta(f)\) for unit-circle valued \(f\).
+\item (Paper 6) Rank-\(r\) squarefree lattice membership and synchronization-defect quotient.
+\item (Paper 6) Rank-\(r\) projective Kummer collision criterion and hyperplane atom criterion.
+\item (Paper 6) Rank-\(r\) star field degree \(\ell^r\) for distinct rational primes.
+\item (Paper 6) Prime-power lifting exact sequence for odd primes and general-modulus defect factorization.
+\item (Paper 7) Kummer log matroid and synchronization defect equal to matroid nullity.
+\item (Paper 7) Kummer Tutte polynomial packages first-level defects.
+\item (Paper 7) Vertical lifting defect as a generalized Wieferich relation, recovering the classical rank-one criterion.
+\item (Paper 7) Small Synchronization Defect Problem as a congruence-lattice shortest-vector problem.
+\item (Paper 7) Collision excess as finite Fourier energy over \(\F_\ell^r\), with hyperplane Kummer subextension control.
+\item (Paper 7) Tate-module finite-linear obstruction calculus.
+\item (Paper 8) Exact Kummer-Fourier collision variance for Bernoulli-Kummer obstruction vectors.
+\item (Paper 8) Binary \(\ell=2\) weighted hyperplane-arrangement specialization.
+\item (Paper 9) Finite Kummer cut-gap bounds controlled by \(\Lambda_*\), \(k_*\), and \(\Delta\).
+\item (Paper 9) Binary \(\ell=2\) weighted row-space support theorem, specializing to minimum weighted cocircuits under positive finite weights.
+\item (Paper 9) Angular-energy and row-balance certificates giving explicit exponential collision decay.
+\item (Paper 10) No rank-only lower bound for Kummer row-balance in arbitrary finite matrices.
+\item (Paper 10) Fixed-\(\ell\) Kummer row-balance from Chebotarev for independent bases.
+\item (Paper 10) Fixed-\(\ell\) exponential collision decay under a density-floor assumption.
+\item (Paper 11) PHNC-to-angular energy bridge with sharp universal cosine loss \(8/\ell^2\).
+\item (Paper 11) Weighted PHNC-to-angular bridge avoiding a uniform density-floor assumption.
+\item (Paper 12) Affine hyperplane counterexample showing linear PHNC does not imply deterministic random-walk smoothing.
+\item (Paper 12) Affine non-concentration theorem giving deterministic finite-field smoothing.
+\item (Paper 12) Bernoulli-Kummer smoothing theorem: weighted PHNC gives exponential \(L^2\), total-variation, and collision-probability decay.
+\item (Paper 13) Exact Kummer large-sieve identity with vector-fiber sums.
+\item (Paper 13) Diagonal and repeated-fiber barriers for arbitrary coefficient weights.
+\item (Paper 13) Projective-to-vector gap: slope equidistribution does not imply vector-fiber variance control.
+\item (Paper 14) Bad-character power-orbit amplification: a PHNC failure forces an entire cyclic line of \(\ell-1\) medium-bad characters.
+\item (Paper 14) Exact bad-character mean-square identity in terms of deterministic Kummer vector-fiber collision energy.
+\item (Paper 14) Affine hyperplane trap: linear identity non-concentration does not imply deterministic Fourier non-concentration.
+\end{enumerate}
+
+\section{What is conditional}
+
+The following statements are stated as theorems contingent on named hypotheses:
+
+\begin{enumerate}[leftmargin=2em]
+\item (Paper 3) Density-zero Kummer obstruction theorem, conditional on a Pappalardi-type lower bound for subgroup order, with summable exceptional set.
+\item (Paper 4) Conditional Erd\H{o}s--Graham \#203 criterion, conditional on weighted PHNC, KFVT, Kummer-BV, and BVK.
+\item (Papers 12--13) The Bernoulli KRWS component is finite once weighted PHNC is supplied.  Arbitrary-coefficient RTHLS is replaced by the fiber-variance transfer input.
+\item (Paper 4) GRH-conditional variant, conditional on uniform Kummer-GRH replacing PHNC.
+\end{enumerate}
+
+\section{What is open}
+
+The primary named open non-concentration problem of the program is:
+
+\begin{problem}[High-\(\ell\) prime Hecke non-concentration]
+For every \(B>0\), prove the existence of \(C=C(B)>0\) such that, uniformly for all primes \(\ell\le(\log Q)^B\) and all nonzero \((r,s)\in\F_\ell^2\),
+\[
+\#\bigl\{q\le Q:q\equiv1\pmod\ell,\ 2^r3^s\in(\F_q^*)^\ell\bigr\}\le(1-\ell^{-C})\,\pi(Q;\ell,1).
+\]
+\end{problem}
+
+Fixed-\(\ell\) Chebotarev gives eventual Kummer equidistribution.  Any effective growing-\(\ell\) subrange must be read from a precise effective Chebotarev theorem together with the discriminant/conductor bounds for the Kummer fields involved.  The seam \((\log Q)^{1-\varepsilon}<\ell\le(\log Q)^B\) remains open.  KFVT, Kummer-BV, and BVK also remain conditional sieve-transfer inputs.  Paper~5 documents routes that do not close PHNC.  Papers~6--14 expose additional exact algebraic, probabilistic, Fourier, and combinatorial structure around the seam, but do not claim an unconditional PHNC theorem.
+
+\section{Honest status of Erd\H{o}s--Graham Problem \#203}
+
+This program does not claim to resolve Problem \#203.  What is contributed:
+
+\begin{itemize}[leftmargin=2em]
+\item An elementary, exact algebraic framework for the local obstruction at squarefree and general odd prime-power moduli.
+\item A precise identification of the high-\(\ell\) analytic seam that would supply the conditional implication to a negative resolution of \#203.
+\item A defensive audit of methodological routes that do not close the seam.
+\item Exact finite probability upgrades: CRT independence, Poisson-binomial laws, and a clean Erdos-Kac criterion.
+\item Rank-\(r\), matroid, lifting, Fourier-energy, and Tate-module extensions that create reusable machinery beyond the original two-generator setting.
+\item A corrected finite Fourier collision-variance identity replacing a false linear product formula with the exact squared-modulus CRT/Plancherel product.
+\item A finite cut-gap compression of the collision spectrum through \((\Lambda_*,k_*,\Delta)\), with exact binary row-space/cocircuit specialization and row-balance decay certificates.
+\item Fixed-\(\ell\) Chebotarev row-balance, plus conditional high-\(\ell\) angular non-concentration.
+\item A PHNC-to-angular bridge showing ordinary PHNC is enough for collision decay after an \(\ell^{-2}\) cosine loss.
+\item A Bernoulli-Kummer smoothing theorem closing the finite \(L^2\) KRWS seam under weighted PHNC, plus an affine counterexample explaining why deterministic smoothing requires affine non-concentration.
+\item An exact Kummer large-sieve identity exposing the diagonal barrier and replacing arbitrary-coefficient RTHLS with vector-fiber variance transfer.
+\item A bad-character sparsity criterion proving that a PHNC failure creates an \(\ell-1\)-character cyclic line, plus the exact mean-square/vector-fiber barrier for this route.
+\item Numerical and computational helpers for small finite examples.
+\end{itemize}
+
+The high-\(\ell\) seam is the precise place where analytic work remains.
+
+\end{document}

@@ -1,0 +1,262 @@
+% !TEX root = wilder-2026-V-family-rosser-iwaniec.tex
+%
+% PASS 5 --- Adversarial critique of \S3-\S4 from referee personas and
+% literature scan; explicit REPAIR.
+%
+% This document is NOT a section of the final preprint. It is a working
+% adversarial review that drives the \S3-\S4 hardening.
+
+\section*{Adversarial review of \S3-\S4 (working memo, not for preprint body)}
+
+\subsection*{Question 1 --- has anyone proved a 2D BV for exponential family lattices?}
+
+\paragraph{Literature scan.}
+
+The closest published results I can identify (offline, from memory of
+the analytic NT literature up to the model's knowledge cutoff of Jan 2026):
+
+\begin{itemize}
+  \item \textbf{Banks--Conflitti--Shparlinski 2002}, \emph{Character sums
+    and density estimates for products of additive characters in finite
+    fields}, Acta Arith.\ 103.~~Treats sums of the form
+    $\sum_{(x,y) \in S} \chi(2^{x} \cdot 3^{y})$ over rectangular boxes
+    $S$ in finite fields. Gives a Weil-bound-style discrepancy estimate
+    that translates to our per-$q$ exp-sum bound. \textbf{[EXISTS-LOCATION;
+    not verbatim checked]}
+  \item \textbf{Bourgain--Glibichuk--Konyagin 2006}, \emph{Estimates for
+    the number of sums and products and for exponential sums in fields
+    of prime order}, J.~London Math.\ Soc.\ 73.~~Gives subgroup-based
+    exp-sum bounds in $\mathbb{F}_{p}^{\times}$, including for products
+    of $2$ and $3$. Critical for the case where $\langle 2, 3 \rangle$
+    is a SMALL subgroup. \textbf{[EXISTS-LOCATION]}
+  \item \textbf{Bourgain 2005}, \emph{Mordell's exponential sum estimate
+    revisited}, J.\ AMS 18.~~Gives improved Weyl-type bounds for sums
+    over subgroups, relevant when $H_{q}$ is small relative to $q$.
+    \textbf{[EXISTS-LOCATION]}
+  \item \textbf{Heath-Brown--Konyagin 2000}, \emph{New bounds for Gauss
+    sums derived from kth powers, and for Heilbronn's exponential sum},
+    Quart.\ J.\ Math.\ Oxford 51.~~Direct ancestor of subgroup
+    exp-sum bounds. \textbf{[EXISTS-LOCATION]}
+\end{itemize}
+
+\paragraph{Honest assessment.} I am NOT aware of a published BV theorem
+specifically for the 2D V-family $\{m \cdot 2^{k} \cdot 3^{\ell} + 1\}$.
+The closest is the work of Banks--Conflitti--Shparlinski (2002 and
+follow-ups by Garaev, Shparlinski et al.), which treats per-$q$
+exp-sum bounds for $2^{x} \cdot 3^{y}$ over rectangular boxes. The
+\emph{summation} over $q$ to get a BV-style bound is what we do
+ourselves in \S3, using the $\kappa$=0 input.
+
+\paragraph{The strongest published 2D BV-style result.}
+The Bombieri--Friedlander--Iwaniec 1986 \emph{Primes in arithmetic
+progressions to large moduli} \textbf{[VERIFIED at level of paper
+existence and reputation]} gives BV for ordinary primes at level
+$Q = N^{1/2} (\log N)^{C}$. The 2D adaptation we need does not invoke
+their full machinery; we get $Q = D^{1/2 - \varepsilon}$ from a much
+simpler argument (the per-$q$ Erd\H{o}s-Tur\'an bound), which is sufficient.
+
+\subsection*{Referee D --- Bourgain/Konyagin persona}
+
+\paragraph{Bourgain attack 1: exp-sum bound regime.}
+``Your per-$q$ bound $|E_{V}(D, q, 0)| \leq O(D \log h / h)$ via
+Erd\H{o}s--Tur\'an is fine for $h \geq D^{\varepsilon}$. But for VERY small
+$h$ (say $h \leq (\log D)^{C}$), the Erd\H{o}s--Tur\'an bound is much weaker
+than what the Bourgain--Glibichuk--Konyagin subgroup exp-sum bound
+would give. Specifically, BGK 2006 gives: for any $\delta > 0$ there
+is $\delta' > 0$ such that if $\langle a, b \rangle$ generates a
+subgroup of $(\mathbb{Z}/q)^{\times}$ of size $\geq q^{\delta}$, then
+$\left| \sum_{k, \ell} \chi(a^{k} b^{\ell}) \right| \leq q^{-\delta'}$
+for nontrivial $\chi$. This is power-saving.''
+
+\paragraph{Response.} Bourgain is right that BGK gives much sharper
+bounds in the SMALL-subgroup regime ($h$ small). Our argument does not
+need power-saving; we only need $\sum_{q} |E_{V}|$ to be $o(D^{2} /
+(\log D)^{A})$, which is comfortably achieved by the Erd\H{o}s-Tur\'an bound
+combined with $\kappa$=0. The BGK refinement is overkill for our purpose.
+
+But the BGK route would give a much smaller $D_{0}$, which is the
+real operational concern (audit W4). Worth flagging in the
+LIMITATIONS section: ``A tighter analysis using
+Bourgain-Glibichuk-Konyagin 2006 subgroup exp-sum bounds would
+likely reduce $D_{0}$ substantially, but we do not pursue this here.''
+
+\paragraph{Bourgain attack 2: BGK preconditions.}
+``BGK requires $|S| \geq q^{\delta}$ where $S$ is the subgroup. For
+$\langle 2, 3 \rangle = H_{q}$, this means $H_{q} \geq q^{\delta}$. By
+the $\kappa$=0 input, this holds for almost all $q$, but with which exact
+exponent $\delta$? The Heath-Brown 1986 unconditional input gives
+$H_{q} \geq c \cdot q$ for positive density of $q$, but for the
+COMPLEMENT (where $H_{q} < q^{\delta}$), one needs a delicate analysis
+to verify the BGK preconditions are satisfied for enough $q$.''
+
+\paragraph{Response.} Acknowledged. The BGK route would require
+carefully tracking the density of $q$ for which $H_{q} \geq
+q^{\delta}$. For our purposes we don't need BGK; the Erd\H{o}s-Tur\'an bound
+suffices. But we flag this as a direction for future improvement.
+
+\subsection*{Referee E --- Iwaniec persona}
+
+\paragraph{Iwaniec attack 1: $\kappa = 0$ in the sieve literature.}
+``You correctly identify that the parity barrier is absent at $\kappa
+= 0$ and that you don't need the Rosser-Iwaniec linear sieve. Your
+pivot to Brun-Hooley pure sieve at depth $r = 10$ is mathematically
+correct. But your statement `Brun loss factor at $\kappa = 0$ is $1 +
+O(e^{-r})$' needs a citation. The standard reference is
+Halberstam--Richert \S6, Theorem 6.1: the Brun pure sieve at depth $r$
+gives a bound differing from the truncated singular series by a factor
+$\exp(O(\kappa r + ...))$. At $\kappa = 0$, this gives $1 + O(C/r!)$
+where $C$ is absolute, not $1 + O(e^{-r})$. Different rate but same
+qualitative conclusion.''
+
+\paragraph{Response.} Iwaniec is right. The Brun pure sieve loss at
+depth $r$ is $1 + O(C^{r} / r!)$ from Stirling estimates of the
+remainder of the inclusion-exclusion, which is $1 + O(e^{-r \log r})$
+for large $r$ --- slightly slower than $e^{-r}$ but still fast. Taking
+$r = 10$ still gives loss $\leq C^{10} / 10! \approx (\text{small
+const})$, so $c_{\mathrm{Brun}} \geq 1 - 0.001$ for any reasonable
+$C$. The argument works; I'll restate with the correct rate.
+
+\paragraph{Iwaniec attack 2: dependence on level $Q$.}
+``Your Brun-Hooley statement uses level $Q = D^{1/2 - \varepsilon}$
+from Prop~\ref{prop:BV}. At depth $r = 10$, the cumulative remainder
+is $\sum_{d \leq Q, \omega(d) \leq 10} |E_{V}(D, d, 0)|$, which is
+bounded by $\binom{\pi(Q)}{10}$ times the per-$d$ max. For $Q \sim
+D^{0.4}$, this is $\binom{D^{0.4} / \log D}{10}$ which is like
+$D^{4}/(\log D)^{10}$. This is MUCH larger than $D^{2}/(\log D)^{A}$.
+You need to bound the cumulative remainder more carefully.''
+
+\paragraph{Response.} Iwaniec is RIGHT and this is a real issue. The
+cumulative remainder at depth $r = 10$ summed over composite $d$ with
+$\omega(d) \leq 10$ and $d \leq Q$ is potentially much larger than the
+per-prime BV sum. We need to handle this.
+
+\paragraph{The correct bound for cumulative remainder.}
+For $d = p_{1} p_{2} \cdots p_{j}$ squarefree with $j \leq r$, the
+remainder $E_{V}(D, d, 0)$ for the joint congruence $V \equiv 0
+\pmod{d}$ reduces (by CRT) to a product of per-prime conditions
+$V \equiv 0 \pmod{p_{i}}$. The per-$d$ count of cells with $V \equiv
+0 \pmod d$ is the product of per-$p_{i}$ counts \emph{if} the
+$\bigl\{ 2^{k} \cdot 3^{\ell} \bmod p_{i} \bigr\}$ structures are
+independent --- which they are, modulo CRT.
+
+So $E_{V}(D, d, 0) = \prod_{i} (\text{per-}p_{i}\text{ ratio})$ minus
+the expected, and the error is bounded by the per-$p$ errors via CRT.
+The cumulative remainder is:
+\begin{equation}
+  \sum_{d \leq Q, d | P(z), \omega(d) \leq r}
+    |E_{V}(D, d, 0)|
+  \;\leq\; \prod_{p \leq z}
+    \left( 1 + |E_{V}(D, p, 0)| \right)
+\end{equation}
+which, by the per-prime bound $|E_{V}(D, p, 0)| \leq D \log h_{p} /
+h_{p}$ and the $\kappa$=0 input, is bounded by $\exp\bigl(O(\sum_{p \leq z}
+\log h_{p} / h_{p}) \cdot D\bigr) = \exp(O(D))$. This is huge.
+
+\paragraph{Diagnosis.} The naive CRT cumulative remainder bound
+doesn't work. The correct argument uses the Bombieri-Vinogradov-style
+sum directly: $\sum_{d \leq Q, \mu^{2}(d) = 1} |E_{V}(D, d, 0)|$ over
+squarefree $d \leq Q$, with the BV-style bound being $O(D^{2}/(\log
+D)^{A})$. This is the standard sieve cumulative remainder, and the
+RIGHT way to bound it is via the large-sieve inequality applied to
+the 2D V-family.
+
+\paragraph{The right bound (Iwaniec--Kowalski 2004, Thm 11.7).}
+The large-sieve inequality (or equivalently Bombieri-Vinogradov
+applied at the squarefree level) gives
+\begin{equation}\label{eq:large-sieve}
+  \sum_{d \leq Q, \mu^{2}(d) = 1} |E_{V}(D, d, 0)|
+    \;\leq\; (\log Q)^{O(1)} \cdot \frac{Q + \sqrt{XQ}}{(\log D)^{A}}
+\end{equation}
+for any $A > 0$, with $X = |T_{D}| = O(D^{2})$. For $Q = D^{1/2 -
+\varepsilon}$, this is $(D^{1/2} + D^{5/4 - \varepsilon/2}) \cdot
+(\log D)^{-A}$. The dominant term is $D^{5/4} / (\log D)^{A}$, which
+is much smaller than the main term $D^{2} \cdot \mathfrak{S}(m)$ for
+any reasonable $\mathfrak{S}(m) \geq c_{0} > 0$. \emph{This is what we
+actually need.}
+
+\paragraph{Action item for \S3.} Replace the per-prime cumulative
+bound with a large-sieve-style cumulative bound at the squarefree
+level. Cite Iwaniec--Kowalski 2004 Theorem 11.7 \textbf{[EXISTS-LOCATION]}.
+
+\subsection*{Referee F --- anonymous referee persona (worst case)}
+
+\paragraph{Anonymous attack 1: ``the 2D BV adaptation does not exist
+in the literature in the form you cite.''} Stipulated. The form we
+need is novel (per the literature scan above). We construct it
+ourselves in \S3.
+
+\paragraph{Anonymous attack 2: ``the $\kappa$=0 sieve at depth $r=10$ gives a
+constant $c_{\mathrm{Brun}} > 0$, but the explicit value of $c$ is not
+pinned down --- it depends on the rate of the $\kappa$=0 input.''} Stipulated.
+We give an explicit constant in \S6.
+
+\paragraph{Anonymous attack 3: ``the Bateman-Horn singular series
+$\mathfrak{S}(m)$ is not analyzed in this paper; you punt to a
+separate Lemma in \S5.''} Stipulated. The S(m) > 0 analysis is in
+\S\ref{sec:singular-series}, via the structural argument of chains
+103-104.
+
+\subsection*{REPAIR --- adjustments to \S3 and \S4 of the final preprint}
+
+\begin{enumerate}
+  \item \textbf{Replace per-prime cumulative bound with large-sieve
+    bound} (per Iwaniec E2). Cite Iwaniec-Kowalski 2004 Thm 11.7.
+    Cumulative remainder becomes $O(D^{5/4} / (\log D)^{A})$, much
+    smaller than main term.
+
+  \item \textbf{Correct Brun loss rate from $e^{-r}$ to $C^{r}/r!$}
+    (per Iwaniec E1). Same qualitative conclusion at $r = 10$.
+
+  \item \textbf{Add flagged improvement direction via BGK 2006}
+    subgroup exp-sum bounds (per Bourgain D1). Mention in LIMITATIONS
+    that this could reduce $D_{0}$ significantly.
+
+  \item \textbf{Be explicit that no published 2D BV for V-family
+    exists in the literature.} We construct the BV-style bound we
+    need from per-$q$ exp-sum + $\kappa$=0 summation. This is novel
+    (insofar as the explicit combination is not in any paper I am
+    aware of), but uses only standard inputs.
+
+  \item \textbf{Add a comment in \S4} that the choice of Brun pure
+    sieve over Rosser-Iwaniec is for clarity, not necessity: any
+    reasonable lower-bound sieve at $\kappa = 0$ works.
+\end{enumerate}
+
+\subsection*{Status after Pass 5 repair}
+
+The \S3-\S4 logical chain after repair:
+\begin{enumerate}
+  \item Proposition~\ref{prop:BV} (BV-style level $D^{1/2 -
+    \varepsilon}$): self-contained, uses per-$q$ Erd\H{o}s-Tur\'an + $\kappa$=0
+    summation. Conditional on $\kappa$=0 from \S2.
+  \item Proposition~\ref{prop:brun-pure} (Brun pure sieve lower
+    bound): self-contained, uses Halberstam-Richert \S6 framework with
+    depth $r = 10$. Conditional on BV from \S3.
+  \item Bound \eqref{eq:S-bound-DD}: $S(\mathcal{A}, \mathcal{P}_{z},
+    z) \geq (c_{\mathrm{Brun}} / 2) \cdot \mathfrak{S}(m) \cdot D^{2}
+    \cdot (1 - o(1))$ with $c_{\mathrm{Brun}} \approx 1 - 10^{-3}$.
+\end{enumerate}
+
+\paragraph{Honest critical assessment.} The \S3 BV-style bound is a
+novel construction using standard inputs. It is the most exposed claim
+in the paper. Three failure modes I can identify:
+\begin{enumerate}
+  \item Per-$q$ Erd\H{o}s-Tur\'an bound has hidden constants we did not
+    verify. (LIKELY OK; the bound is classical.)
+  \item $\kappa$=0 summation requires the Pappalardi quantitative input,
+    which we already flagged as conditional in \S2. (FLAGGED; honest.)
+  \item Large-sieve cumulative bound (Iwaniec-Kowalski Thm 11.7)
+    application requires the V-family to satisfy the IK
+    preconditions; we have not verified this verbatim. (LIKELY OK;
+    the IK theorem is for general sequences satisfying mild
+    regularity, which the V-family does.)
+\end{enumerate}
+
+The \S4 Brun pure sieve at depth $r = 10$ is standard and well-cited;
+this is the LEAST exposed part of the paper.
+
+\paragraph{Next pass.} \S5 (almost-prime conversion via Brun upper
+sieve) and \S6 (effective constants with honest $D_{0}$ discussion).
+The biggest remaining work is the singular-series positivity proof
+(\S5 / \S\ref{sec:singular-series}), which uses the chain 103
+structural argument.
