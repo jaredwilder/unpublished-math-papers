@@ -22,8 +22,22 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 | `erdos-straus-geometric-progressions/` | Complete geometric-progression denominator classification, certificate and qualified novelty record. |
 | `erdos-straus-structured-denominators/` | AP/GP denominator writeups collected together. |
 | `erdos17-prime-difference-hardness/` | Exact hardness reduction: an affirmative #17 forces every positive even integer to be a difference of two primes. This is a reduction to an open prime-difference problem, **not a solution of #17**. |
-| `erdos247-sparse-binary-irrationality/` | Exact theorem: `limsup a_n/n=∞` forces `sum 2^{-a_n}` irrational, via nonperiodic binary expansion. Canonical #247 asks transcendence and remains open. |
+| `erdos156-maximal-sidon-barrier/` | Repaired maximal-Sidon theorem: maximal `A⊂[N]`, `m=|A|`, satisfies `N≤m+m³+m²`; preserves the missing `2x=a+b` blocker instead of the false raw proof. |
+| `erdos197-finite-beautiful-ordering/` | Complete finite analogue: every finite subset of `N` admits an ordering with no monotone 3-term AP, by parity recursion. Infinite problem remains separate. |
+| `erdos243-divisibility-irrationality/` | Eventual divisibility-chain + exploding-ratio criterion forcing `Σ1/a_n` irrational. High folklore risk; no novelty claim. |
+| `erdos247-sparse-binary-irrationality/` | Exact theorem in every integer base `b≥2`: `limsup a_n/n=∞` forces `sum b^{-a_n}` irrational. Canonical #247 asks transcendence and remains open. |
+| `erdos359-reciprocal-prefix-invariant/` | True-greedy-sequence invariant `Σ_{i≤k}1/a_i≥1`, with the poisoned wrong-initial-value receipt explicitly excluded. |
+| `erdos413-log-window/` | Exact logarithmic certification-window theorem: all-predecessor conditions reduce to an `O_ε(log n)` terminal window; infinitude remains open. |
+| `erdos486-summable-forbidden-mass/` | Arbitrary forbidden residue sets with summable mass `Σ|X_n|/n<∞` leave a set of integers with ordinary natural density under the frozen activation semantics. |
+| `erdos501-independent-triple/` | Repaired finite independent-triple lemma using the safe bad-pair bound `≤mN`; continuum transfer is not claimed. |
 | `erdos727-k2-obstruction-family/` | Infinite exact `k=2` obstruction family: for prime `p>=7`, `n=2p-2` gives `((n+2)!)^2 ∤ (2n)!`. #727 remains open. |
+| `erdos893-mersenne-divisor-package/` | Mersenne divisor injection `a|k ⇒ 2^a−1|2^k−1`, `τ(2^k−1)≥τ(k)`, order-sum identity and doubling inequality; infrastructure, not novelty headline. |
+| `erdos949-sumfree-ip/` | Sharp finite `q≤5` theorem, complete countable analogue, and simultaneous finite-real-dilate IP avoidance for complements of sum-free subsets of `R`; continuum parent remains open. |
+| `erdos973-two-point-extremum/` | Exact `n=2` minimax equals `(√5−1)/2`, attained at fifth roots of unity; standalone golden-ratio extremum. |
+| `erdos1061-aliquot-square/` | Aliquot-square primitive-seed generator, primitive-ray scaling theorem, recovered exact verifier and SHA-pinned 152,803-row certificate receipt; parent frontier not claimed. |
+| `erdos1142-order-sieve/` | Multiplicative-order subgroup avoidance theorem, primitive-root divisibility corollary and exact CRT search compression; stronger public computation exists. |
+| `erdos1212-isolated-family/` | Infinite family `(2,3^k)` of isolated vertices in the admissible coprime lattice graph; structural obstruction, not a close. |
+| `sums-three-cubes-114/` | Exact mod-7/mod-9 structure for `a³+b³+c³=114`, 1/343 CRT sieve, and recovered 15-theorem Lean inventory; `k=114` itself remains open. |
 | `erdos1005-farey/` | Recovered Farey reduction/retraction ledger for Erdős #1005; full source packet not recovered and #1005 not claimed closed. |
 | `erdos1066-lattice-barriers/` | Lean-certified local barrier theorems for the triangular-lattice/3-colour route to Erdős #1066; global problem remains open. |
 | `erdos271-stanley/` | 184-entry audited Stanley-sequence theorem/negative ledger. |
@@ -52,6 +66,10 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 | `sieve-preprint/` | Six-source EG203 combinatorial-sieve preprint package. The manuscript remains **preprint, expert review pending**. |
 | `notes/` | Standalone EG203 mathematical notes and program overview. |
 
+## Release-day extraction wave — 2026-09-11
+
+The archive received another long-tail pass rather than stopping at the large named programs. New standalone public packets now include #17, #156, #197, #243, #247, #359, #413, #486, #501, #727, #893, #949, #973, #1061, #1142, #1212 and the `k=114` sums-of-three-cubes modular package. These were extracted from pure-math portions of the estate; mixed biomedical, patent, product and proprietary-system source bundles were not dumped.
+
 ## Selected exact results now exposed here
 
 - Complete AP-denominator classification for the Erdős–Straus equation, with uniqueness/parity split and no primitive denominator triple.
@@ -64,8 +82,12 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 - Integral general-position octagons, if they exist, have diameter strictly greater than `30000`; the two known Kreisel–Kurz heptagons are whole-plane maximal against an eighth integral-distance point.
 - For a partial pack of pairwise-disjoint SQS(v), completion to a large set is exactly a `q`-coloring problem in the residual block graph; the explicit SQS(20) 15-pack has repair radius at least three and exact local rigidity/trade certificates.
 - The unique 41-vertex circulant `(5,5)` Ramsey graph cannot be retained intact and extended by one arbitrary new vertex to a 42-vertex `(5,5)` Ramsey graph.
-- Sparse binary positions with `limsup a_n/n=∞` force irrationality of `sum 2^{-a_n}`; the transcendence upgrade asked by #247 is explicitly not claimed.
+- Sparse positions with `limsup a_n/n=∞` force irrationality of `sum b^{-a_n}` in every integer base `b≥2`; the transcendence upgrade asked by #247 is explicitly not claimed.
 - For every prime `p>=7`, the `k=2` factorial-divisibility instance `n=2p-2` is an exact obstruction for Erdős #727.
+- Every sum-free `S⊂R` has a `q≤5` with `q,2q∉S`, and its complement contains a countable IP structure with simultaneous avoidance under any finite prescribed set of real dilates.
+- The #1061 aliquot-square formula `q=σ(a)-a`, `b=q²-a` produces primitive seeds under explicit primality conditions; the recovered 152,803-row exact certificate freshly re-verifies a rigorous ordered coefficient floor `2.295492576177`.
+- The exact two-point #973 minimax is `(√5−1)/2`, attained at fifth roots of unity.
+- Every solution of `a³+b³+c³=114`, if one exists, has exactly one variable divisible by 7 and all three variables congruent to 2 modulo 3.
 
 ## Candidate / research-result surfaces kept deliberately separate
 
@@ -76,7 +98,7 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 
 - It does not claim that every contained result is historically new.
 - It does not claim that every ordinary proof has been Lean-kernel checked.
-- It does not claim the surrounding open Erdős problems, P6, Lonely Runner, Caccetta–Häggkvist, `R(5,5)`, or RH are solved unless a subject README explicitly says so.
+- It does not claim the surrounding open Erdős problems, P6, Lonely Runner, Caccetta–Häggkvist, `R(5,5)`, sums of three cubes at 114, or RH are solved unless a subject README explicitly says so.
 - It does not publish mixed biomedical, patent, product, commercial-control, or proprietary-system material. Pure mathematics is extracted from mixed sources rather than raw application/IP bundles being dumped.
 
 ## Wider release
