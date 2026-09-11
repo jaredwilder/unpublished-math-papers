@@ -1,0 +1,40 @@
+{
+  "schema": "erdos738.theorem-bank.verification.v1",
+  "local_exhaustion": {
+    "triangle_free_graphs": 439,
+    "assertion_counts": {
+      "N01": 2130,
+      "N02": 13138,
+      "N03": 13138,
+      "N05": 4437,
+      "N08": 1516,
+      "N09": 10428,
+      "P01": 1224,
+      "M01": 5284,
+      "M11": 60,
+      "C05": 864,
+      "C07": 6292
+    }
+  },
+  "critical_exhaustion": {
+    "all_graphs": 33866,
+    "vertex_critical_graphs": 89,
+    "clique_cutset_violations": 0
+  },
+  "parity_hosts": [
+    {"d":3,"k":1,"vertices":4,"types":1,"active_types":0,"formula":0},
+    {"d":3,"k":2,"vertices":13,"types":5,"active_types":2,"formula":2},
+    {"d":3,"k":3,"vertices":40,"types":14,"active_types":6,"formula":6},
+    {"d":3,"k":4,"vertices":121,"types":30,"active_types":14,"formula":14}
+  ],
+  "parameters": {
+    "local_n": 5,
+    "critical_n": 6,
+    "parity_k": 4,
+    "branching": 3,
+    "output": "/mnt/data/ERDOS-738-THEOREM-BANK-VERIFICATION.json"
+  },
+  "elapsed_seconds": 1.246,
+  "status": "PASS",
+  "scope_note": "Finite exhaustive audit only; Lean remains the proof authority requested by the user."
+}
