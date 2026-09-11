@@ -1,6 +1,6 @@
 # Subject routing for the public mathematics archive
 
-Author: Jared Wilder. Adopted 2026-09-11; refreshed during the release-day topology audit.
+Author: Jared Wilder. Adopted 2026-09-11; refreshed during the live release topology audit.
 
 This repository is an **archive and intake surface**, not the preferred canonical home for every mathematical subject it contains.
 
@@ -9,102 +9,103 @@ This repository is an **archive and intake surface**, not the preferred canonica
 Use the narrowest coherent public home:
 
 1. **focused problem/subject repository** — preferred once an actively investigated problem has a coherent research surface;
-2. **compact theorem or records bank** — appropriate for finished results that are real mathematics but still too small to constitute a research program;
-3. **provenance / intake archive** — preserves extraction chronology, historical packets, mixed research notes, and material awaiting routing.
+2. **compact theorem or records bank** — for finished results that are real mathematics but still too small to constitute a research program;
+3. **provenance / intake archive** — preserves extraction chronology, historical packets, mixed notes and material awaiting routing.
 
-A richer focused repository supersedes the compact bank as the preferred reading surface; the bank may retain a concise theorem statement and link. The intake archive may retain the original extraction copy for provenance.
+A richer focused repository supersedes a compact bank as the preferred reading surface. The bank and archive may retain concise mirrors/provenance links.
 
-## Generous promotion rule
+## When a problem deserves its own repository
 
-Bias toward a dedicated problem home when **any one** of the following is present:
+Bias toward a dedicated problem home when any one of the following is present:
 
 - multiple nontrivial results or a dependency chain;
 - a substantial formalization corpus;
-- dedicated computation, witnesses, certificates, or exact search code;
+- dedicated computation, witnesses, certificates or exact search code;
 - a live research frontier with explicit obligations;
 - a meaningful correction/refutation history;
 - a paper or paper series;
 - enough material that a mathematician could reasonably follow the problem as a program.
 
-The parent problem does not have to be solved. Open-problem research deserves a coherent home too.
+The parent problem does not need to be solved.
 
-Do **not** create a toy repository for every isolated lemma or compact finite classification. `erdos-proved-lemmas` and `combinatorial-records` exist for those objects until they grow into programs.
+Do **not** create a toy repository for every isolated lemma or compact finite classification. `erdos-proved-lemmas` and `combinatorial-records` are the intended compact homes.
 
-## Already routed or consolidated
+## Already routed / consolidated
 
 - 160 formalized Erdős statements → `jaredwilder/erdos152`.
-- formal Lean theorem core → `jaredwilder/erdos-theorems/theorems/`; top-level research mirrors in that repository do **not** inherit its 79-declaration kernel-verified label.
+- Lean theorem core → `jaredwilder/erdos-theorems/theorems/`; top-level research mirrors there do not inherit the 79-declaration kernel-verified label.
 - compact proved Erdős child theorems → `jaredwilder/erdos-proved-lemmas`.
 - compact exact finite/combinatorial classifications → `jaredwilder/combinatorial-records`.
-- Erdős #503 formal/geometry material → `jaredwilder/erdos-lean-remainder`.
-- Erdős #376 Kummer carry criterion → `jaredwilder/erdos376-successor-frontier`, beside the 1,006-digit witness it explains.
-- Erdős #52 multiplicative-box sumset, #153 Sidon bookkeeping, #156 maximal-Sidon barrier, and #241 triple-sum counting → `jaredwilder/additive-combinatorics-campaigns`.
-- rank-2 Chvátal / Erdős #701 theorem → `jaredwilder/combinatorial-records`.
-- finite-field classifications `f31-sum-product-avoidance/` and `f73-mixed-avoidance/` → `jaredwilder/combinatorial-records/finite-fields/`.
-- `product-gp-free-50/` → `jaredwilder/combinatorial-records/multiplicative/`.
-- restricted circulant Ramsey-family eliminations → `jaredwilder/combinatorial-records/ramsey/`.
+- #503 geometry → `jaredwilder/erdos-lean-remainder`.
+- #376 Kummer criterion → `jaredwilder/erdos376-successor-frontier`.
+- #52, #153, #156 and #241 additive/Sidon results → `jaredwilder/additive-combinatorics-campaigns`.
+- rank-2 Chvátal / #701 → `jaredwilder/combinatorial-records`.
+- F31/F73 finite-field classifications, product-GP-free `[50]`, and restricted circulant Ramsey exhaustions → `jaredwilder/combinatorial-records`.
+- conference-switching Ramsey-book construction-class theorem → `jaredwilder/combinatorial-records/ramsey/`.
+- Erdős–Selfridge seven-modulus odd-covering obstruction → `jaredwilder/combinatorial-records/covering-systems/`.
 - Erdős–Straus AP/GP classifications → `jaredwilder/erdos-straus-progressions`.
 - integral-octagon bound → `jaredwilder/integral-point-sets`.
-- Kreisel–Kurz extension system → `jaredwilder/kreisel-kurz-heptagon-extension`.
-- Graham–Alspach sequenceability → the dedicated Graham/Alspach repositories.
-- Erdős #902 tournament program → `jaredwilder/erdos902` and `jaredwilder/erdos902-tournament-f4`.
-- **Erdős #595** recovered triangle-cover bank → `jaredwilder/erdos595-barrier-tower`; do not create a competing #595 canonical repo merely because another shell exists.
-- **Erdős #835** SQS(20) residual completion / rigidity / trade packet → `jaredwilder/erdos835-lean-audit`, now treated as the #835 problem program despite its historical name.
-- **EG203 recovered analytic-route papers** → `jaredwilder/eg203-kummer-papers`; archive copies remain provenance.
-- compact #243, #247, #289, #885 and similar child theorems → `jaredwilder/erdos-proved-lemmas`, with formal/provenance mirrors retained elsewhere where useful.
+- Kreisel–Kurz extension → `jaredwilder/kreisel-kurz-heptagon-extension`.
+- Graham–Alspach program → dedicated Graham/Alspach repositories.
+- #902 tournament program → `jaredwilder/erdos902` and `jaredwilder/erdos902-tournament-f4`.
+- #595 triangle-cover bank → `jaredwilder/erdos595-barrier-tower`.
+- #835 SQS(20) completion/rigidity/trades → `jaredwilder/erdos835-lean-audit`.
+- EG203 paper program, recovered analytic route, and formerly anonymous technical notes → `jaredwilder/eg203-kummer-papers`.
+- compact #243, #247, #289, #885 and similar results → `jaredwilder/erdos-proved-lemmas`.
+- Kirkman/Steiner Lean formalization → `jaredwilder/lean-contributions`; `kirkman-steiner-lean/` here is provenance only.
 
-## Highest-priority standalone promotions
+## Repository-scale programs awaiting focused homes
 
-These are already research programs, not merely folders.
+### Highest priority
 
-### Tier 1 — initialize/populate as soon as a repository shell is writable
+- **#738 / triangle-free induced trees** — large theorem/frontier bank, verifier, semantic review; zero-commit shell already exists at `jaredwilder/erdos738-triangle-free-induced-trees`.
+- **Erdős–Gyárfás power-of-two cycles** — 202 theorem cards across ten families.
+- **Caccetta–Häggkvist** — multi-round theorem ledger + terminal-defect package.
+- **fiber coherence / cycle rank / rank-three kernel** — 216-record program; rank-three four-kernel classification and CSP complexity layer.
+- **#890 ↔ #1093** — bridge theorem, divisor-window reduction, deficiency engine and forensic history.
+- **#77 diagonal Ramsey limit** — 23 theorem/negative-theorem assets; empty `diagonal-ramsey-corridor` shell is a plausible but not yet confirmed destination.
+- **P6 Erdős–Hajnal** — 30 theorem assets, local normal forms, pure-pair theorem and finite regression checks.
+- **#142 progression-free sets** — 124-record / 53-round audited construction/barrier program.
+- **#1061 sigma / aliquot-square** — infinite family, primitive-seed generator, ray scaling, 152,803-seed certificate bank, verifiers and stronger lower-bound coefficient work.
 
-- **Erdős #738 / triangle-free Gyárfás–Sumner** — 62 proved-in-packet statements/schemas, 12 explicit targets, a 45KB human theorem bank, recursive/cross-theorem material, finite verifier and semantic review. A public shell already exists at `jaredwilder/erdos738-triangle-free-induced-trees`, but it currently has no initial commit and cannot yet be populated through the connected Contents API.
-- **Erdős–Gyárfás power-of-two cycle conjecture** — 202 theorem cards across ten coherent families: 120 proved-in-packet, 16 computationally certified, 9 proved negative theorems, 9 refuted routes, 34 explicit targets, plus conditional/source-derived material.
-- **Caccetta–Häggkvist directed-triangle program** — 23KB theorem ledger plus an 8.5KB terminal-defect package, with exact-boundary work on escape, bridge, fan, matrix/fourth-moment and defect structure, plus proposals and retractions.
-- **Fiber coherence / cycle-rank program** — 216 records across nine mathematical layers; the rank-three extraction alone gives 24 theorem/target cards, the four-kernel cycle-rank-three classification, finite K4-free binary-CSP realization, fixed-rank tractability / unbounded-rank NP-completeness, and rank-four next targets. Do not confuse this with the unrelated Roth-function `r_3` in `ck-gold-and-r3-envelope`.
-- **Erdős #890 ↔ #1093** — large-prime binomial identity, deficiency/excess bridge, admissible LCM divisor-window reduction, finite deficiency engine and forensic problem history.
-- **Erdős #77 / diagonal Ramsey exponential limit** — 23 theorem/negative-theorem assets including thin-corridor equivalence, inverse homogeneous-set formulation, tensor/rank machinery, polarity/mixer constructions and explicit architecture falsifiers. The empty shell `diagonal-ramsey-corridor` is a plausible destination but remains unconfirmed until initialized or source-linked.
-- **P6 Erdős–Hajnal** — 30 theorem assets, exact crown/defect/pure-pair structure, negative/candidate companion bank and exhaustive stable-matrix checks through `4×4`.
-- **Erdős #142 / progression-free sets** — 124 raw records across 53 rounds; exact convex-level construction, carry-free mixed-radix transfer, several architecture-specific barriers, a dyadic implication to reciprocal sums, a false-route bank and an exact finite certificate target. `ck-gold-and-r3-envelope` is one finite-computation lane, not the canonical home for the full program.
+### Strong standalone candidates
 
-### Tier 2 — strong standalone candidates already visible in intake or formal mirrors
+- **#271 Stanley sequences** — 184-entry audited ledger.
+- **#500 Turán (3,4)** — 76-record theorem/finite-target program.
+- **Lonely Runner, 13 effective speeds** — late-round theorem bank / terminal normal form / supplements.
+- **#949 finite-sums avoidance** — multiple human theorems + 33 clean Lean declarations.
+- **#1066 unit-distance independent-set program** — substantial FormalConjectures-style module + proved barrier/API layer + explicit unfinished obligations.
+- **R(5,5) 41-vertex circulant structure** — classification, exact invariants, nonextension and SAT interface.
 
-- **Erdős #271 / Stanley sequences** — 184-entry audited theorem/negative ledger and a terminal reduction through reflection support / mean multiplicity.
-- **Erdős #500 / Turán (3,4)** — 76-record program with exact finite classifications, structural identities, an equivalence, analytic work and explicit targets; currently duplicated across broad mirrors.
-- **Lonely Runner, 13 effective speeds** — late-round theorem bank, terminal normal form, structured supplements and deeper provenance. `combinatorial-records/lonely-runner/` remains a compact earlier home until graduation.
-- **Erdős #949 / sum-free finite-sums program** — three exact human theorems plus **33 clean Lean declarations** across core/Hindman/full-finite-sums files.
-- **Erdős #1066 / unit-distance independent-set program** — substantial FormalConjectures-style Lean statement/API, many proved local barrier declarations with measured clean axiom footprints, and explicitly separated unfinished/published-input `sorry` statements.
-- **R(5,5), 41-vertex circulant structure** — one circulant isomorphism class, exact chromatic/circular/fractional data, automorphism group, one-vertex nonextension and a fixed-`k` extension criterion.
-- **polynomial-dynamics-coordinates/** — inspect as a potential standalone recurrence/coordinate program before assigning a permanent home.
+Human entry READMEs now exist for several transitional broad-repo mirrors so mathematics is readable before migration.
 
-Human READMEs have been added to several transitional mirrors so the mathematics is readable before repository migration: #142, #500, #595 coherence/fiber coherence, #738, #77 and P6.
+## Provenance-blocked programs
 
-### Audit-first candidates
+- **#1005 Farey** — coherent reductions and period-36 structure survive, but the full source packet is missing and one key formula is truncated. Recover source before promotion.
+- **prime-gap admissibility** — multi-module Lean program is described, but the original `.lean` tree is not public and the historical theorem/module counts disagree. Recover and recount before formal-corpus promotion.
 
-Some archive folders are clearly large enough for a standalone home but should **not be amplified before claim-quality review**. `riemann-hypothesis/` is the clearest example: size alone is not a reason to elevate an unaudited high-stakes claim surface.
+See `jaredwilder/open-math-frontier/SOURCE-RECOVERY-QUEUE.md` for exact recovery obligations.
 
-## Archive-only material
+## Audit-first programs
 
-A directory may remain archive-only when it is chiefly:
+- **`sieve-preprint/`** — paper-scale EG203 analytic route. Release audit found a load-bearing local-density mismatch (`1/H_p` exact triggered density versus `1/H_p^2` used in the draft) plus a sieve-dimension constant issue. Keep public as an audit-first preprint; do not promote the current closure headline.
+- **`riemann-hypothesis/`** — coherent zeta-function program with a determinant frontier and a machine-checked 67.301545...% simple-zero candidate extension. Human root README exists; candidate lane still needs the Arb rerun / independent reproduction before stronger promotion.
 
-- a historical research record;
-- a small one-off note that fits an existing canonical subject repository;
-- a provenance mirror of material already promoted elsewhere;
-- a mixed bundle awaiting extraction or literature review;
-- process/tooling debris whose mathematical outputs have already been routed elsewhere.
+## Focused archive subjects that do not yet need another repository
+
+- `polynomial-dynamics-coordinates/` — coherent 12-result recurrence/coordinate note, but no larger formal/computational program yet.
+- `sums-three-cubes-114/` — exact modular/CRT arithmetic and recorded 15-theorem Lean inventory; keep focused until the missing Lean source is recovered or the program grows.
+- isolated compact theorem folders already represented in `erdos-proved-lemmas` or `combinatorial-records`.
 
 ## Anti-fragmentation rule
 
-The generous promotion threshold does not mean “one new repository per folder.”
+The generous promotion threshold does **not** mean “one new repository per folder.”
 
-If the same problem already has a substantial dedicated repository, enrich it. Organize primarily by **mathematical problem/program**, not by which proof technology, model, session, or extraction pass generated the artifact.
+If the same problem already has a substantial dedicated repository, enrich it. Organize primarily by **mathematical problem/program**, not by model, proof technology, session, verifier, or extraction pass.
 
-Be especially careful with naming collisions. `r_3` can mean the Roth/3-term-AP extremal function in one repository while “rank-three kernel” is a completely different graph/CSP program. Similar notation is not evidence of common subject matter.
+Be especially careful with naming collisions. `r_3` can mean the Roth/3-AP extremal function while “rank-three kernel” is a completely different graph/CSP program.
 
 ## Reader test
-
-A reader should be able to find and follow a coherent body of mathematics without first understanding the history of the whole research estate.
 
 Ask:
 
