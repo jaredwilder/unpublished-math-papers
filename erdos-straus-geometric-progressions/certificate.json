@@ -1,0 +1,31 @@
+{
+  "name": "Complete geometric-progression Erdős–Straus classification",
+  "type": "global_symbolic_result",
+  "truth_gate_passed": true,
+  "statement": "All positive ordered GP-denominator solutions are uniquely x=tD*a^2, y=tD*ab, z=tD*b^2, n=4t*a^2*b^2 for coprime 0<a<b, t>=1, D=a^2+ab+b^2; no primitive denominator triple exists.",
+  "round_receipt_hash": "99b7b616ff3d5fae0350eacac0d301a7ec254422c312293203b78eeb097a7b76",
+  "independent_verifier_sha256": "dd53f02d24c801eab7e1a58af991dbed30ff7cd4306122dfa63aa73512515c5b",
+  "independent_output_sha256": "6fcbf7763cc2635fd1023852b2df1e246422a6789883ab51033d4944263ecaca",
+  "independent_verification": {
+    "coprime_parameter_pairs": 73064,
+    "constructed_solutions": 292256,
+    "parameter_recoveries": 292256,
+    "gcd_lemma": "PASS",
+    "minimal_scale": "PASS",
+    "if_and_only_if_samples": "PASS"
+  },
+  "sample": {
+    "a": 2,
+    "b": 3,
+    "D": 19,
+    "t": 1,
+    "g": 19,
+    "x": 76,
+    "y": 114,
+    "z": 171,
+    "n": 144
+  },
+  "scope_note": "Classifies the geometric-progression-denominator subfamily only; does not prove the full Erdős–Straus conjecture.",
+  "novelty_status": "apparently_new_after_systematic_search",
+  "novelty_search_date": "2026-07-27"
+}
