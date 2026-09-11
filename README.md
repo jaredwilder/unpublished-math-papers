@@ -13,28 +13,39 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 | Directory | Contents / authority boundary |
 |---|---|
 | `caccetta-haggkvist/` | CH3 terminal-defect mathematics and theorem ledger; conditional and retracted routes remain marked. |
+| `circulant-ramsey-family-eliminations/` | Exact restricted-family eliminations: no order-40 circulant `R(3,10)` witness and source-dossier order-36 `R(4,6)` circulant elimination. These are **not global Ramsey bounds**. |
+| `conference-switching-book-elimination/` | Exact symmetric-conference switching construction-class elimination for the `N=4m+2` Ramsey-book target; global Ramsey-book problem not claimed closed. |
 | `eg203-analytic-route/` | EG203 analytic-number-theory route papers / notes, including gamma-fiber, Stepanov and large-sieve work. |
 | `erdos-gyarfas-power-cycle/` | Power-of-two-cycle theorem forge cards; proved/supported material is separated from unsupported search targets. |
+| `erdos-selfridge-odd-covering/` | Certified finite obstruction for the dense odd-modulus family `{3,5,7,9,11,13,15}`; global Erdős–Selfridge problem remains open. |
 | `erdos-straus-progressions/` | Complete arithmetic-progression denominator classification with verifier, certificate and novelty dossier. |
 | `erdos-straus-geometric-progressions/` | Complete geometric-progression denominator classification, certificate and qualified novelty record. |
 | `erdos-straus-structured-denominators/` | AP/GP denominator writeups collected together. |
+| `erdos1005-farey/` | Recovered Farey reduction/retraction ledger for Erdős #1005; full source packet not recovered and #1005 not claimed closed. |
+| `erdos1066-lattice-barriers/` | Lean-certified local barrier theorems for the triangular-lattice/3-colour route to Erdős #1066; global problem remains open. |
 | `erdos271-stanley/` | 184-entry audited Stanley-sequence theorem/negative ledger. |
 | `erdos500-turan34/` | 76-card Erdős #500 / Turán (3,4) theorem-forge extraction with source statuses intact. |
+| `erdos595-triangle-cover/` | 65-card Erdős #595 triangle-cover theorem refinery: 60 packet proofs plus compactness/Folkman/source/conditional/refuted entries with statuses intact. #595 remains open. |
 | `erdos738-theorem-bank/` | 62 `PROVED_IN_PACKET` statements/schemas plus 12 explicitly unproved targets; full split reconstruction and verifier. Erdős #738 remains open. |
 | `erdos77-ramsey-asymptotics/` | Ramsey asymptotic results, conditional steps, barriers and external targets. |
+| `erdos835-sqs20/` | Exact SQS(20) residual-completion graph theorem, 15-pack repair-radius obstruction, one-coordinate rigidity and complete pair-trade geometry. Erdős #835 remains open. |
 | `f31-sum-product-avoidance/` | Sharp `F_31^*` simultaneous sum/product avoidance theorem: maximum 8, exactly 9 extremizers, independent C verifier. |
 | `f73-mixed-avoidance/` | Exact simultaneous sum-free/product-free/3-AP-free classification in `F_73^×`. |
 | `fiber-coherence-theorem-bank/` | Large graph/CSP theorem bank: relational growth, coherence, unicyclic/theta/cactus mechanisms, permutation gluing, rank-three kernels and recursive extensions. |
 | `rank-three-kernel/` | Focused 24-card cycle-rank-three/K4-free fiber-coherence extraction: 22 unconditional results/reductions + 2 open rank-four targets. |
 | `graham-z29-paper/` | Graham/Alspach `Z_29` computational-certificate paper and compiled PDF. |
+| `integral-distance-octagon-bound/` | Whole-plane maximality of both Kreisel–Kurz heptagons, strict bound `ḋ(2,8)>30000`, independent-verification audit, and stronger H1 six-vertex octagon obstruction. |
+| `kirkman-steiner-lean/` | Provenance record for the campaign's complete Lean Bose/Skolem proof of Kirkman's Steiner triple-system existence theorem; original Lean source bytes still need recovery. |
 | `lonely-runner-13/` | 13-effective-speed Lonely Runner theorem bank and reconstructed campaign master; LRC(13) is not claimed closed. |
 | `mathfire-round8/` | Round-8 pure mathematical outputs, including AP Erdős–Straus and `[50]` product/GP avoidance, with independent verification. |
 | `mathfire-round10/` | Round-10 pure mathematical outputs and independent-verifier receipts. |
 | `mathfire-z31/` | Exact finite-field result/certificate from the Z31 MathFire campaign. |
 | `p6-six-vertex-wall/` | P6 / six-vertex-wall court theorems, live candidates, negative bank and closure programs. |
+| `polynomial-dynamics-coordinates/` | Standalone recurrence/coordinate mathematics extracted from a mixed systems source: multiplicative orbit coordinates, invariant subspaces, valuation linearization, finite algebra reconstruction and separator bounds. |
 | `prime-gap-admissibility/` | Prime-gap / Hardy–Littlewood admissibility formalization packet. |
 | `product-gp-free-50/` | Sharp `[50]` product-free + nontrivial-GP-free classification: maximum 35 and 240 extremizers. |
-| `riemann-hypothesis/` | RH terminal encirclement reductions/identities and killed routes. **RH remains open.** |
+| `ramsey-r55-circulant-structure/` | Exact structure of the old 41-vertex circulant `(5,5)` Ramsey graph, one-vertex nonextension theorem, circular/fractional/spectral/coding invariants, and honest SAT interface. `R(5,5)` remains open. |
+| `riemann-hypothesis/` | RH terminal encirclement reductions/identities and killed routes. **RH remains open.** Also contains the separately scoped `simple-zero-67.301545-candidate/` computer-assisted research extension, which is **not an RH proof**. |
 | `sieve-preprint/` | Six-source EG203 combinatorial-sieve preprint package. The manuscript remains **preprint, expert review pending**. |
 | `notes/` | Standalone EG203 mathematical notes and program overview. |
 
@@ -47,12 +58,20 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 - Simultaneous sum/product/3-AP avoidance in `F_73^×`: exact maximum `12`, exactly `3` extremizers.
 - Cycle-rank-three 2-connected suppression classification into exactly `Q4`, `T221`, `D22`, `K4`, together with the induced exact CSP mechanisms.
 - Polynomial-size K4-free realization of finite binary CSPs and the resulting fixed-rank-tractable / unbounded-rank-NP-complete fiber-coherence boundary, at the authority level stated in the source packet.
+- Integral general-position octagons, if they exist, have diameter strictly greater than `30000`; the two known Kreisel–Kurz heptagons are whole-plane maximal against an eighth integral-distance point.
+- For a partial pack of pairwise-disjoint SQS(v), completion to a large set is exactly a `q`-coloring problem in the residual block graph; the explicit SQS(20) 15-pack has repair radius at least three and exact local rigidity/trade certificates.
+- The unique 41-vertex circulant `(5,5)` Ramsey graph cannot be retained intact and extended by one arbitrary new vertex to a 42-vertex `(5,5)` Ramsey graph.
+
+## Candidate / research-result surfaces kept deliberately separate
+
+- `riemann-hypothesis/simple-zero-67.301545-candidate/` contains a recovered computer-assisted candidate extension yielding the constant `67.3015452606376894...%` inside a seven-point Gram-stability framework. The local inequality passed two outward-rounded exhaustive verifier grids; the recovered Arb variant was not run in the original sandbox. This is a research candidate pending independent reproduction/peer review, **not RH**.
+- The separate `jaredwilder/erdos902/f4-ge49-candidate/` release contains a serious computer-assisted candidate proof of `f(4)>=49` with the exact DRT(23) catalogue audit. It remains a candidate until the analytic reduction and external-classification dependency are formally/auditably closed end to end.
 
 ## What this repository does **not** mean
 
 - It does not claim that every contained result is historically new.
 - It does not claim that every ordinary proof has been Lean-kernel checked.
-- It does not claim the surrounding open Erdős problems, P6, Lonely Runner, Caccetta–Häggkvist, or RH are solved unless a subject README explicitly says so.
+- It does not claim the surrounding open Erdős problems, P6, Lonely Runner, Caccetta–Häggkvist, `R(5,5)`, or RH are solved unless a subject README explicitly says so.
 - It does not publish mixed biomedical, patent, product, commercial-control, or proprietary-system material. Pure mathematics is extracted from mixed sources rather than raw application/IP bundles being dumped.
 
 ## Wider release
