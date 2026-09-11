@@ -1,57 +1,64 @@
-# unpublished-math-papers
+# unpublished-math-papers — release-day mathematical archive
 
-Five mathematical writeups that were finished, or nearly finished, and never went anywhere.
+**Author:** Jared Wilder  
+**First public timestamp:** 2026-09-10  
+**Release-day expansion:** 2026-09-11
 
-Author: Jared Wilder. First public timestamp: 2026-09-10.
+This repository is no longer a five-paper folder. It is a public subject archive for pure mathematics recovered from a much larger research estate.
 
-## 1. A combinatorial sieve lower bound for the family m * 2^k * 3^l + 1
+The rule is deliberately conservative: a theorem, reduction, computation, counterexample, conditional bridge, failed route, and open target keep their original authority class. Publication establishes provenance and exposes the mathematics; it does not turn every campaign label into a theorem or every theorem into a novelty claim.
 
-`sieve-preprint/` — six .tex sources, main file `wilder-2026-V-family-rosser-iwaniec.tex`.
+## Current public subject directories
 
-For every m coprime to 6 and every (k, l) with k + l <= D, let V(m,k,l) = m * 2^k * 3^l + 1 and let
-pi_V(m,D) count the pairs where V is prime. The paper establishes effectively computable constants
-c > 0 and D_0 such that for every such m and every D >= D_0,
+| Directory | Contents / authority boundary |
+|---|---|
+| `caccetta-haggkvist/` | CH3 terminal-defect mathematics and theorem ledger; conditional and retracted routes remain marked. |
+| `eg203-analytic-route/` | EG203 analytic-number-theory route papers / notes, including gamma-fiber, Stepanov and large-sieve work. |
+| `erdos-gyarfas-power-cycle/` | Power-of-two-cycle theorem forge cards; proved/supported material is separated from unsupported search targets. |
+| `erdos-straus-progressions/` | Complete arithmetic-progression denominator classification with verifier, certificate and novelty dossier. |
+| `erdos-straus-geometric-progressions/` | Complete geometric-progression denominator classification, certificate and qualified novelty record. |
+| `erdos-straus-structured-denominators/` | AP/GP denominator writeups collected together. |
+| `erdos271-stanley/` | 184-entry audited Stanley-sequence theorem/negative ledger. |
+| `erdos500-turan34/` | 76-card Erdős #500 / Turán (3,4) theorem-forge extraction with source statuses intact. |
+| `erdos738-theorem-bank/` | 62 `PROVED_IN_PACKET` statements/schemas plus 12 explicitly unproved targets; full split reconstruction and verifier. Erdős #738 remains open. |
+| `erdos77-ramsey-asymptotics/` | Ramsey asymptotic results, conditional steps, barriers and external targets. |
+| `f31-sum-product-avoidance/` | Sharp `F_31^*` simultaneous sum/product avoidance theorem: maximum 8, exactly 9 extremizers, independent C verifier. |
+| `f73-mixed-avoidance/` | Exact simultaneous sum-free/product-free/3-AP-free classification in `F_73^×`. |
+| `fiber-coherence-theorem-bank/` | Large graph/CSP theorem bank: relational growth, coherence, unicyclic/theta/cactus mechanisms, permutation gluing, rank-three kernels and recursive extensions. |
+| `rank-three-kernel/` | Focused 24-card cycle-rank-three/K4-free fiber-coherence extraction: 22 unconditional results/reductions + 2 open rank-four targets. |
+| `graham-z29-paper/` | Graham/Alspach `Z_29` computational-certificate paper and compiled PDF. |
+| `lonely-runner-13/` | 13-effective-speed Lonely Runner theorem bank and reconstructed campaign master; LRC(13) is not claimed closed. |
+| `mathfire-round8/` | Round-8 pure mathematical outputs, including AP Erdős–Straus and `[50]` product/GP avoidance, with independent verification. |
+| `mathfire-round10/` | Round-10 pure mathematical outputs and independent-verifier receipts. |
+| `mathfire-z31/` | Exact finite-field result/certificate from the Z31 MathFire campaign. |
+| `p6-six-vertex-wall/` | P6 / six-vertex-wall court theorems, live candidates, negative bank and closure programs. |
+| `prime-gap-admissibility/` | Prime-gap / Hardy–Littlewood admissibility formalization packet. |
+| `product-gp-free-50/` | Sharp `[50]` product-free + nontrivial-GP-free classification: maximum 35 and 240 extremizers. |
+| `riemann-hypothesis/` | RH terminal encirclement reductions/identities and killed routes. **RH remains open.** |
+| `sieve-preprint/` | Six-source EG203 combinatorial-sieve preprint package. The manuscript remains **preprint, expert review pending**. |
+| `notes/` | Standalone EG203 mathematical notes and program overview. |
 
-    pi_V(m, D) >= c * S(m) * D
+## Selected exact results now exposed here
 
-where S(m) is the Bateman-Horn singular series for the family, itself uniformly bounded below by an
-absolute constant over all such m.
+- Complete AP-denominator classification for the Erdős–Straus equation, with uniqueness/parity split and no primitive denominator triple.
+- Complete GP-denominator classification for the Erdős–Straus equation, with unique coprime parameterization and no primitive denominator triple.
+- Product-free + nontrivial three-term-GP-free subsets of `[50]`: exact maximum `35`, exactly `240` extremizers.
+- Simultaneous sum/product avoidance in `F_31^*`: exact maximum `8`, exactly `9` extremizers.
+- Simultaneous sum/product/3-AP avoidance in `F_73^×`: exact maximum `12`, exactly `3` extremizers.
+- Cycle-rank-three 2-connected suppression classification into exactly `Q4`, `T221`, `D22`, `K4`, together with the induced exact CSP mechanisms.
+- Polynomial-size K4-free realization of finite binary CSPs and the resulting fixed-rank-tractable / unbounded-rank-NP-complete fiber-coherence boundary, at the authority level stated in the source packet.
 
-This is the **Erdos-Graham #203 family.** The paper's own title block carries the label
-**"preprint, expert review pending"** and that label stands. It has not been refereed.
+## What this repository does **not** mean
 
-The supporting files are structured as intro-and-kappa, an adversarial pass on kappa and its
-repair, Bombieri-Vinogradov and Iwaniec, an adversarial pass on those and their repair, and
-almost-primes and constants. **Two of the six files are adversarial attacks on the paper's own
-argument**, which is the reason to read them.
+- It does not claim that every contained result is historically new.
+- It does not claim that every ordinary proof has been Lean-kernel checked.
+- It does not claim the surrounding open Erdős problems, P6, Lonely Runner, Caccetta–Häggkvist, or RH are solved unless a subject README explicitly says so.
+- It does not publish mixed biomedical, patent, product, commercial-control, or proprietary-system material. Pure mathematics is extracted from mixed sources rather than raw application/IP bundles being dumped.
 
-## 2. Graham / Alspach in Z_29, with a compiled PDF
+## Wider release
 
-`graham-z29-paper/main.tex` and `main.pdf`. The write-up of the dual-verifier computational
-certificate: every subset of Z_29 minus {0} admits an ordering with pairwise distinct partial sums
-and nonzero proper partial sums, exhaustively certified for cardinalities 21 through 28, where
-published general results reach only 20.
-
-The certificate itself and both verifiers are at
-github.com/jaredwilder/graham-alspach-sequenceability.
-
-## 3. Exact Gamma-fiber local density and the Kummer-character remainder
-
-`notes/exact_gamma_fiber_local_density.tex` — a complete standalone writeup, roughly 400 lines.
-
-## 4. Stepanov auxiliary theorem notes
-
-`notes/stepanov_auxiliary_theorem.tex` — roughly 323 lines of supporting development.
-
-## 5. Program overview
-
-`notes/PROGRAM_OVERVIEW.tex` — the EG203 program stated as one document.
-
-## Status
-
-None of these is refereed. The sieve preprint says so on its own title page. Publishing them here
-establishes a date and an author, nothing more.
+This is one repository in the larger 2026-09-10/11 mathematical release. The cross-repository map lives in `jaredwilder/erdos-release-index`; the large provenance/correction/mine layer lives in `jaredwilder/msl-ore-estate`.
 
 ## License
 
-Apache-2.0.
+Apache-2.0 for repository-authored material unless a file says otherwise. Upstream material retains its own terms.
