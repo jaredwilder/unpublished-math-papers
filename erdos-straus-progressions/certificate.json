@@ -1,0 +1,37 @@
+{
+  "theorem_id": "erdos_straus_arithmetic_progression_denominators",
+  "type": "symbolic_all_parameter_diophantine_theorem",
+  "terminal_result": "proved",
+  "statement": "All positive solutions of 4/n=1/x+1/y+1/z with x<y<z in arithmetic progression are obtained uniquely from coprime integers a>d>0 and t>=1. Put D=3a^2-d^2 and q=D when a,d have opposite parity, q=D/2 when both are odd. Then (x,y,z)=tq(a-d,a,a+d), and n=4ta(a^2-d^2) in the opposite-parity case, n=2ta(a^2-d^2) in the odd-odd case. In particular no primitive denominator triple exists.",
+  "branches": [
+    {
+      "condition": "a,d opposite parity",
+      "minimal_scale": "3a^2-d^2",
+      "n": "4ta(a^2-d^2)"
+    },
+    {
+      "condition": "a,d both odd",
+      "minimal_scale": "(3a^2-d^2)/2",
+      "n": "2ta(a^2-d^2)"
+    }
+  ],
+  "certificate_hash": "39763682c57f8946c4493616b47f4602775470fdb3ed976e92b69b70f1b11297",
+  "round_receipt_hash": "0a5d3942c9c13a8d1d01555ae18f793594598ebbd8957f3d1d600b328fb0ff1a",
+  "independent_verifier": {
+    "source_sha256": "30877d96aa4325ef40fba8c339b16ff7e7f17ecb10dd924ed397215fb21a5b87",
+    "a_bound": 500,
+    "coprime_parameter_pairs_checked": 76115,
+    "constructed_solutions_checked": 456690,
+    "checks": [
+      "polynomial_identity",
+      "gcd_parity_lemma",
+      "minimal_scale",
+      "parameter_recovery",
+      "primitive_triples_found=0"
+    ],
+    "status": "PASS"
+  },
+  "scope_note": "The universal result rests on the symbolic derivation in README.md. The bounded independent verifier is regression evidence, not a finite-to-infinite inference.",
+  "novelty_status": "apparently_new_after_systematic_search",
+  "novelty_search_date": "2026-07-27"
+}
