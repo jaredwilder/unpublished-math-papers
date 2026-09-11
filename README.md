@@ -21,6 +21,9 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 | `erdos-straus-progressions/` | Complete arithmetic-progression denominator classification with verifier, certificate and novelty dossier. |
 | `erdos-straus-geometric-progressions/` | Complete geometric-progression denominator classification, certificate and qualified novelty record. |
 | `erdos-straus-structured-denominators/` | AP/GP denominator writeups collected together. |
+| `erdos17-prime-difference-hardness/` | Exact hardness reduction: an affirmative #17 forces every positive even integer to be a difference of two primes. This is a reduction to an open prime-difference problem, **not a solution of #17**. |
+| `erdos247-sparse-binary-irrationality/` | Exact theorem: `limsup a_n/n=∞` forces `sum 2^{-a_n}` irrational, via nonperiodic binary expansion. Canonical #247 asks transcendence and remains open. |
+| `erdos727-k2-obstruction-family/` | Infinite exact `k=2` obstruction family: for prime `p>=7`, `n=2p-2` gives `((n+2)!)^2 ∤ (2n)!`. #727 remains open. |
 | `erdos1005-farey/` | Recovered Farey reduction/retraction ledger for Erdős #1005; full source packet not recovered and #1005 not claimed closed. |
 | `erdos1066-lattice-barriers/` | Lean-certified local barrier theorems for the triangular-lattice/3-colour route to Erdős #1066; global problem remains open. |
 | `erdos271-stanley/` | 184-entry audited Stanley-sequence theorem/negative ledger. |
@@ -61,6 +64,8 @@ The rule is deliberately conservative: a theorem, reduction, computation, counte
 - Integral general-position octagons, if they exist, have diameter strictly greater than `30000`; the two known Kreisel–Kurz heptagons are whole-plane maximal against an eighth integral-distance point.
 - For a partial pack of pairwise-disjoint SQS(v), completion to a large set is exactly a `q`-coloring problem in the residual block graph; the explicit SQS(20) 15-pack has repair radius at least three and exact local rigidity/trade certificates.
 - The unique 41-vertex circulant `(5,5)` Ramsey graph cannot be retained intact and extended by one arbitrary new vertex to a 42-vertex `(5,5)` Ramsey graph.
+- Sparse binary positions with `limsup a_n/n=∞` force irrationality of `sum 2^{-a_n}`; the transcendence upgrade asked by #247 is explicitly not claimed.
+- For every prime `p>=7`, the `k=2` factorial-divisibility instance `n=2p-2` is an exact obstruction for Erdős #727.
 
 ## Candidate / research-result surfaces kept deliberately separate
 
