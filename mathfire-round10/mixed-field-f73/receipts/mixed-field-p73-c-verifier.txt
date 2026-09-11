@@ -1,0 +1,8 @@
+modulus=73
+edge_count=7422
+maximum=12
+extremal_count=3
+search_nodes=271416
+extremizer_0=13,15,19,31,33,36,37,40,42,54,58,60
+extremizer_1=10,22,24,28,33,36,37,40,45,49,51,63
+extremizer_2=2,3,10,19,24,31,42,49,54,63,70,71
