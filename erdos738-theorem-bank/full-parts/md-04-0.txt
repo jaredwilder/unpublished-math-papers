@@ -1,0 +1,55 @@
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** If v is mixed on a connected vertex set C, then C contains adjacent vertices a,b such that va∈E and vb∉E. Consequently G[{v,a,b}] is an induced P3.
+
+**Proof route.** Along a path in C from a neighbor of v to a nonneighbor, take the first edge crossing from N(v) to its complement.
+
+**Novelty query.** `First-Transition Arm Lemma`
+
+#### M02 — Mixed-Region Subdivided-Star Lemma
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** If v is mixed on q pairwise anticomplete connected sets C_1,…,C_q, then G contains an induced once-subdivided K_{1,q} centered at v.
+
+**Proof route.** Apply M01 in each C_i. Anticompleteness removes every cross-arm edge.
+
+**Dependencies.** M01
+
+**Novelty query.** `vertex mixed on anticomplete connected sets induced subdivided star`
+
+#### M03 — Exact Mixing-Number Characterization
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Define μ_1(v) as the maximum q for which v is mixed on q pairwise anticomplete connected sets. Then μ_1(v) equals the maximum number of arms in an induced once-subdivided star centered at v.
+
+**Proof route.** M02 proves one direction. For the converse, take each two-vertex arm of an induced subdivided star as one connected region.
+
+**Dependencies.** M02
+
+**Novelty query.** `mixing number equals maximum induced subdivided star arms`
+
+#### M04 — Reach Arm Lemma
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let C be connected and meet N(v). If z∈C has distance r≥1 in G[C] from N(v)∩C, then G contains an induced path v-a_0-a_1-…-a_r with all a_i∈C.
+
+**Proof route.** Take a shortest path in C from N(v)∩C to z. It is induced; any edge from v to a later a_i would shorten the distance to N(v)∩C.
+
+**Novelty query.** `Reach Arm Lemma`
+
+#### M05 — Reach-Profile Spider Extraction
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let C_1,…,C_q be pairwise anticomplete connected sets. If C_i contains a vertex at distance at least r_i≥1 from N(v)∩C_i, then G contains an induced spider centered at v with arm i of length r_i+1.
+
+**Proof route.** Use M04 in each C_i and truncate to the prescribed reach. Pairwise anticompleteness removes cross-arm edges.
+

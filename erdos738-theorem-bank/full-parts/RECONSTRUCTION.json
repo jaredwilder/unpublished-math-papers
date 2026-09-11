@@ -1,0 +1,29 @@
+{
+  "schema": "erdos738.public-split.v1",
+  "original_filename": "ERDOS-738-ENCIRCLEMENT-THEOREM-BANK-2026-08-04.md",
+  "original_bytes": 45301,
+  "original_sha256": "95997a5669de4860de47431e769de00d5fb68a00e5f01b4c3bb8a38f9b5391ad",
+  "reconstruction": "Concatenate parts in order with no separator.",
+  "parts": [
+    {"name":"md-00.txt","bytes":5167,"sha256":"08f9f9a623a39caed8d33621ebdb2a1ca5a80c7e38685db8be5982853dc5c529"},
+    {"name":"md-01.txt","bytes":5105,"sha256":"25ade72854d70a33bfe8ebc7600938178b02061eeda43c5710f3693e8d17c638"},
+    {"name":"md-02.txt","bytes":5186,"sha256":"adb1f052f3baead662733f92e857696bd7e7fa503e45a1d443a2aa93f2e1d03d"},
+    {"name":"md-03-0.txt","bytes":2477,"sha256":"75a912b3da874b11e667714ae27ba9cae786130d4edefe2d87eb3e4d3c406286"},
+    {"name":"md-03-1.txt","bytes":2330,"sha256":"f7dbc0898f7853aade8609efc16abf1be4da03b9e103838d2ffdeaa257927756"},
+    {"name":"md-03-2.txt","bytes":386,"sha256":"51b7f0a01c6fc9c833f6bba6484915a8d19997425466a0efdfcb9a2621c70181"},
+    {"name":"md-04-0.txt","bytes":2479,"sha256":"8b8c8d544ac20aa6955ae586efd933b7d8a4323d8103bfff7f5bbcd7b8525495"},
+    {"name":"md-04-1.txt","bytes":2491,"sha256":"1b97870148a651a0c2c867cfa76d44c9707f83e6b6001f9b22b10d4ed732e70f"},
+    {"name":"md-04-2.txt","bytes":230,"sha256":"ae499188ff9700e2e63077207625855582626c34513c7ddaea5803c984ea862f"},
+    {"name":"md-05-0.txt","bytes":2386,"sha256":"7e4dc19dd48119a9fcf08550baf0cf0db2ab1ee584a12840440fe26661c842fd"},
+    {"name":"md-05-1.txt","bytes":2493,"sha256":"f7bd748a1abf58d8067571d6c155729b5e0a171a6425e23e2db2431efb8fc6e6"},
+    {"name":"md-05-2.txt","bytes":312,"sha256":"b90d2fd76c98c893c73c635cc60e42d8ccbd7b5065eaa0656096bd37a12f79e2"},
+    {"name":"md-06-0.txt","bytes":2375,"sha256":"f70100b31031d4c7e69c1b741de48f62ee26f0c0038dae30652ce9ed0774d5d7"},
+    {"name":"md-06-1.txt","bytes":2276,"sha256":"e0a3c9d6ea370bd4f42b94b7560d750e4b87219f84027b5a0e956b70878ea4ef"},
+    {"name":"md-06-2.txt","bytes":528,"sha256":"dba102ec392ab68c86a5e88ae3a20e8ef40ec05b237a9ccdfe04abbd4e66bd81"},
+    {"name":"md-07-0.txt","bytes":2348,"sha256":"eb15e3b1e748f732bba55b5776d2eba7a9c5d7fb53a4322bde2ded33d8b2f97c"},
+    {"name":"md-07-1.txt","bytes":2444,"sha256":"8a4a099ac6cc6c555e3cd70b28d4377d7caf8de0fe972eda5a8b1e4a407faef2"},
+    {"name":"md-07-2.txt","bytes":360,"sha256":"c68f1154ce5963587cb9a8bc7d5b6fa242e951b9b4658f90035515b70a37ba3f"},
+    {"name":"md-08-0.txt","bytes":2461,"sha256":"32971b21990ad1b279a8c8b7b35a8265aeb0bef9268a2279d45730f963c72908"},
+    {"name":"md-08-1.txt","bytes":1467,"sha256":"0b1449bae70717d620af25da35b1e45f68edd3a2d8312ad635762c5b0f88f195"}
+  ]
+}

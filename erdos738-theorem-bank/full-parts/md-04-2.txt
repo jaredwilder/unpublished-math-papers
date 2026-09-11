@@ -1,0 +1,4 @@
+**Statement.** If a separator vertex s is mixed on q pairwise anticomplete connected components of G-S, then G contains an induced once-subdivided K_{1,q} centered at s.
+
+**Proof route.** This is M02 applied to those components.
+

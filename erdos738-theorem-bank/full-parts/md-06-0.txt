@@ -1,0 +1,56 @@
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If nonempty blocks B_1,…,B_r are pairwise complete, then Σ_i ω(G[B_i])≤ω(G).
+
+**Proof route.** Choose a maximum clique from each block; their union is a clique.
+
+**Dependencies.** C08
+
+**Novelty query.** `Clique-Sum Bound for Complete Blockades`
+
+#### C10 — Chromatic Thickness Ceiling
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** For every nonempty complete pair (A,B) in a triangle-free graph, min{χ(A),χ(B)}=1.
+
+**Proof route.** C07 makes both sides stable and nonempty.
+
+**Dependencies.** C07
+
+**Novelty query.** `Chromatic Thickness Ceiling`
+
+### Type-Uniform Tensor
+
+#### T01 — Type-Tensor Diagonal Vanishing
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. Then A_c(a,a)=0 for every c<a≤k.
+
+**Proof route.** Choose same-depth descendants in three distinct ordered child branches of a join at depth c. If A_c(a,a)=1, all three pairwise edges are present by type-uniformity, forming a triangle.
+
+**Novelty query.** `type-uniform path-induced tree triangle-free diagonal type tensor zero`
+
+#### T02 — First-Coordinate Parent Exclusion
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. If A_c(a,b)=1 and a-1>c, then A_c(a-1,b)=0.
+
+**Proof route.** Take an adjacent parent-child pair at depths a-1,a in the earlier branch and a depth-b vertex in the later branch. If both type entries were active, these three vertices would form a triangle.
+
+**Dependencies.** T01
+
+**Novelty query.** `First-Coordinate Parent Exclusion`
+
+#### T03 — Second-Coordinate Parent Exclusion
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+

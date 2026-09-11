@@ -1,0 +1,63 @@
+**Dependencies.** M02
+
+**Novelty query.** `Minimal-Separator Star Application`
+
+#### M11 — Two-Region Mixing Forces P5
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If a vertex is mixed on two anticomplete connected sets, then G contains an induced P5.
+
+**Proof route.** M02 with q=2 gives the path b_1-a_1-v-a_2-b_2.
+
+**Dependencies.** M02
+
+**Novelty query.** `Two-Region Mixing Forces P5`
+
+#### M12 — Recursive Shielded Extension Theorem
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `4/5`
+
+**Statement.** Let T be a rooted tree and H an induced copy of a rooted subtree T_0. Suppose every missing child-subtree is assigned a connected region that is shielded from H and from all other assigned regions, and recursively satisfies the same condition. Then G contains an induced copy of T extending H.
+
+**Proof route.** Induct on the number of missing vertices, using M09 at the current frontier and preserving shielding for the recursive regions.
+
+**Dependencies.** M09
+
+**Novelty query.** `recursive shielded mixing induced tree extension theorem`
+
+### Contamination Fans
+
+#### C01 — Clean-Child or Large Fan Dichotomy
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let G be triangle-free, u∈V(G), X⊆V(G)\N[u] finite and nonempty, and B⊆N(u). Then either some b∈B is anticomplete to X, or some x∈X has at least ⌈|B|/|X|⌉ neighbors in B; in the latter case {u,x} with those neighbors induces K_{2,m}.
+
+**Proof route.** If no b is clean, assign each b one neighbor in X and pigeonhole. Use N10 for the induced fan.
+
+**Dependencies.** N10
+
+**Novelty query.** `clean child or K2m contamination fan pigeonhole lemma`
+
+#### C02 — Fan-Free Dirty-Candidate Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** Under C01, if |N(u)∩N(x)∩B|≤m-1 for every x∈X, then at most (m-1)|X| vertices of B have a neighbor in X.
+
+**Proof route.** Count incidences after assigning each dirty b to one contaminating x.
+
+**Dependencies.** C01
+
+**Novelty query.** `Fan-Free Dirty-Candidate Bound`
+
+#### C03 — Weighted Contamination Fan Dichotomy
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+

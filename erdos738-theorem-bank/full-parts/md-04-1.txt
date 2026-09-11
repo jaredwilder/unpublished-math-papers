@@ -1,0 +1,61 @@
+**Dependencies.** M04
+
+**Novelty query.** `reach profile connected anticomplete regions induced spider characterization`
+
+#### M06 — Exact Reach-Profile Equivalence
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** For fixed positive integers r_1,…,r_q, the following are equivalent: (i) there exist pairwise anticomplete connected sets C_i with reach at least r_i from N(v)∩C_i; (ii) G contains an induced spider centered at v with arm lengths at least r_i+1.
+
+**Proof route.** M05 gives (i)⇒(ii). For (ii)⇒(i), take each arm without the center as C_i.
+
+**Dependencies.** M05
+
+**Novelty query.** `exact equivalence induced spider reach profile mixed regions`
+
+#### M07 — Excluded-Spider Mixing Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If G has no induced spider centered at v with q arms of lengths at least r_1+1,…,r_q+1, then no q pairwise anticomplete connected regions around v can have the corresponding reach profile.
+
+**Proof route.** Contrapositive of M05.
+
+**Dependencies.** M05
+
+**Novelty query.** `Excluded-Spider Mixing Bound`
+
+#### M08 — Shielded One-Step Extension
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let H be an induced subgraph and u∈V(H). Let C be connected, disjoint from H, anticomplete to H\{u}, and suppose u is mixed on C. Then H can be extended by an induced two-edge arm u-a-b with a,b∈C.
+
+**Proof route.** Use M01 inside C. Shielding removes chords to H\{u}.
+
+**Dependencies.** M01
+
+**Novelty query.** `Shielded One-Step Extension`
+
+#### M09 — Shielded Reach-Profile Extension
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let H be induced. For attachment vertices u_i∈V(H), let C_i be pairwise anticomplete connected sets, with C_i anticomplete to H\{u_i}, and with reach r_i from N(u_i)∩C_i. Then adjoining the extracted arms produces an induced extension of H by the prescribed pendant paths.
+
+**Proof route.** Apply M04 independently. Shielding and pairwise anticompleteness eliminate all unwanted edges.
+
+**Dependencies.** M04
+
+**Novelty query.** `shielded connected region induced pendant path extension lemma`
+
+#### M10 — Minimal-Separator Star Application
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+

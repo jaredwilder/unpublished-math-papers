@@ -1,0 +1,17 @@
+**Execution route.** Dynamic programming on depth-parity assignments.
+
+### X12 — New Tree-Family Separator Purity
+**Status:** `UNPROVED_CHECKABLE_TARGET`  
+**Priority:** `HIGH`
+
+**Target.** Use M09/M12 and finite path-contact signatures to identify the first tree family beyond known subdivided-star/multibroom cases for which separator mixing forces an induced member.
+
+**Execution route.** Enumerate tree shapes; novelty filter; formal proof from signature cases.
+
+## Promotion contract
+A claim moves from this bank to a theorem receipt only after: (1) exact statement hash frozen; (2) Lean or an independent finite certificate passes; (3) novelty checker is run on the exact statement and nearest equivalent formulations; (4) known/novel status is recorded separately from mathematical truth; and (5) any theorem using the type-uniform framework explicitly states that framework as a hypothesis rather than silently importing the open conjecture.
+
+## Accompanying executable receipts
+- `verify_erdos738_theorem_bank.py` independently exhausts selected local claims on all triangle-free graphs through five vertices, checks the no-clique-cutset theorem on all graphs through six vertices, and verifies the parity-defect host for ternary trees through height four.
+- `ERDOS-738-THEOREM-BANK-VERIFICATION.json` records the passing assertion counts and parameters.
+- `ERDOS-738-THEOREM-BANK-MANIFEST.json` binds the artifact hashes and preserves the claim boundary.

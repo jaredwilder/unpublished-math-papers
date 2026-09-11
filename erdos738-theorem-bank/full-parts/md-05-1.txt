@@ -1,0 +1,63 @@
+**Statement.** Give each b∈B a nonnegative weight. If every positive-weight b has a neighbor in X, then some x∈X is adjacent to assigned candidates of total weight at least total_weight(B)/|X|.
+
+**Proof route.** Assign each positive-weight candidate one contaminator and average the assigned weights.
+
+**Novelty query.** `weighted contamination fan averaging lemma graph`
+
+#### C04 — Depth-One Branch Immunity
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+
+**Statement.** In a triangle-free graph, two candidate children of the same vertex u are nonadjacent. Therefore a selected depth-one child cannot contaminate another depth-one child.
+
+**Proof route.** Both candidates lie in the stable neighborhood N(u).
+
+**Dependencies.** N01
+
+**Novelty query.** `Depth-One Branch Immunity`
+
+#### C05 — First Legal Contamination Is an Induced C4
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If u-a-x is an induced path and b∉{u,a,x} is adjacent to both u and x, then in a triangle-free graph the four vertices u,a,x,b induce C4.
+
+**Proof route.** The cycle edges are present. The diagonals ux and ab are absent: ux by inducedness, ab because a,b∈N(u) and N(u) is stable.
+
+**Dependencies.** N01
+
+**Novelty query.** `first cross branch contamination induced C4 lemma`
+
+#### C06 — Contamination-Cycle Generalization
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** Let P=u=v_0-v_1-…-v_r=x be induced. If b∉V(P) is adjacent to u and x and has no neighbors among v_1,…,v_{r-1}, then V(P)∪{b} induces C_{r+2}.
+
+**Proof route.** The path plus the two b-edges is a cycle, and the stated conditions remove every chord.
+
+**Dependencies.** P01
+
+**Novelty query.** `Contamination-Cycle Generalization`
+
+### Pure Pairs
+
+#### C07 — Complete-Pair Collapse in Triangle-Free Graphs
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If nonempty disjoint sets A,B are complete to one another in a triangle-free graph, then both A and B are stable.
+
+**Proof route.** An edge inside A together with any b∈B creates a triangle; similarly for B.
+
+**Novelty query.** `Complete-Pair Collapse in Triangle-Free Graphs`
+
+#### C08 — Clique-Sum Bound for Complete Pairs
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+

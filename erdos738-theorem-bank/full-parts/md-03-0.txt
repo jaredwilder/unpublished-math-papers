@@ -1,0 +1,62 @@
+**Statement.** In a triangle-free graph, consecutive neighbor indices of an outside vertex on an induced path differ by at least 2.
+
+**Proof route.** P01 would otherwise produce a 3-cycle.
+
+**Dependencies.** P01
+
+**Novelty query.** `Triangle-Free Contact Gap`
+
+#### P03 — Square-Free Contact Gap
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** In a {C3,C4}-free graph, consecutive neighbor indices of an outside vertex on an induced path differ by at least 3.
+
+**Proof route.** Use P01: gaps 1 and 2 produce induced C3 and C4 respectively.
+
+**Dependencies.** P01
+
+**Novelty query.** `Square-Free Contact Gap`
+
+#### P04 — Forbidden-Hole Gap Dictionary
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If G has no induced cycle C_{d+2}, then no outside vertex has two consecutive contacts on an induced path at index gap d.
+
+**Proof route.** This is exactly the contrapositive of P01.
+
+**Dependencies.** P01
+
+**Novelty query.** `induced path contact gap forbidden hole dictionary`
+
+#### P05 — Fibonacci Contact-Signature Count
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** For an n-vertex induced path P in a triangle-free graph, the neighborhood signature N(x)∩V(P) of an outside vertex is a subset with no consecutive path vertices. Hence at most F_{n+2} signatures are possible.
+
+**Proof route.** P02 gives the no-consecutive condition. The number of independent sets of the n-vertex path satisfies a_n=a_{n-1}+a_{n-2}, a_0=1,a_1=2, hence a_n=F_{n+2}.
+
+**Dependencies.** P02
+
+**Novelty query.** `Fibonacci number attachment signatures induced path triangle-free graph`
+
+#### P06 — d-Separated Contact-Code Recurrence
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** If every consecutive pair of contacts must have index gap at least d≥2, then the number a_d(n) of possible signatures on an n-vertex path satisfies a_d(n)=a_d(n-1)+a_d(n-d), with the natural initial conditions.
+
+**Proof route.** Partition signatures by whether the last path vertex is absent or present. If present, the preceding d-1 vertices are absent.
+
+**Dependencies.** P04
+
+**Novelty query.** `d separated binary contact signatures induced path recurrence`
+
+#### P07 — Nonempty Signature Fibers Are Stable
+**Status:** `PROVED_IN_PACKET`  

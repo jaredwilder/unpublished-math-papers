@@ -1,0 +1,39 @@
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. If A_c(a,b)=1 and b-1>c, then A_c(a,b-1)=0.
+
+**Proof route.** Symmetric parent-child triangle argument in the later branch.
+
+**Dependencies.** T01
+
+**Novelty query.** `Second-Coordinate Parent Exclusion`
+
+#### T04 — Grid-Independence of Active Types
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. For fixed c, the support {(a,b):A_c(a,b)=1} is an independent set in the Cartesian grid on depth pairs, where cells at Manhattan distance one are adjacent.
+
+**Proof route.** T02 forbids vertically adjacent active cells and T03 forbids horizontally adjacent active cells.
+
+**Dependencies.** T02, T03
+
+**Novelty query.** `active type tensor support independent set grid triangle-free`
+
+#### T05 — Exact Row Bound with Forced Diagonal Zero
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. Put n=k-c and index a,b by 1,…,n above c. In row a=i, the number of active entries is at most n/2 when n is even; when n is odd it is at most (n-1)/2 for odd i and (n+1)/2 for even i.
+
+**Proof route.** The row is a binary string with no consecutive ones by T03 and with the diagonal position i forced to zero by T01. The stated bounds are the elementary maxima for such strings.
+
+**Dependencies.** T01, T03
+
+**Novelty query.** `Exact Row Bound with Forced Diagonal Zero`
+
+#### T06 — Sharp Slice Active-Type Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+

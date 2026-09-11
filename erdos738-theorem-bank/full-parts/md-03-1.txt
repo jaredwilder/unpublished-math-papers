@@ -1,0 +1,66 @@
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** In a triangle-free graph, for a fixed induced path P and a fixed nonempty signature S⊆V(P), all outside vertices x with N(x)∩V(P)=S form a stable set.
+
+**Proof route.** Any two such vertices share every vertex of S as a common neighbor; if adjacent, they form a triangle with one shared contact.
+
+**Novelty query.** `contact signature fiber stable triangle-free graph`
+
+#### P08 — Common-Contact Families Are Stable
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+
+**Statement.** For any fixed path vertex p, all outside vertices whose contact signature contains p form a stable set.
+
+**Proof route.** They are all in N(p), which is stable by N01.
+
+**Dependencies.** N01
+
+**Novelty query.** `Common-Contact Families Are Stable`
+
+#### P09 — Chromatic Bound for the Path-Contact Zone
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If P has n vertices in a triangle-free graph, then the induced subgraph on all vertices having at least one neighbor in P has chromatic number at most n.
+
+**Proof route.** Assign each contacting vertex to its first neighbor on P; each class lies in one stable neighborhood.
+
+**Dependencies.** N02
+
+**Novelty query.** `Chromatic Bound for the Path-Contact Zone`
+
+#### P10 — Path-Anticomplete Chromatic Reserve
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If P is an induced path on n≥2 vertices in a triangle-free graph, then χ(G-N[P])≥χ(G)-n.
+
+**Proof route.** P is connected and has no isolated vertices; apply N05.
+
+**Dependencies.** N05
+
+**Novelty query.** `Path-Anticomplete Chromatic Reserve`
+
+#### P11 — Dominating Induced Path Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** A triangle-free graph with a dominating induced path on n≥2 vertices has chromatic number at most n.
+
+**Proof route.** Apply P10 with empty remainder, or N12.
+
+**Dependencies.** P10
+
+**Novelty query.** `Dominating Induced Path Bound`
+
+#### P12 — Critical Path Escape Component
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `1/5`
+

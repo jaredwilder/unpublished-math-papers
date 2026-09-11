@@ -1,0 +1,4 @@
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. For fixed join depth c and n=k-c, the number of active ordered types satisfies |supp(A_c)|≤⌊n²/2⌋.
+
+**Proof route.** Sum the exact row bounds in T05. For even n the total is n²/2. For odd n, there are (n+1)/2 odd rows and (n-1)/2 even rows, giving (n²-1)/2.
+

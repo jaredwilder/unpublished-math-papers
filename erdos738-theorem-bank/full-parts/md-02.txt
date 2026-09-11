@@ -1,0 +1,128 @@
+**Statement.** If uv is an edge of a triangle-free graph, then G[N[{u,v}]] is bipartite with parts N(u) and N(v), and therefore has chromatic number at most 2.
+
+**Proof route.** N(u) and N(v) are stable. They are disjoint because a common neighbor would make a triangle; u∈N(v) and v∈N(u), so their union is exactly the closed neighborhood of {u,v}.
+
+**Dependencies.** N01
+
+**Novelty query.** `Edge Closed-Neighborhood Bipartiteness`
+
+#### N09 — Common-Neighborhood Stability
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+
+**Statement.** For any two vertices u,v in a triangle-free graph, N(u)∩N(v) is stable.
+
+**Proof route.** An edge inside the common neighborhood together with u would form a triangle.
+
+**Dependencies.** N01
+
+**Novelty query.** `Common-Neighborhood Stability`
+
+#### N10 — Induced Two-Pole Fan
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If u and v are nonadjacent in a triangle-free graph and |N(u)∩N(v)|≥m, then G contains an induced K_{2,m} with poles u,v.
+
+**Proof route.** Choose m common neighbors. They are stable by N09, the poles are nonadjacent, and all pole-to-leaf edges are present.
+
+**Dependencies.** N09
+
+**Novelty query.** `Induced Two-Pole Fan`
+
+#### N11 — One-Sided Attachment to an Induced Biclique
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If (A,B) induces a nonempty complete bipartite graph in a triangle-free graph and x∉A∪B, then x has neighbors in at most one of A and B.
+
+**Proof route.** A neighbor a∈A and b∈B would satisfy ab∈E and create triangle xab.
+
+**Novelty query.** `One-Sided Attachment to an Induced Biclique`
+
+#### N12 — Connected Dominator Chromatic Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If S is a connected dominating vertex set with |S|≥2 in a triangle-free graph G, then χ(G)≤|S|.
+
+**Proof route.** Dominating means N[S]=V(G); apply N04.
+
+**Dependencies.** N04
+
+**Novelty query.** `Connected Dominator Chromatic Bound`
+
+### Critical Cores
+
+#### N13 — Quantitative Critical Escape Component
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let G be a finite k-vertex-critical triangle-free graph. If H=G[S] is connected, 2≤|S|<k, then some component C of G-N[S] satisfies χ(C)≥k-|S|.
+
+**Proof route.** N05 gives χ(G-N[S])≥k-|S|. The chromatic number of a disjoint union is the maximum over components.
+
+**Dependencies.** N05
+
+**Novelty query.** `critical triangle-free graph component outside closed neighborhood chromatic number`
+
+#### N14 — Vertex-Critical Graphs Have No Clique Cutset
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `3/5`
+
+**Statement.** A finite vertex-critical graph has no clique cutset.
+
+**Proof route.** If a clique K separates two sides, color each side together with K using fewer colors. Because K receives pairwise distinct colors, permute the color names on each side so the colorings agree on K, then combine them—contradicting criticality.
+
+**Novelty query.** `Vertex-Critical Graphs Have No Clique Cutset`
+
+#### N15 — Critical Escape-Boundary Theorem
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Under N13, let C be a component of G-N[S] with χ(C)≥k-|S|. Its external neighborhood B=N(C) lies in N(S)\S, separates C from S, and is not a clique. In particular, B contains two nonadjacent vertices.
+
+**Proof route.** C is anticomplete to S and has no edges to other components of G-N[S], so B⊆N(S)\S. Removing B separates nonempty C from nonempty S. N14 forbids B from being a clique.
+
+**Dependencies.** N13, N14
+
+**Novelty query.** `critical graph high chromatic escape component nonclique boundary`
+
+#### N16 — Independent Two-Cut in Triangle-Free Critical Graphs
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** Every two-vertex cutset in a finite triangle-free vertex-critical graph is a stable pair.
+
+**Proof route.** A two-vertex clique cutset is forbidden by N14; hence the two vertices cannot be adjacent.
+
+**Dependencies.** N14
+
+**Novelty query.** `Independent Two-Cut in Triangle-Free Critical Graphs`
+
+### Path Contacts
+
+#### P01 — Consecutive Path Contacts Form an Induced Cycle
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** Let P=v_0…v_{n-1} be an induced path and x∉V(P). If i<j are consecutive indices among the neighbors of x on P, then G[{x,v_i,…,v_j}] is an induced cycle C_{j-i+2}.
+
+**Proof route.** The path segment is induced. By consecutive choice, x has no neighbor among its internal vertices, while xv_i and xv_j are edges.
+
+**Novelty query.** `consecutive neighbors on induced path induce hole cycle lemma`
+
+#### P02 — Triangle-Free Contact Gap
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+

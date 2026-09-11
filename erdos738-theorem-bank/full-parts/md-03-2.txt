@@ -1,0 +1,12 @@
+**Statement.** If G is k-vertex-critical and triangle-free and P is an induced n-vertex path with 2≤n<k, then some component of G-N[P] has chromatic number at least k-n.
+
+**Proof route.** This is N13 with H=P.
+
+**Dependencies.** N13
+
+**Novelty query.** `Critical Path Escape Component`
+
+### Mixing And Spiders
+
+#### M01 — First-Transition Arm Lemma
+**Status:** `PROVED_IN_PACKET`  

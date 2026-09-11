@@ -1,0 +1,119 @@
+### Package B — Mixing profiles and induced spiders
+Combine M01–M07. The headline is the exact equivalence between anticomplete connected regions with prescribed reach profile and induced spiders with the corresponding arm lengths.
+
+### Package C — Chromatic escape from finite induced structures
+Combine N03–N07 and N13–N16. The headline is a quantitative high-chromatic escape component outside a connected finite structure, together with a nonclique attachment boundary in a critical graph.
+
+### Package D — Induced-path contact codes
+Combine P01–P12. The headline is the exact cycle dictionary for consecutive contacts, Fibonacci/d-separated signature counts, and stable nonempty signature fibers.
+
+### Package E — Contamination-fan calculus
+Combine C01–C06. The headline is a clean-child/large-fan dichotomy, its weighted form, and the exact conversion of the first legal cross-branch contamination into an induced cycle.
+
+## Lean formalization order
+1. N01, N09, C07, C08 — basic triangle/clique facts.
+2. M01, P01, C05 — shortest-path / induced-cycle extraction.
+3. N02–N07 — finite colorings and deletion inequalities.
+4. M02–M06 — pairwise anticomplete region extraction.
+5. C01–C03 — finite pigeonhole and weighted averaging.
+6. N14–N16 — critical graph gluing arguments.
+7. T01–T12 — ordered rooted trees, types, tensor support, parity host.
+
+## Exact theorem packets
+
+### Triangle-Free Budget
+
+#### N01 — Neighborhood Stability
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `C`  
+**Lean difficulty:** `1/5`
+
+**Statement.** In every finite simple triangle-free graph G and every vertex v, the open neighborhood N(v) is a stable set.
+
+**Proof route.** If two vertices of N(v) were adjacent, they and v would form a triangle.
+
+**Novelty query.** `Neighborhood Stability`
+
+#### N02 — Union-of-Neighborhoods Coloring Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `2/5`
+
+**Statement.** For every finite S subset V(G) in a triangle-free graph, χ(G[⋃_{s∈S} N(s)]) ≤ |S|.
+
+**Proof route.** Order S. Assign each vertex in the union to its first neighboring s. Each color class lies inside one stable neighborhood N(s).
+
+**Dependencies.** N01
+
+**Novelty query.** `Union-of-Neighborhoods Coloring Bound`
+
+#### N03 — Isolate-Sharp Closed-Neighborhood Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let I be the set of vertices isolated in G[S]. Then χ(G[N[S]]) ≤ |S| if I is empty, and χ(G[N[S]]) ≤ |S|+1 otherwise.
+
+**Proof route.** Every non-isolated vertex of S already lies in ⋃_{s∈S}N(s). Color that union with |S| colors by N02. The isolated vertices I form a stable set and require at most one additional color.
+
+**Dependencies.** N02
+
+**Novelty query.** `triangle-free closed neighborhood chromatic bound isolated vertices`
+
+#### N04 — Connected Closed-Neighborhood Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `1/5`
+
+**Statement.** If G is triangle-free and G[S] is connected with |S|≥2, then χ(G[N[S]]) ≤ |S|.
+
+**Proof route.** A connected graph with at least two vertices has no isolated vertices; apply N03.
+
+**Dependencies.** N03
+
+**Novelty query.** `Connected Closed-Neighborhood Bound`
+
+#### N05 — Protected Chromatic Remainder Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** If G is triangle-free and G[S] has no isolated vertices, then χ(G-N[S]) ≥ χ(G)-|S|.
+
+**Proof route.** Color G[N[S]] using at most |S| colors by N03 and color the remainder separately. Since χ(G) is at most the sum, rearrange.
+
+**Dependencies.** N03
+
+**Novelty query.** `triangle-free chromatic number after deleting closed neighborhood connected set`
+
+#### N06 — Finite-Set Survival in Infinite Chromatic Graphs
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `2/5`
+
+**Statement.** If G is triangle-free with infinite chromatic number and S is finite with G[S] having no isolated vertices, then G-N[S] still has infinite chromatic number.
+
+**Proof route.** Otherwise G[N[S]] and G-N[S] would both have finite chromatic number; N03 gives the first, contradicting χ(G)=∞.
+
+**Dependencies.** N03
+
+**Novelty query.** `Finite-Set Survival in Infinite Chromatic Graphs`
+
+#### N07 — Sequential Protected Deletion Ledger
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let G0=G. For i=1,…,m, let S_i⊆V(G_{i-1}) induce no isolated vertices in G_{i-1}, and put G_i=G_{i-1}-N_{G_{i-1}}[S_i]. Then χ(G_m) ≥ χ(G)-Σ_i |S_i|.
+
+**Proof route.** Apply N05 inside each current graph and telescope the inequalities.
+
+**Dependencies.** N05
+
+**Novelty query.** `sequential closed neighborhood deletion chromatic budget triangle-free`
+
+#### N08 — Edge Closed-Neighborhood Bipartiteness
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `B`  
+**Lean difficulty:** `2/5`
+

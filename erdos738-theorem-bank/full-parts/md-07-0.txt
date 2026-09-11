@@ -1,0 +1,46 @@
+**Dependencies.** T05
+
+**Novelty query.** `sharp active type count type-uniform rooted tree triangle-free floor n squared over 2`
+
+#### T07 — Total Active-Type Bound
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `3/5`
+
+**Statement.** Let d≥3 and let a complete ordered d-ary rooted tree of height k be embedded path-induced, level-stable, and type-uniform in a triangle-free graph. For c<a,b≤k, let A_c(a,b)=1 when incomparable vertices of ordered type (a,b,c) are adjacent. Across all join depths, the total number of active ordered types is at most Σ_{n=1}^k⌊n²/2⌋. If k=2m this equals m(m+1)(4m-1)/3; if k=2m+1 it equals m(m+1)(4m+5)/3.
+
+**Proof route.** Apply T06 to each c, where n=k-c, and evaluate the even/odd square sums.
+
+**Dependencies.** T06
+
+**Novelty query.** `total active type tensor bound rooted tree height formula`
+
+#### T08 — Parity-Defect Host Construction
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `4/5`
+
+**Statement.** On a complete rooted d-ary tree, keep all tree edges and add an edge between incomparable vertices exactly when their depths have opposite parity. The resulting graph is triangle-free, the rooted tree is path-induced, level-stable, and type-uniform.
+
+**Proof route.** Root paths receive no added edges. Three incomparable vertices cannot be pairwise joined by the parity rule. A triangle containing a tree edge is impossible because the endpoints have opposite parity, so any third incomparable vertex is adjacent to exactly one endpoint.
+
+**Novelty query.** `parity depth construction triangle-free type-uniform path-induced tree`
+
+#### T09 — Sharpness of the Active-Type Bounds
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+
+**Statement.** The parity-defect host T08 has A_c(a,b)=1 exactly when a and b have opposite parity. Hence every slice has ⌊(k-c)²/2⌋ active types and T06–T07 are sharp.
+
+**Proof route.** Count opposite-parity ordered pairs among n depths: 2⌊n/2⌋⌈n/2⌉=⌊n²/2⌋.
+
+**Dependencies.** T08
+
+**Novelty query.** `sharpness active type tensor parity construction`
+
+#### T10 — Type-Profile Determines the Defect Graph
+**Status:** `PROVED_IN_PACKET`  
+**Novelty-search priority:** `A`  
+**Lean difficulty:** `2/5`
+

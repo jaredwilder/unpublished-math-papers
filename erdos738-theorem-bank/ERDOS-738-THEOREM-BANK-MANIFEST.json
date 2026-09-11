@@ -1,27 +1,22 @@
 {
-  "schema": "erdos738.theorem-bank.manifest.v1",
-  "files": [
-    {
-      "name": "ERDOS-738-ENCIRCLEMENT-THEOREM-BANK-2026-08-04.md",
-      "bytes": 45301,
-      "sha256": "95997a5669de4860de47431e769de00d5fb68a00e5f01b4c3bb8a38f9b5391ad"
-    },
-    {
-      "name": "ERDOS-738-ENCIRCLEMENT-THEOREM-BANK-2026-08-04.jsonl",
-      "bytes": 43793,
-      "sha256": "a5eff7307faa1235de3943bd38f1257e661bd593d460d438469d47986c0ab3bb"
-    },
-    {
-      "name": "verify_erdos738_theorem_bank.py",
-      "bytes": 14365,
-      "sha256": "8e23fd4fd99ef25b0b6912712de3bf77ff27e50f30930cf89bdb8b42405977c7"
-    },
-    {
-      "name": "ERDOS-738-THEOREM-BANK-VERIFICATION.json",
-      "bytes": 1331,
-      "sha256": "a4ab6bc13c6c79520cf9d41cf3846998d0b4ed7108b23e2c1773335d56c96fdf"
-    }
-  ],
+  "schema": "erdos738.public-release.manifest.v2",
+  "human_bank": {
+    "representation": "split-text",
+    "original_bytes": 45301,
+    "original_sha256": "95997a5669de4860de47431e769de00d5fb68a00e5f01b4c3bb8a38f9b5391ad",
+    "reconstruction_manifest": "full-parts/RECONSTRUCTION.json",
+    "complete": true
+  },
+  "structured_jsonl_recovered_source": {
+    "original_bytes": 43793,
+    "original_sha256": "a5eff7307faa1235de3943bd38f1257e661bd593d460d438469d47986c0ab3bb",
+    "public_copy": false,
+    "reason": "A prior transport produced a truncated blob. The duplicate structured representation was removed rather than presented as complete; the full mathematical statements and proof routes are present in the byte-exact human bank."
+  },
+  "verifier": {
+    "bytes": 14365,
+    "sha256": "8e23fd4fd99ef25b0b6912712de3bf77ff27e50f30930cf89bdb8b42405977c7"
+  },
   "claim_boundary": {
     "proved_in_packet": 62,
     "unproved_search_targets": 12,

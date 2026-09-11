@@ -1,0 +1,8 @@
+**Target.** For each admissible tensor of height k, compute the largest set D of depths for which A_c(a,b)=0 on every ordered pair used by a specified target profile.
+
+**Execution route.** MaxSAT, then exact small-k table and conjectured bound.
+
+### X04 — Mixing Depth Census for Small Trees
+**Status:** `UNPROVED_CHECKABLE_TARGET`  
+**Priority:** `MEDIUM`
+

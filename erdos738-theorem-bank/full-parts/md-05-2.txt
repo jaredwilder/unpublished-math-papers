@@ -1,0 +1,7 @@
+**Statement.** In every graph, if A is complete to B, then ω(G[A])+ω(G[B])≤ω(G).
+
+**Proof route.** A maximum clique in A and a maximum clique in B unite to a clique because the pair is complete.
+
+**Novelty query.** `Clique-Sum Bound for Complete Pairs`
+
+#### C09 — Clique-Sum Bound for Complete Blockades
