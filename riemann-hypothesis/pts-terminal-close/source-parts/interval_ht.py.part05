@@ -1,0 +1,115 @@
+    def check(name, cond, detail=""):
+        nonlocal ok
+        print(f"  {'OK  ' if cond else 'FAIL'} {name}  {detail}")
+        ok = ok and bool(cond)
+
+    # 1. Enclosures contain the independent float values (H, H', H'').
+    for k in (0, 1, 2):
+        enc = Hk_iv("0.2", "30", k, panels=400)
+        if k == 0:
+            ref = H_float(mp.mpf("0.2"), mp.mpf("30"))
+        else:
+            ref = mp.diff(lambda y: H_float(mp.mpf("0.2"), y), mp.mpf(30), k)
+        inside = _lower(enc) <= float(ref) <= _upper(enc)
+        check(f"containment k={k}", inside,
+              f"enc=[{_lower(enc):.3e},{_upper(enc):.3e}] ref={float(ref):.3e}")
+
+    # 2. More panels -> narrower enclosure; refinements intersect.
+    e1 = H_iv("0.2", "30", panels=200)
+    e2 = H_iv("0.2", "30", panels=1600)
+    check("refinement narrows", _wid(e2) < _wid(e1),
+          f"{_wid(e1):.2e} -> {_wid(e2):.2e}")
+    check("refinements intersect",
+          _lower(e2) <= _upper(e1) and _lower(e1) <= _upper(e2))
+
+    # 3. Quadratic convergence: 8x panels -> ~64x narrower (allow 30x).
+    check("h^2 convergence", _wid(e2) < _wid(e1) / 30,
+          f"ratio={_wid(e1)/max(_wid(e2),1e-300):.1f}")
+
+    # 4. A bracket with no zero is REFUSED.
+    r = certify_simple_zero("0.2", "5.0", "5.4", panels_end=400,
+                            panels_deriv=300, splits=2)
+    check("no-zero bracket refused",
+          r["verdict"] == "REFUSED_NO_CERTIFIED_SIGN_CHANGE", r["verdict"])
+
+    # 5. B3 bound sane and positive.
+    B3 = pos_integral_upper("0.2", 3)
+    check("B3 sane", 0 < _upper(B3) < 10, f"B3={_upper(B3):.3e}")
+
+    print(f"\nSelftest: {'ALL OK' if ok else 'FAILURES PRESENT'}")
+    return ok
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--certify", action="store_true")
+    ap.add_argument("--certify-tbox", action="store_true")
+    ap.add_argument("--t-lo", default="0.1")
+    ap.add_argument("--t-hi", default="0.2")
+    ap.add_argument("--t", default="0.2")
+    ap.add_argument("--bracket", type=float, default=0.05,
+                    help="half-width of the certificate bracket")
+    ap.add_argument("--panels-end", type=int, default=36000)
+    ap.add_argument("--panels-deriv", type=int, default=24000)
+    ap.add_argument("--splits", type=int, default=10)
+    args = ap.parse_args()
+
+    if args.selftest:
+        sys.exit(0 if selftest() else 1)
+
+    if args.certify_tbox:
+        t_mid = (float(args.t_lo) + float(args.t_hi)) / 2
+        print(f"[1/3] float scout for the first zero of H_{t_mid} ...")
+        z = locate_zero_float(mp.mpf(t_mid))
+        if z is None:
+            print("scout found no sign change in [20,35]; aborting")
+            sys.exit(1)
+        print(f"      scout zero ~ x = {z:.8f}")
+        a, b = z - args.bracket, z + args.bracket
+        print(f"[2/3] certifying UNIFORMLY for t in [{args.t_lo}, {args.t_hi}] "
+              f"on [{a:.8f}, {b:.8f}] ...")
+        rec = certify_simple_zero_tbox(args.t_lo, args.t_hi,
+                                       f"{a:.8f}", f"{b:.8f}",
+                                       panels_end=args.panels_end,
+                                       panels_deriv=args.panels_deriv,
+                                       splits=args.splits)
+        print(json.dumps(rec, indent=1))
+        out = HERE / "receipts"
+        out.mkdir(exist_ok=True)
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        path = out / f"tbox-{args.t_lo}-{args.t_hi}-x{z:.4f}-{stamp}.json"
+        path.write_text(json.dumps(rec, indent=1), encoding="utf-8")
+        print(f"[3/3] receipt -> {path}")
+        sys.exit(0 if rec["verdict"] == "CERTIFIED_UNIFORM_T_BOX" else 2)
+
+    if args.certify:
+        t = args.t
+        print(f"[1/3] float scout for the first zero of H_{t} ...")
+        z = locate_zero_float(mp.mpf(t))
+        if z is None:
+            print("scout found no sign change in [20,35]; aborting")
+            sys.exit(1)
+        print(f"      scout zero ~ x = {z:.8f}")
+        a, b = z - args.bracket, z + args.bracket
+        print(f"[2/3] certifying on [{a:.8f}, {b:.8f}] "
+              f"(panels_end={args.panels_end}, panels_deriv={args.panels_deriv}, "
+              f"splits={args.splits}) ...")
+        rec = certify_simple_zero(t, f"{a:.8f}", f"{b:.8f}",
+                                  panels_end=args.panels_end,
+                                  panels_deriv=args.panels_deriv,
+                                  splits=args.splits)
+        print(json.dumps(rec, indent=1))
+        out = HERE / "receipts"
+        out.mkdir(exist_ok=True)
+        stamp = time.strftime("%Y%m%d-%H%M%S")
+        path = out / f"simple-zero-t{t}-{stamp}.json"
+        path.write_text(json.dumps(rec, indent=1), encoding="utf-8")
+        print(f"[3/3] receipt -> {path}")
+        sys.exit(0 if rec["verdict"] == "CERTIFIED_UNIQUE_SIMPLE_ZERO" else 2)
+
+    print(__doc__)
+
+
+if __name__ == "__main__":
+    main()
