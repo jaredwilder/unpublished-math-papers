@@ -18,9 +18,9 @@ and define
 
 For the normalized determinant-curvature variable
 
-`Z_{r,k} = (r/k) * D_{r,k-1}D_{r,k+1}/(D_{r+1,k}D_{r-1,k)}`
+`Z_{r,k} = (r/k) * D_{r,k-1}D_{r,k+1}/(D_{r+1,k}D_{r-1,k})`,
 
-(with the closing parenthesis in the denominator understood as `D_{r-1,k}`), the order-one values satisfy, for every integer `k>=2`,
+the order-one values satisfy, for every integer `k>=2`,
 
 `1 / [k (exp(4/k)-1)]  <  Z_{1,k}  <  1 / [k (exp(1/(2k))-1)]`.
 
