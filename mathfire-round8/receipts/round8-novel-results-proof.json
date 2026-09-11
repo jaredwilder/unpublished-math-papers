@@ -1,0 +1,58 @@
+{
+  "all_expected": true,
+  "receipt_hash": "0a5d3942c9c13a8d1d01555ae18f793594598ebbd8957f3d1d600b328fb0ff1a",
+  "result_1": {
+    "branches": [
+      {"condition":"a,d opposite parity","minimal_scale":"3a^2-d^2","n":"4ta(a^2-d^2)"},
+      {"condition":"a,d both odd","minimal_scale":"(3a^2-d^2)/2","n":"2ta(a^2-d^2)"}
+    ],
+    "certificate_hash": "39763682c57f8946c4493616b47f4602775470fdb3ed976e92b69b70f1b11297",
+    "goal_satisfied": true,
+    "independent_output": [
+      "theorem=erdos_straus_arithmetic_progression_denominators",
+      "a_bound=500",
+      "coprime_parameter_pairs_checked=76115",
+      "constructed_solutions_checked=456690",
+      "polynomial_identity=verified",
+      "gcd_parity_lemma=verified",
+      "minimal_scale=verified",
+      "parameter_recovery=verified",
+      "primitive_triples_found=0",
+      "status=PASS"
+    ],
+    "independent_source_sha256": "30877d96aa4325ef40fba8c339b16ff7e7f17ecb10dd924ed397215fb21a5b87",
+    "statement": "All positive solutions of 4/n=1/x+1/y+1/z with x<y<z in arithmetic progression are obtained uniquely from coprime integers a>d>0 and t>=1. Put D=3a^2-d^2 and q=D when a,d have opposite parity, q=D/2 when both are odd. Then (x,y,z)=tq(a-d,a,a+d), and n=4ta(a^2-d^2) in the opposite-parity case, n=2ta(a^2-d^2) in the odd-odd case. In particular no primitive denominator triple exists.",
+    "terminal_result": "proved",
+    "theorem_id": "erdos_straus_arithmetic_progression_denominators",
+    "type": "symbolic_all_parameter_diophantine_theorem"
+  },
+  "result_2": {
+    "certificate_hash": "783d8b068bfb6265ab8f08b9a5e165f2447881185b965d3b6d4e8d8caf8f8c8f",
+    "core": [13,17,19,21,23,26,29,31,33,34,35,37,38,39,41,42,43,46,47],
+    "edge_count": 149,
+    "extremal_count": 240,
+    "extremal_digest": "cea2d1f707e94d388369a9c61030dd3ce9908b8a0b981419bb90f7cfa4721188",
+    "goal_satisfied": true,
+    "independent_c_output": [
+      "limit=50","edge_count=149","minimum_transversal=15","maximum=35","extremal_count=240","nodes=57726",
+      "first_witness=[8,10,13,14,15,16,17,19,21,22,23,24,25,26,27,28,29,30,31,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,50]",
+      "extremizer_core=[13,17,19,21,23,26,29,31,33,34,35,37,38,39,41,42,43,46,47]"
+    ],
+    "independent_c_source_sha256": "f0a81f378618fe1723133fe21d8b1bcd1728ac646efcd5075adfaf2c2983c8e3",
+    "independent_python": {
+      "extremal_count": 240,
+      "extremal_digest": "cea2d1f707e94d388369a9c61030dd3ce9908b8a0b981419bb90f7cfa4721188",
+      "limit": 50,
+      "maximum": 35,
+      "nodes": 60693,
+      "witness": [5,6,9,11,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,31,33,34,35,37,38,39,40,41,42,43,46,47,48,50]
+    },
+    "maximum": 35,
+    "minimum_transversal": 15,
+    "statement": "Every subset of {1,...,50} that is product-free (xy not in A for x,y in A, repetitions allowed) and contains no nontrivial three-term geometric progression has size at most 35.",
+    "terminal_result": "proved",
+    "theorem_id": "product_gp_free_interval_50_exact",
+    "type": "finite_multiplicative_extremal_classification",
+    "witness": [5,6,9,11,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,31,33,34,35,37,38,39,40,41,42,43,46,47,48,50]
+  }
+}
