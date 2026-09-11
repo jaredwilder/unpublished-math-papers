@@ -1,0 +1,8 @@
+PASS check_reciprocal_heat_pde
+PASS check_bilinear_harmonic
+PASS check_nonreversible_pf_example
+PASS check_dual_jt_schur_numeric
+PASS check_phase_budget_example
+PASS check_occupancy_cap_bruteforce
+PASS 6/6 algebraic/combinatorial checks
+NOTE: These checks do not prove RH or the global collision-angle condition.
