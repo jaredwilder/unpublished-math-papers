@@ -1,0 +1,16 @@
+Recovered source SHA-256: defcba0e76c937b72aeee655243966fc92b222131c35e18c0863d34c2cd4d9eb
+Recovered source bytes: 26709
+Fresh rerun date: 2026-09-11
+Command: python interval_ht.py --selftest
+
+  OK   containment k=0  enc=[-1.918e-03,1.732e-03] ref=-9.321e-05
+  OK   containment k=1  enc=[-2.952e-04,2.544e-04] ref=-2.039e-05
+  OK   containment k=2  enc=[-3.634e-05,8.573e-05] ref=2.469e-05
+  OK   refinement narrows  1.46e-02 -> 2.28e-04
+  OK   refinements intersect
+  OK   h^2 convergence  ratio=64.0
+  OK   no-zero bracket refused  REFUSED_NO_CERTIFIED_SIGN_CHANGE
+  OK   B3 sane  B3=1.400e-04
+
+Selftest: ALL OK
+EXIT 0
