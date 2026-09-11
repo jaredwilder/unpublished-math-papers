@@ -1,0 +1,20 @@
+{
+  "schema": "erdos738.jsonl-reconstruction.v1",
+  "parts": [
+    {"name":"jsonl-00.txt","bytes":5009,"sha256":"3b017aaaa33552062cbb4dfac85b5c83d15c1a9b4f2d1a1ef2071cab4bf9d996"},
+    {"name":"jsonl-01.txt","bytes":5084,"sha256":"6bd34f9b1ef87f4f29844597619fd71b4c3e8f0e7e4af7a9f87d37f36f020af0"},
+    {"name":"jsonl-02.txt","bytes":4856,"sha256":"96489837c34bbc09a972cf0f9574bfaf01dc5d615a7d86fd734e9d50e728f976"},
+    {"name":"jsonl-03.txt","bytes":5182,"sha256":"e369485bae454c4a6b872e76783f453f03ceacb508bac6b7ef7aa1844646c71b"},
+    {"name":"jsonl-04.txt","bytes":4674,"sha256":"34f0a640cf78b05cd1a13e9fd1877908110c9b1970ba5ffa4e35ffd9b8ec896c"},
+    {"name":"jsonl-05.txt","bytes":4605,"sha256":"e1a84fe9a6dc8866935e12c42622770aec61ec4c0cfcd9d35d750256d4cf4356"},
+    {"name":"jsonl-06.txt","bytes":4973,"sha256":"7518700c6a716fe1a919a308764bb8a6916219ec5ad5b170860d592776bc0681"},
+    {"name":"jsonl-07.txt","bytes":4817,"sha256":"88c52fe3203ecb6bad2d9e63131fe349d47aeb087daef1822b98c159cb8648dd"},
+    {"name":"jsonl-08.txt","bytes":4593,"sha256":"2feeb72b9bdf3fd06b0f4d861f82927f76420857d45cd11ba1173aeffdf2ad85"}
+  ],
+  "reconstruct": "concatenate parts in listed order with no separator",
+  "original": {
+    "name": "ERDOS-738-ENCIRCLEMENT-THEOREM-BANK-2026-08-04.jsonl",
+    "bytes": 43793,
+    "sha256": "a5eff7307faa1235de3943bd38f1257e661bd593d460d438469d47986c0ab3bb"
+  }
+}
