@@ -1,0 +1,120 @@
+            #                            + r_t^2/2 * B5.
+            # This replaced a flat r_t*B3 slack that failed track #2 at
+            # condition number 0.83 (receipt tbox-...-x41.9310).
+            if len(t_ladder) == 3:
+                # order-2 rung: H''' point + crude B5 square term
+                r_t, B4L, B5L = t_ladder
+                h3 = Hk_iv(t, m, 3, panels)
+                tcost = _upper(iv.mpf(r_t) * (_mag(h3) + iv.mpf(r_hi) * B4L)
+                               + iv.mpf(r_t) ** 2 * B5L / 2)
+            else:
+                # order-3 rung (10-round packet, Round 1): dt^a Hx =
+                # (-1)^a H^(2a+1), so
+                #   Hx(t) = Hx(t0) - d*H3 + d^2/2*H5 + R3, |R3| <= r_t^3/6*B7.
+                # H5 point-enclosed (value-scale); crude bound pushed to the
+                # cubic term. Built because track #3's telemetry showed the
+                # B5 square term as the binding floor (2.5e-8 of 2.46e-8).
+                r_t, B4L, B6L, B7L = t_ladder
+                h3 = Hk_iv(t, m, 3, panels)
+                h5 = Hk_iv(t, m, 5, panels)
+                tcost = _upper(
+                    iv.mpf(r_t) * (_mag(h3) + iv.mpf(r_hi) * B4L)
+                    + iv.mpf(r_t) ** 2 / 2 * (_mag(h5) + iv.mpf(r_hi) * B6L)
+                    + iv.mpf(r_t) ** 3 / 6 * B7L)
+            slack += tcost
+        enc = hp + iv.mpf([-slack, slack])
+        lo, hi = _lower(enc), _upper(enc)
+        subs.append({"mid": (_lower(m) + _upper(m)) / 2, "lo": lo, "hi": hi, "t_cost": tcost})
+        hull_lo = lo if hull_lo is None else min(hull_lo, lo)
+        hull_hi = hi if hull_hi is None else max(hull_hi, hi)
+        s = 1 if lo > 0 else (-1 if hi < 0 else 0)
+        if s == 0 or (sign != 0 and s != sign):
+            separated = False
+        sign = sign or s
+    return iv.mpf([hull_lo, hull_hi]), separated, subs
+
+
+# ---------------------------------------------------------------------------
+# The certificate
+# ---------------------------------------------------------------------------
+def certify_simple_zero(t, a, b, panels_end: int = 36000,
+                        panels_deriv: int = 24000, splits: int = 10) -> dict:
+    """Certify: H_t has exactly one zero in [a,b], and it is simple."""
+    t0 = time.time()
+    Ha = H_iv(t, a, panels_end)
+    Hb = H_iv(t, b, panels_end)
+
+    def sign_of(e):
+        return 1 if _lower(e) > 0 else (-1 if _upper(e) < 0 else 0)
+
+    sa, sb = sign_of(Ha), sign_of(Hb)
+    result = {
+        "claim": f"H_t has exactly one zero in [{a}, {b}] and it is simple",
+        "t": str(t), "a": str(a), "b": str(b),
+        "H(a)": [_lower(Ha), _upper(Ha)],
+        "H(b)": [_lower(Hb), _upper(Hb)],
+        "endpoint_signs": [sa, sb],
+        "endpoint_enclosure_width": max(_wid(Ha), _wid(Hb)),
+        "panels_endpoint": panels_end,
+        "panels_derivative": panels_deriv,
+        "x_subdivisions": splits,
+        "series_terms": N_SERIES,
+        "u_cut": str(U_CUT),
+        "iv_dps": iv.dps,
+        "trust_base": "mpmath.iv outward rounding + docstring tail inequalities",
+        "doctrine_type": "CLOSE_ANATOMY (proof strategy for frozen TCI-PTS)",
+    }
+
+    if sa == 0 or sb == 0:
+        result["verdict"] = "UNDECIDED_ENDPOINT_ENCLOSURE_TOO_WIDE"
+    elif sa == sb:
+        result["verdict"] = "REFUSED_NO_CERTIFIED_SIGN_CHANGE"
+    else:
+        denc, separated, subs = Hp_over_bracket(t, a, b, panels_deriv, splits)
+        result["Hprime_hull"] = [_lower(denc), _upper(denc)]
+        result["Hprime_subbrackets"] = subs
+        result["derivative_separated"] = separated
+        result["verdict"] = ("CERTIFIED_UNIQUE_SIMPLE_ZERO" if separated
+                             else "ZERO_EXISTS_SIMPLICITY_NOT_SEPARATED")
+    result["elapsed_s"] = round(time.time() - t0, 1)
+    return result
+
+
+def certify_simple_zero_tbox(t_lo, t_hi, a, b, panels_end: int = 24000,
+                             panels_deriv: int = 4500, splits: int = 10,
+                             ladder_order: int = 2) -> dict:
+    """Certify: for EVERY t in [t_lo, t_hi], H_t has exactly one zero in
+    [a,b] and it is simple.
+
+    The t-direction rides the heat equation. Differentiating under the
+    integral (justified by the super-exponential decay of Φ; the identity is
+    the packet's machine-audited check_heat_identity):
+
+        ∂H/∂t (t,x)  =  ∫ u² e^{tu²} Φ(u) cos(xu) du  =  −H″(t,x).
+
+    So with t_m the box midpoint and r_t the half-width, mean value in t:
+
+        H(t,x)  ∈  H(t_m,x) ± r_t · sup_τ |H″(τ,x)|
+        sup_τ |H″(τ,x)|  ≤  |H″(t_m,x)| + r_t · B₄,   B₄ ≥ sup|H⁗| = ∫u⁴A
+        H′(t,x) ∈  H′(t_m,x) ± r_t · B₃,              B₃ ≥ sup|H‴| = ∫u³A
+
+    The point evaluations H, H′, H″ at t_m see the oscillatory cancellation
+    (value scale ~10⁻⁵); only the r_t and r_t² terms pay the crude positive-
+    integrand price, and B₃, B₄ are ~10⁻⁴ — the whole t-box costs about one
+    extra H″ evaluation per endpoint. A naive t-interval evaluation paid
+    ~5·10⁻⁵ of width for the same box; this pays ~10⁻⁶.
+
+    Positive integrals are taken at t_hi: Φ > 0 and e^{τu²} ≤ e^{t_hi u²}
+    pointwise, so ∫u^k A(τ) ≤ ∫u^k A(t_hi) for every τ in the box.
+    """
+    t0 = time.time()
+    t_lo_i, t_hi_i = iv.mpf(t_lo), iv.mpf(t_hi)
+    t_m = (t_lo_i + t_hi_i) / 2
+    r_t = _upper((t_hi_i - t_lo_i) / 2)
+
+    B3 = pos_integral_upper(t_hi, 3)
+    B4 = pos_integral_upper(t_hi, 4)
+    B5 = pos_integral_upper(t_hi, 5)
+    B6 = pos_integral_upper(t_hi, 6)
+
+    def endpoint(x):
