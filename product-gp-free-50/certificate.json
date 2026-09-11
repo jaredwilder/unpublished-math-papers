@@ -1,0 +1,30 @@
+{
+  "theorem_id": "product_gp_free_interval_50_exact",
+  "type": "finite_multiplicative_extremal_classification",
+  "terminal_result": "proved",
+  "statement": "Every subset of {1,...,50} that is product-free (xy not in A for x,y in A, repetitions allowed) and contains no nontrivial three-term geometric progression has size at most 35.",
+  "maximum": 35,
+  "minimum_transversal": 15,
+  "edge_count": 149,
+  "extremal_count": 240,
+  "extremal_digest": "cea2d1f707e94d388369a9c61030dd3ce9908b8a0b981419bb90f7cfa4721188",
+  "certificate_hash": "783d8b068bfb6265ab8f08b9a5e165f2447881185b965d3b6d4e8d8caf8f8c8f",
+  "round_receipt_hash": "0a5d3942c9c13a8d1d01555ae18f793594598ebbd8957f3d1d600b328fb0ff1a",
+  "independent_c": {
+    "source_sha256": "f0a81f378618fe1723133fe21d8b1bcd1728ac646efcd5075adfaf2c2983c8e3",
+    "nodes": 57726,
+    "maximum": 35,
+    "minimum_transversal": 15,
+    "extremal_count": 240
+  },
+  "independent_python": {
+    "nodes": 60693,
+    "maximum": 35,
+    "extremal_count": 240,
+    "extremal_digest": "cea2d1f707e94d388369a9c61030dd3ce9908b8a0b981419bb90f7cfa4721188"
+  },
+  "witness": [5,6,9,11,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,31,33,34,35,37,38,39,40,41,42,43,46,47,48,50],
+  "scope_note": "Exact finite result for the universe {1,...,50}; no asymptotic or infinite-family claim is implied.",
+  "novelty_status": "apparently_new_after_systematic_search",
+  "novelty_search_date": "2026-07-27"
+}
