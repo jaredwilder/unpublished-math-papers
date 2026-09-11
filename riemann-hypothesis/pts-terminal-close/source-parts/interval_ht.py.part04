@@ -1,0 +1,119 @@
+        # Deep-t endpoints: second order in t with H'''' point-enclosed,
+        # crude B6 only on the cubic term. The first-order form's r_t^2*B4
+        # term (6.7e-8) swamps track #3's 1e-8 endpoint values; this one
+        # prices the same box at ~r_t^2/2*|H''''(t_m,x)| + r_t^3/6*B6.
+        H0 = H_iv(t_m, x, panels_end)
+        H2 = Hpp_iv(t_m, x, panels_deriv)
+        H4 = Hk_iv(t_m, x, 4, panels_deriv)
+        h2_mag = _upper(_mag(H2))
+        slack = _upper(_mag(H2) * r_t
+                       + _mag(H4) * iv.mpf(r_t) ** 2 / 2
+                       + B6 * iv.mpf(r_t) ** 3 / 6)
+        return H0 + iv.mpf([-slack, slack]), slack, h2_mag
+
+    Ha, slack_a, h2a = endpoint(a)
+    Hb, slack_b, h2b = endpoint(b)
+
+    def sign_of(e):
+        return 1 if _lower(e) > 0 else (-1 if _upper(e) < 0 else 0)
+
+    sa, sb = sign_of(Ha), sign_of(Hb)
+    result = {
+        "claim": (f"for every t in [{t_lo}, {t_hi}], H_t has exactly one zero "
+                  f"in [{a}, {b}] and it is simple"),
+        "t_box": [str(t_lo), str(t_hi)], "a": str(a), "b": str(b),
+        "H(a)_uniform": [_lower(Ha), _upper(Ha)],
+        "H(b)_uniform": [_lower(Hb), _upper(Hb)],
+        "endpoint_signs": [sa, sb],
+        "t_slack_endpoint": max(slack_a, slack_b),
+        "B3": _upper(B3), "B4": _upper(B4),
+        "panels_endpoint": panels_end, "panels_derivative": panels_deriv,
+        "x_subdivisions": splits, "series_terms": N_SERIES,
+        "u_cut": str(U_CUT), "iv_dps": iv.dps,
+        "method": "heat-equation centred form in t (dH/dt = -H'')",
+        "trust_base": "mpmath.iv outward rounding + docstring tail inequalities",
+        "doctrine_type": "CLOSE_ANATOMY (proof strategy for frozen TCI-PTS)",
+    }
+
+    if sa == 0 or sb == 0:
+        result["verdict"] = "UNDECIDED_ENDPOINT_ENCLOSURE_TOO_WIDE"
+    elif sa == sb:
+        result["verdict"] = "REFUSED_NO_CERTIFIED_SIGN_CHANGE"
+    else:
+        t_slack_deriv = 0.0  # deep-t: the per-sub ladder terms replace this
+        if ladder_order >= 3:
+            B7 = pos_integral_upper(t_hi, 7)
+            ladder = (r_t, B4, B6, B7)
+        else:
+            ladder = (r_t, B4, B5)
+        denc, separated, subs = Hp_over_bracket(
+            t_m, a, b, panels_deriv, splits, t_ladder=ladder)
+        result["Hprime_hull_uniform"] = [_lower(denc), _upper(denc)]
+        result["t_slack_derivative"] = t_slack_deriv
+        result["Hprime_subbrackets"] = subs
+        result["derivative_separated"] = separated
+
+        # Rectangle condition telemetry (Sol weigh-in, 2026-08-11): the four
+        # quantities that decide whether this method is a scaling law or a
+        # sequence of victories. Recorded on every box, certified or not.
+        inf_hx = min(min(abs(s["lo"]), abs(s["hi"])) for s in subs)
+        pde_cost = max(s.get("t_cost", 0.0) for s in subs) or t_slack_deriv
+        result["telemetry"] = {
+            "delta_t": 2 * r_t,
+            "delta_x": _upper(b) - _lower(a),
+            "inf_abs_Hx_certified": inf_hx,
+            "sup_abs_Hxx_endpoints": max(h2a, h2b),
+            "pde_variation_cost": pde_cost,
+            "rectangle_condition_number": (inf_hx / pde_cost
+                                           if pde_cost > 0 else None),
+            "subdivision_count": splits,
+        }
+        result["verdict"] = ("CERTIFIED_UNIFORM_T_BOX" if separated
+                             else "ZERO_EXISTS_SIMPLICITY_NOT_SEPARATED")
+    result["elapsed_s"] = round(time.time() - t0, 1)
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Float reference (NON-rigorous; scout + selftest containment only)
+# ---------------------------------------------------------------------------
+def H_float(t, x):
+    def phi_f(u):
+        s = mp.mpf(0)
+        for n in range(1, 40):
+            n2 = mp.mpf(n * n)
+            term = (2 * mp.pi**2 * n2 * n2 * mp.e**(9 * u)
+                    - 3 * mp.pi * n2 * mp.e**(5 * u)) \
+                * mp.e**(-mp.pi * n2 * mp.e**(4 * u))
+            s += term
+            if abs(term) < mp.mpf(10) ** (-40):
+                break
+        return s
+
+    return mp.quad(lambda u: mp.e**(t * u * u) * phi_f(u) * mp.cos(x * u),
+                   [0, mp.mpf("1.5")])
+
+
+def locate_zero_float(t, lo=20.0, hi=35.0, steps=60):
+    xs = [lo + (hi - lo) * i / steps for i in range(steps + 1)]
+    vals = [H_float(t, x) for x in xs]
+    for i in range(steps):
+        if vals[i] * vals[i + 1] < 0:
+            a, b = xs[i], xs[i + 1]
+            fa = vals[i]
+            for _ in range(60):
+                m = (a + b) / 2
+                fm = H_float(t, m)
+                if fa * fm <= 0:
+                    b = m
+                else:
+                    a, fa = m, fm
+            return (a + b) / 2
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Selftest
+# ---------------------------------------------------------------------------
+def selftest() -> bool:
+    ok = True
