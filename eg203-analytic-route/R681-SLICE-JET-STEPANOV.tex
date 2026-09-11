@@ -1,7 +1,6 @@
 % R681-SLICE-JET-STEPANOV.tex
-% Phase 30+ post-GPT-R676-R680 CORRECTED finish-line skeleton
+% Phase 30+ post-R676-R680 CORRECTED finish-line skeleton
 % 6 referee-grade lemmas with slice-jet auxiliary (fixes the 6 errors in R660B-UNIFORM-PROOF.tex)
-% Operator-coupling discipline: Patent W IGNITE Fire 20 (anti-false-close, slice correction)
 
 \documentclass[12pt]{amsart}
 \usepackage{amsmath, amssymb, amsthm}
@@ -63,7 +62,7 @@ and the \emph{slice ideal} $J_{q,c} = (X^{a_q} - 1, Y^{b_q} - 1, XY - c)$.
 
 \begin{remark}[Slice is the bad set, not all of $V_q$]
 The previous R660B framing identified $B_q(m) = V_q$ as the obstruction set;
-this is mathematically wrong (GPT R676-R680 audit). The correct obstruction
+this is mathematically wrong (R676-R680 audit). The correct obstruction
 is the slice $B_q(c)$, which is typically of size $\approx h_q / q$, not $h_q$.
 The Stepanov contradiction targets the slice, not the full grid.
 \end{remark}
@@ -94,7 +93,7 @@ hence their Kronecker product is non-degenerate.
 \begin{remark}[Replaces the false Vandermonde]
 The previous R660B file claimed nonsingularity for \emph{any} $h_q$ exponent
 pairs $(\alpha_j, \beta_j)$ with $\alpha_j + \beta_j \le D < q$. This is false
-(GPT R676 \#4). The correct statement is the specific monomial basis
+(R676 \#4). The correct statement is the specific monomial basis
 $0 \le \alpha < a_q, 0 \le \beta < b_q$, with the Kronecker-product structure
 making the evaluation map an isomorphism.
 \end{remark}
@@ -156,7 +155,7 @@ Slope $\log D / \log h_q = 0.4105$ matches Bombieri-Stepanov scaling within reas
 
 \begin{remark}[Fixes the order-2 collapse]
 The previous R660B framing imposed order-2 vanishing on all of $V_q$, which forced
-$P \in I_q^2$ and killed jet-primitivity (GPT R676 \#2). The corrected slice-jet
+$P \in I_q^2$ and killed jet-primitivity (R676 \#2). The corrected slice-jet
 framework imposes order $m=2$ only on $B_q(c)$ and order 1 on $V_q \setminus B_q(c)$.
 This preserves $P \notin I_q^2$ and allows the slice restriction to be non-trivial.
 \end{remark}
@@ -199,7 +198,7 @@ $m \cdot |B_q(c)| \le 2D$.
 
 \begin{remark}[Replaces the false bivariate zero count]
 The previous R660B claim $2 |B_q(m)| \le \deg P_q$ was invalid in two variables
-(GPT R676 \#5). The corrected one-variable form $m |B_q(c)| \le 2 D$ via slice
+(R676 \#5). The corrected one-variable form $m |B_q(c)| \le 2 D$ via slice
 restriction is the valid Stepanov spine.
 \end{remark}
 
@@ -306,7 +305,7 @@ co-dimension-one obstruction $P \in (X Y - c)$.
 \section*{Acknowledgments}
 %% ===================================================================
 
-This skeleton is produced in response to GPT audit R676-R680 catching 6 mathematical errors in the predecessor R660B-UNIFORM-PROOF.tex (full-grid jet Stepanov framework). The corrected slice-jet Stepanov framework follows GPT R677-R678. Methodology disclosed under Patent W IGNITE Family D Claim 49 (Quotient-Level False-Kill Reversal) and Fire 20 (anti-false-close, slice correction). Empirical anchor R681 (\texttt{r681\_slice\_jet\_stepanov.py}): 13/13 primes uniform certification.
+This skeleton is produced in response to audit R676-R680 catching 6 mathematical errors in the predecessor R660B-UNIFORM-PROOF.tex (full-grid jet Stepanov framework). The corrected slice-jet Stepanov framework follows R677-R678. Empirical anchor R681 (\texttt{r681\_slice\_jet\_stepanov.py}): 13/13 primes uniform certification.
 
 %% ===================================================================
 \section*{References}

@@ -6,15 +6,20 @@ references and never the documents.
 
 **Author: Jared Wilder.**
 
-Two of the five carried a byline string naming a language model. **That was a session artifact, not
-an authorship claim, and it has been corrected.** The tools used in this program include SAT
-solvers, the Lean kernel, exact-arithmetic checkers and language models. None of them is an author.
+Two things were removed from these files before publication, both recorded here rather than
+done quietly.
 
-Inside the drafts you will also see internal tags like *"Claude Lemma 9"* and *"GPT R691-R697"* on
-individual lemmas. Those are **provenance markers recording which automated pass produced which
-step**, the way a lab notebook records which instrument took which measurement. They are left in
-place, because removing them would erase the working record and break the documents' own
-cross-references.
+**Model names.** The source carried a language model's name in author lines, section headings,
+lemma titles and cross-reference labels. Those were artifacts of the sessions that produced the
+files, not authorship. A tool is not an author -- the same is true of the SAT solvers, the Lean
+kernel and the exact-arithmetic checkers used throughout this program. The names are gone and the
+labels were renamed consistently so every cross-reference still resolves. **No mathematics was
+altered.** The internal round identifiers (R676, R682, R691 and the rest) are kept, because those
+are this program's own provenance and they say which pass produced or corrected which step.
+
+**Patent methodology references.** Two of the files cited a named patent family and claim number
+for the methodology. That family is recorded as **draft, not filed**, so the citation is stripped.
+It described process rather than mathematics and nothing in the results depends on it.
 
 ---
 
