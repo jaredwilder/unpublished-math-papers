@@ -1,0 +1,120 @@
+    """Bound sup over u∈[0,U] of |∂²/∂u² (u^k A(u) trig(xu))|.
+
+    ∂²/∂u²(u^k A trig) expands into u-derivative terms plus trig-derivative
+    cross terms; bounding |trig|,|trig'|,|trig''| by 1, x, x²:
+        ≤ k(k−1)u^{k−2}|A| + 2k u^{k−1}|A'| + u^k|A''|
+          + 2|x|·(k u^{k−1}|A| + u^k|A'|) + x²·u^k|A|.
+    """
+    xm = _mag(x)
+    b = 0.0
+    for ch in _coarse_chunks():
+        um = _mag(ch)
+        a0, a1, a2 = _mag(A_iv(t, ch)), _mag(A_d1_iv(t, ch)), _mag(A_d2_iv(t, ch))
+        uk = um ** k if k else iv.mpf(1)
+        ukm1 = um ** (k - 1) if k >= 1 else iv.mpf(0)
+        ukm2 = um ** (k - 2) if k >= 2 else iv.mpf(0)
+        val = (k * (k - 1)) * ukm2 * a0 + (2 * k) * ukm1 * a1 + uk * a2 \
+            + 2 * xm * (k * ukm1 * a0 + uk * a1) + xm * xm * uk * a0
+        b = max(b, _upper(val))
+    return iv.mpf(b)
+
+
+def pos_integral_upper(t, k: int, panels: int = 300):
+    """Upper bound for ∫₀^U u^k A(u) du (positive integrand: panel sum is
+    already an enclosure; only the upper endpoint is used)."""
+    t = iv.mpf(t)
+    h = U_CUT / panels
+    total = iv.mpf(0)
+    for i in range(panels):
+        ch = iv.mpf(i) * h + iv.mpf([0, 1]) * h
+        total += (ch ** k if k else iv.mpf(1)) * A_iv(t, ch) * h
+    total += integral_tail(t, k)
+    return iv.mpf(_upper(total))
+
+
+# ---------------------------------------------------------------------------
+# Point enclosures of H_t and its x-derivatives
+#   H(x)   =  ∫ A cos(xu) du
+#   H'(x)  = −∫ uA sin(xu) du
+#   H''(x) = −∫ u²A cos(xu) du
+# ---------------------------------------------------------------------------
+# d^k/dx^k cos(xu) cycles with period 4, so indexing by k % 4 makes Hk_iv
+# valid for EVERY derivative order. The deep-t ladder needs k=4 and, on later
+# rungs, beyond: each crude bound that swamps a shrinking margin is replaced
+# by one more point-enclosed derivative of the flow (dt = -dxx, forever).
+_TRIG = [
+    (iv.cos, 1),    # k = 0 mod 4
+    (iv.sin, -1),   # k = 1 mod 4
+    (iv.cos, -1),   # k = 2 mod 4
+    (iv.sin, 1),    # k = 3 mod 4
+]
+
+
+def Hk_iv(t, x, k: int, panels: int):
+    """Enclosure of the k-th x-derivative of H_t at point x.
+
+    Midpoint rule with rigorous remainder: per panel of width h the error of
+    f(m)h is within sup|∂²f/∂u²|·h³/24 (the linear term integrates to zero),
+    so the total remainder is within  D2 · U · h² / 24.
+    """
+    t = iv.mpf(t)
+    x = iv.mpf(x)
+    trig, sgn = _TRIG[k % 4]
+    h = U_CUT / panels
+    total = iv.mpf(0)
+    for i in range(panels):
+        m = (iv.mpf(i) + iv.mpf("0.5")) * h
+        f = (m ** k if k else iv.mpf(1)) * A_iv(t, m) * trig(x * m)
+        total += f * h
+    D2 = d2_bound_generic(t, x, k)
+    rem_hi = _upper(D2 * U_CUT * h * h / 24)
+    total = total + iv.mpf([-rem_hi, rem_hi]) + integral_tail(t, k)
+    return sgn * total
+
+
+def H_iv(t, x, panels: int = 1500):
+    return Hk_iv(t, x, 0, panels)
+
+
+def Hp_iv(t, x, panels: int = 1500):
+    return Hk_iv(t, x, 1, panels)
+
+
+def Hpp_iv(t, x, panels: int = 1500):
+    return Hk_iv(t, x, 2, panels)
+
+
+# ---------------------------------------------------------------------------
+# H' over an x-bracket: second-order Taylor on sub-brackets
+# ---------------------------------------------------------------------------
+def Hp_over_bracket(t, a, b, panels: int, splits: int, extra_slack: float = 0.0,
+                    t_ladder=None):
+    """Enclosure of {H_t'(x) : x ∈ [a,b]}, plus a separation verdict.
+
+    On each sub-bracket [m−r, m+r]:
+        H'(x) ∈ H'(m) + H''(m)·[−r, r] ± B₃ r²/2,
+    where B₃ = ∫u³A du ≥ sup_x |H'''(x)|. H'(m) and H''(m) are point
+    enclosures (they capture the oscillatory cancellation); only the r² term
+    pays the crude positive-integrand price.
+    """
+    a = iv.mpf(a)
+    b = iv.mpf(b)
+    B3 = pos_integral_upper(t, 3)
+    sub = (b - a) / splits
+    r = iv.mpf([0, _upper(sub / 2)])
+    r_hi = _upper(sub / 2)
+    subs = []
+    hull_lo = hull_hi = None
+    sign = 0
+    separated = True
+    for i in range(splits):
+        m = a + (iv.mpf(i) + iv.mpf("0.5")) * sub
+        hp = Hp_iv(t, m, panels)
+        hpp = Hpp_iv(t, m, panels)
+        slack = _upper(_mag(hpp) * r_hi + B3 * r_hi * r_hi / 2) + extra_slack
+        tcost = extra_slack
+        if t_ladder is not None:
+            # Deep-t rung: dtH' = -H''', so mean value in t with the THIRD
+            # derivative point-enclosed (value-scale, sees cancellation) and
+            # only the square term paying crude bounds:
+            #   |H'(t,x) - H'(t_m,x)| <= r_t*(|H'''(t_m,m)| + r_x*B4)
