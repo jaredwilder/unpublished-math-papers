@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+"""Rigorous interval-arithmetic evaluator and simplicity certifier for H_t.
+
+CLOSE ANATOMY under oracle/rh/TCI-PTS-FROZEN.md — a proof strategy for the
+frozen terminal theorem PTS, never a reason to move it (doctrine §9).
+
+    H_t(x)  =  ∫₀^∞ e^{t u²} Φ(u) cos(xu) du
+    Φ(u)    =  Σ_{n≥1} (2π²n⁴e^{9u} − 3πn²e^{5u}) e^{−πn²e^{4u}}
+
+Everything here is an ENCLOSURE: series truncated with a proven tail bound,
+integral truncated with a proven tail bound, quadrature by midpoint rule with
+a rigorous second-derivative remainder.
+
+Certificate of a simple zero on [a,b] at fixed t:
+  (1) enclosures H_t(a), H_t(b) exclude 0 with opposite signs, and
+  (2) an enclosure of H_t' over all of [a,b] excludes 0, built by
+      second-order Taylor in x on sub-brackets:
+          H'(x) ∈ H'(m) + H''(m)·[−r,r] ± B₃·r²/2,
+      with H'(m), H''(m) point-enclosed by the panel scheme (which SEES the
+      oscillatory cancellation) and only the cubic remainder using the crude
+      positive bound B₃ ≥ sup|H'''| = ∫u³ e^{tu²}Φ du. A uniform bound at
+      first order loses 4 orders of magnitude to cancellation; pushing the
+      crudeness down to the r² term is what makes separation reachable.
+Then H_t has EXACTLY ONE zero in [a,b] and it is SIMPLE.
+
+Trust base (stated per the bar, row-2 style): correctness of mpmath's `iv`
+outward-rounded interval arithmetic, plus the elementary tail inequalities
+proved in the docstrings below. No unverified numerics enter a verdict.
+
+Usage:
+  python oracle/rh/interval_ht.py --selftest
+  python oracle/rh/interval_ht.py --certify --t 0.2
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+
+from mpmath import iv, mp
+
+HERE = Path(__file__).resolve().parent
+
+iv.dps = 30
+mp.dps = 30
+
+N_SERIES = 6          # Φ partial-sum length; tail bound covers the rest
+U_CUT = iv.mpf("1.5") # integral truncation point; tail bound covers [U,∞)
+
+PI = +iv.pi
+
+
+def _upper(x) -> float:
+    return float(iv.mpf(x).b)
+
+
+def _lower(x) -> float:
+    return float(iv.mpf(x).a)
+
+
+def _wid(x) -> float:
+    e = iv.mpf(x)
+    return float(e.b) - float(e.a)
+
+
+def _mag(x) -> iv.mpf:
+    return iv.mpf([0, abs(iv.mpf(x)).b])
+
+
+# ---------------------------------------------------------------------------
+# Φ and its u-derivatives, with proven tails
+# ---------------------------------------------------------------------------
+def _term_parts(n: int, u):
+    n2 = iv.mpf(n * n)
+    c1 = 2 * PI**2 * n2 * n2      # 2π²n⁴
+    c2 = 3 * PI * n2              # 3πn²
+    E9 = iv.exp(9 * u)
+    E5 = iv.exp(5 * u)
+    w = PI * n2 * iv.exp(4 * u)   # πn²e^{4u}
+    return c1, c2, E9, E5, w
+
+
+def phi_term(n: int, u):
+    c1, c2, E9, E5, w = _term_parts(n, u)
+    return (c1 * E9 - c2 * E5) * iv.exp(-w)
+
+
+def phi_term_d1(n: int, u):
+    c1, c2, E9, E5, w = _term_parts(n, u)
+    g = 9 * c1 * E9 - 5 * c2 * E5 - 4 * w * (c1 * E9 - c2 * E5)
+    return g * iv.exp(-w)
+
+
+def phi_term_d2(n: int, u):
+    c1, c2, E9, E5, w = _term_parts(n, u)
+    base = c1 * E9 - c2 * E5
+    g = 9 * c1 * E9 - 5 * c2 * E5 - 4 * w * base
+    gp = (81 * c1 * E9 - 25 * c2 * E5
+          - 16 * w * base
+          - 4 * w * (9 * c1 * E9 - 5 * c2 * E5))
+    return (gp - 4 * w * g) * iv.exp(-w)
+
+
+def _series_with_tail(term_fn, u):
+    """Σ_{n=1..N} term_n(u) + proven tail interval.
+
+    Tail proof: for n ≥ N+1 ≥ 2 and u ≥ 0 (so e^{4u} ≥ 1), the term ratio for
+    each derivative order is at most
+        ((n+1)/n)^6 · (1+13π(n+1)²)² · exp(−π(2n+1))
+    and exp(−5π) ≈ 1.5·10⁻⁷ swamps every polynomial factor: the ratio is
+    below 10⁻². Hence tail ≤ |term_{N+1}| / (1−10⁻²) ≤ |term_{N+1}| · 1.02.
+    """
+    total = iv.mpf(0)
+    for n in range(1, N_SERIES + 1):
+        total += term_fn(n, u)
+    lead = term_fn(N_SERIES + 1, u)
+    tail_hi = _upper(abs(lead) * iv.mpf("1.02"))
+    return total + iv.mpf([-tail_hi, tail_hi])
+
+
+def phi_iv(u):
+    return _series_with_tail(phi_term, u)
+
+
+def phi_d1_iv(u):
+    return _series_with_tail(phi_term_d1, u)
+
+
+def phi_d2_iv(u):
+    return _series_with_tail(phi_term_d2, u)
+
+
+# ---------------------------------------------------------------------------
+# A(u) = e^{tu²}Φ(u) and u-derivatives
+# ---------------------------------------------------------------------------
+def A_iv(t, u):
+    return iv.exp(t * u * u) * phi_iv(u)
+
+
+def A_d1_iv(t, u):
+    return iv.exp(t * u * u) * (2 * t * u * phi_iv(u) + phi_d1_iv(u))
+
+
+def A_d2_iv(t, u):
+    p0, p1, p2 = phi_iv(u), phi_d1_iv(u), phi_d2_iv(u)
+    return iv.exp(t * u * u) * (
+        (2 * t + 4 * t * t * u * u) * p0 + 4 * t * u * p1 + p2
+    )
+
+
+# ---------------------------------------------------------------------------
+# Integral tail on [U,∞)
+# ---------------------------------------------------------------------------
+def integral_tail(t, weight_pow: int):
+    """Upper bound for ∫_U^∞ u^k e^{tu²} Φ(u) du,  k = weight_pow ∈ {0,..,3}.
+
+    For u ≥ U = 3/2 and t ≤ 0.2: Φ(u) ≤ 3π²e^{9u}e^{−πe^{4u}} (lead term with
+    the 1.02 tail factor absorbed), and u^k ≤ e^{ku}. With
+    g(u) = πe^{4u} − tu² − (9+k)u, g is convex and g'(U) ≥ 4πe^{4U} − 0.4U −
+    9 − k ≥ 1, so the integral is at most 3π²e^{−g(U)}/g'(U) ≤ 4π²e^{−g(U)}.
+    At U = 1.5 this is below 10⁻⁵⁰⁰: numerically nothing, logically required.
+    """
+    U = U_CUT
+    g_at_U = PI * iv.exp(4 * U) - t * U * U - (9 + weight_pow) * U
+    hi = _upper(4 * PI**2 * iv.exp(-g_at_U))
+    return iv.mpf([-hi, hi])
+
+
+# ---------------------------------------------------------------------------
+# Coarse bounds over u ∈ [0,U]
+# ---------------------------------------------------------------------------
+def _coarse_chunks(k: int = 24):
+    lo = iv.mpf(0)
+    step = U_CUT / k
+    return [lo + i * step + iv.mpf([0, 1]) * step for i in range(k)]
+
+
+def d2_bound_generic(t, x, k: int):
