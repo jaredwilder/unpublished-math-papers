@@ -21,6 +21,20 @@ Several results that first appeared here on 2026-09-11 now have clearer canonica
 
 The archive copies remain public so the release chronology is not rewritten after the fact.
 
+## Release-Day standalone additions
+
+The current extraction wave also added focused provenance packets for:
+
+- `erdos890-1093-bridge/` — the large-prime binomial identity, admissible LCM divisor-window reduction, and deficiency/excess accounting bridge;
+- `erdos930-perfect-power-intervals/` — an infinite Pell-generated length-2 square-product family and the exact length-3 obstruction forcing any `r=2` threshold to satisfy `k>=4`;
+- `erdos276-recurrence-common-divisors/` — the kernel-checked recurrence common-divisor theorem;
+- `erdos1052-unitary-perfect-two-prime/` — no odd unitary-perfect integer and exact classification `n=6` in the at-most-two-prime-factor stratum;
+- `erdos826-divisor-tail-bound/`, `erdos1073-factorial-plus-one-divisors/`, `erdos479-power-congruence-family/`, `erdos885-factor-difference-square-duality/`, and `erdos985-fermat-prime-primitive-root/`;
+- `erdos376-kummer-gcd105/`, `erdos821-odd-totient-no-preimages/`, and `erdos406-ternary-digit-sieve/`;
+- `erdos371-largest-prime-factor-ties/`, `erdos412-sigma-orbits/`, `erdos120-unbounded-affine-copy/`, `erdos168-two-thirds-construction/`, `erdos241-distinct-triple-sums/`, `erdos153-sidon-sumset-bookkeeping/`, `erdos51-totient-preimage-bound/`, `erdos274-infinite-group-coset-cover/`, and `erdos936-powerful-number-congruence/`.
+
+These packets intentionally preserve narrow theorem scope. They are public mathematical assets, not claims that the parent open problems have been solved.
+
 ## Major subject families still present here
 
 The archive currently includes substantial material on:
