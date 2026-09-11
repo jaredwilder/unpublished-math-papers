@@ -18,13 +18,16 @@ This public extraction contains:
 
 - `TCI-PTS-FROZEN.md` — the frozen target and closure-chain record;
 - `ANATOMY-CAMPAIGN-CONTRACT.md` — the ten-mechanism attack ledger and exact claim ceilings;
-- `interval_ht.py` — the interval-arithmetic certifier used for the small-`x` program.
+- `source-parts/` — the recovered `interval_ht.py` source preserved in five ordered UTF-8 parts, together with deterministic reconstruction instructions and source hashes;
+- `SELFTEST-OUTPUT-2026-09-11.txt` — a fresh extraction-time rerun receipt.
 
 The certifier uses `mpmath.iv` outward-rounded interval arithmetic together with explicit quadrature and tail bounds encoded in the source.
 
+The source was split only because the publication connector writes text files one at a time. Concatenating the five parts reconstructs the LF-normalized executable source. `source-parts/RECONSTRUCT.md` records both the original exported-byte SHA-256 and the LF-normalized SHA-256.
+
 ## Independent rerun performed during extraction
 
-On 2026-09-11 the recovered `interval_ht.py` was executed from the exported bytes with
+On 2026-09-11 the recovered source was executed directly from the exported bytes with
 
 ```bash
 python interval_ht.py --selftest
@@ -42,12 +45,12 @@ Those gates check containment for derivative orders 0, 1 and 2, refinement narro
 
 The internal campaign records three point certificates at `t=0.2` and three uniform `t`-box certificates over `t in [0.1,0.2]`. Those claims are described in `ANATOMY-CAMPAIGN-CONTRACT.md`.
 
-However, the session export used for this public recovery did **not** carry all 23 original receipt JSON files as named public artifacts. The full `--certify-tbox` rerun also exceeds the short extraction-time execution window used for this pass.
+However, the session export used for this public recovery did **not** carry all 23 original receipt JSON files as named public artifacts. Full `--certify` / `--certify-tbox` reruns also exceeded the short extraction-time execution window used for this pass.
 
 Therefore this directory currently establishes:
 
 1. the exact target and campaign provenance;
-2. the certifier source code;
+2. the recovered certifier source code and hashes;
 3. a fresh successful rerun of its built-in self-test;
 4. the historical certificate claims exactly as recorded by the source campaign.
 
@@ -64,8 +67,8 @@ The campaign itself also identifies the practical wall: direct interval quadratu
 Cite the exact level of evidence:
 
 - **target theorem:** PTS, unproved;
-- **certifier method:** executable source recovered here;
-- **self-test:** freshly rerun, 8/8;
+- **certifier method:** recovered source preserved here;
+- **self-test:** freshly rerun, 8/8, exit 0;
 - **historical point / t-box certificates:** recorded by the internal campaign, full receipt bundle not yet recovered into this public directory.
 
 That is enough to make the program visible without inflating finite certified territory into a global theorem.
