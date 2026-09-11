@@ -31,7 +31,8 @@ The current extraction wave also added focused provenance packets for:
 - `erdos1052-unitary-perfect-two-prime/` — no odd unitary-perfect integer and exact classification `n=6` in the at-most-two-prime-factor stratum;
 - `erdos826-divisor-tail-bound/`, `erdos1073-factorial-plus-one-divisors/`, `erdos479-power-congruence-family/`, `erdos885-factor-difference-square-duality/`, and `erdos985-fermat-prime-primitive-root/`;
 - `erdos376-kummer-gcd105/`, `erdos821-odd-totient-no-preimages/`, and `erdos406-ternary-digit-sieve/`;
-- `erdos371-largest-prime-factor-ties/`, `erdos412-sigma-orbits/`, `erdos120-unbounded-affine-copy/`, `erdos168-two-thirds-construction/`, `erdos241-distinct-triple-sums/`, `erdos153-sidon-sumset-bookkeeping/`, `erdos51-totient-preimage-bound/`, `erdos274-infinite-group-coset-cover/`, and `erdos936-powerful-number-congruence/`.
+- `erdos371-largest-prime-factor-ties/`, `erdos412-sigma-orbits/`, `erdos120-unbounded-affine-copy/`, `erdos168-two-thirds-construction/`, `erdos241-distinct-triple-sums/`, `erdos153-sidon-sumset-bookkeeping/`, `erdos51-totient-preimage-bound/`, `erdos274-infinite-group-coset-cover/`, and `erdos936-powerful-number-congruence/`;
+- `erdos1085-unit-distance-line/`, `erdos774-dissociated-union-converse/`, `erdos886-easy-epsilon-endpoint/`, `erdos912-factorial-exponent-one-primes/`, `erdos968-prime-ratio-monotonicity/`, `erdos1104-trianglefree-chromatic-monotonicity/`, `erdos1060-k-sigma-parity/`, and `erdos254-rational-theta-divergence/`.
 
 These packets intentionally preserve narrow theorem scope. They are public mathematical assets, not claims that the parent open problems have been solved.
 
