@@ -22,10 +22,38 @@
     "clique_cutset_violations": 0
   },
   "parity_hosts": [
-    {"d":3,"k":1,"vertices":4,"types":1,"active_types":0,"formula":0},
-    {"d":3,"k":2,"vertices":13,"types":5,"active_types":2,"formula":2},
-    {"d":3,"k":3,"vertices":40,"types":14,"active_types":6,"formula":6},
-    {"d":3,"k":4,"vertices":121,"types":30,"active_types":14,"formula":14}
+    {
+      "d": 3,
+      "k": 1,
+      "vertices": 4,
+      "types": 1,
+      "active_types": 0,
+      "formula": 0
+    },
+    {
+      "d": 3,
+      "k": 2,
+      "vertices": 13,
+      "types": 5,
+      "active_types": 2,
+      "formula": 2
+    },
+    {
+      "d": 3,
+      "k": 3,
+      "vertices": 40,
+      "types": 14,
+      "active_types": 6,
+      "formula": 6
+    },
+    {
+      "d": 3,
+      "k": 4,
+      "vertices": 121,
+      "types": 30,
+      "active_types": 14,
+      "formula": 14
+    }
   ],
   "parameters": {
     "local_n": 5,
