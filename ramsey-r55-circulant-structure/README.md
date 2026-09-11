@@ -4,13 +4,9 @@
 **Campaign:** unattended R55, 2026-09-03/04  
 **Public estate release:** 2026-09-11
 
-## Global boundary first
+This directory is a research-program-scale structural study of the classical 41-vertex circulant `(5,5)` Ramsey graph: complete classification inside its order-41 circulant family, explicit self-complementation, exact chromatic and automorphism structure, extension theorems, spectral/coding structure, and a recovered exact order census around 39–42.
 
-This directory does **not** solve `R(5,5)` and does not improve the world bound. The audited literature state in the source packet is
-
-`43 <= R(5,5) <= 46`.
-
-The graph studied here is an old 41-vertex circulant Ramsey graph; the contribution of this release is the exact structural mathematics recovered and mined around that graph, plus sharp extension theorems.
+The graph studied here is an old Ramsey graph. The contribution of this release is the exact structural mathematics and finite classifications mined around it, not a claim that the graph itself is new.
 
 ## The graph
 
@@ -32,7 +28,7 @@ Direct verification gives:
 - no independent 5-set;
 - `omega(G)=alpha(G)=4`.
 
-Thus `G` is a valid 41-vertex `(5,5)` Ramsey graph. This only proves `R(5,5)>=42`, weaker than the known global lower bound.
+Thus `G` is a valid 41-vertex `(5,5)` Ramsey graph.
 
 ## Complete classification inside the 41-vertex circulant family
 
@@ -50,7 +46,18 @@ Therefore:
 
 Every such graph is 20-regular.
 
-The underlying connection set appears in earlier literature, so this classification is published here with **novelty unresolved**, not as a priority claim.
+The underlying connection set appears in earlier literature, so this classification is published here with historical priority unresolved rather than asserted.
+
+## Recovered order census: 39, 40, 41, 42
+
+The release-day archive seam recovered an exact surrounding circulant census, now indexed in [`RECOVERED-CIRCULANT-ORDER-CENSUS.md`](RECOVERED-CIRCULANT-ORDER-CENSUS.md):
+
+- no circulant witness at order `39`;
+- a circulant witness at order `40`;
+- the classified witness family at order `41`;
+- no circulant witness at order `42` after exhaustive traversal of **2,097,151** nonempty inverse-closed connection sets.
+
+Thus existence is **nonmonotone inside the circulant construction family**. This is a construction-family classification, not a global nonexistence result for order 42.
 
 ## Explicit self-complementation
 
@@ -134,10 +141,12 @@ Translations act regularly; for a nontrivial prime-degree Cayley graph the Burns
 - `ONE-VERTEX-EXTENSION.md`: the unique 41-vertex circulant class cannot be extended by **one arbitrary new vertex** to a 42-vertex `(5,5)` Ramsey graph.
 - `K-VERTEX-EXTENSION-CRITERION.md`: a general exact theorem for retaining any fixed mono-`K5`-free base while adding `k` new vertices; one- and two-vertex criteria are special cases, and fixed-`k` extension gets a compact SAT encoding.
 - `SPECTRAL-AND-CODING.md`: exact circular/fractional coloring, strong-square code, Shannon capacity, dual `K4`/independent-set resolutions, and the exact spectral symmetry polynomial.
-- `SAT-INTERFACE.md`: the honest finite `n=42/43` global Ramsey decision interface and its two unfilled proof obligations.
+- `SAT-INTERFACE.md`: the finite `n=42/43` global Ramsey decision interface and its two unfilled proof obligations.
 
-## Novelty / literature discipline
+## Global scope and literature discipline
 
-The graph itself and the 40/41 circulant constructions are not new. The source audit specifically refused to claim novelty for the exact invariants without deeper catalog/original-source checking. Focused searches did not locate explicit prior statements of the one-isomorphism-class result, the one-vertex nonextension theorem, or `chi_c(G)=41/4`, but that absence is not a novelty proof.
+The audited literature state in the source packet was `43 <= R(5,5) <= 46`; this directory does not change the global Ramsey bound.
 
-The release therefore establishes provenance and makes the mathematics inspectable without claiming a new global Ramsey bound or historical priority.
+The graph itself and the 40/41 circulant constructions are not new. Focused searches in the source campaign did not locate explicit prior statements of the one-isomorphism-class result, the one-vertex nonextension theorem, or `chi_c(G)=41/4`, but absence from those searches is not a novelty proof.
+
+This program has clearly crossed standalone-repository scale. Until a dedicated writable shell exists, this directory is the canonical public research surface and should migrate intact rather than be split into isolated records.
