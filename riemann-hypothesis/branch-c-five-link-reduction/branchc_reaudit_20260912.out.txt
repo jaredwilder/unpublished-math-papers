@@ -1,0 +1,4 @@
+seeded non-real-rooted polynomials tested: 2284
+interior hits for original criterion: 1445
+hits violating everywhere-positive coefficient premise: 1445
+VERDICT: 1445/1445 purported counterexamples lie outside the infinite positive-coefficient hypothesis.
