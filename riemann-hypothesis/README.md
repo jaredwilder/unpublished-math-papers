@@ -1,10 +1,10 @@
-# Riemann zeta research program — determinant curvature, simple-zero bounds, and de Bruijn–Newman simplicity
+# Riemann zeta research program — determinant curvature, Branch C reduction, simple-zero bounds, and de Bruijn–Newman simplicity
 
 **Author:** Jared Wilder  
 **Campaign dates:** 2026-08-11 and 2026-09-11  
 **Public extraction:** 2026-09-11
 
-This directory exposes **three distinct research lanes** around the Riemann zeta function. None is presented as a proof of the Riemann Hypothesis.
+This directory exposes **four distinct research lanes** around the Riemann zeta function. None is presented as a proof of the Riemann Hypothesis.
 
 The point of this front door is to make the mathematics discoverable without asking a reader to infer status from historical workflow filenames or from whether a larger conjecture remains open.
 
@@ -66,7 +66,35 @@ The source state was not accepted as an authority ledger without review. In part
 
 The corrected release keeps the exact reusable mathematics and drops the overclaims.
 
-## 2. Simple-zero proportion candidate
+## 2. Branch C — five-link sufficient reduction
+
+Directory:
+
+`branch-c-five-link-reduction/`
+
+The live Branch C program is organized as a **five-link sufficient chain to RH**. Its current state records the following reduction:
+
+- the five-link implication chain is sealed in the formal layer (`epoch_twenty_chain_sealed`, K172, recorded `CLOSED` / `KERNEL_CHECKED`);
+- the third link was recast after an earlier dispersion formulation was rejected;
+- its surviving first rung was reduced algebraically to a quadratic (`first_rung_is_a_quadratic`, K208, `CLOSED`);
+- the first-rung numerical content was settled to 22 digits with a large sign margin (`first_rung_numbers_settled`, K210, `CLOSED`);
+- the run records an analytic tail below the displayed numerical uncertainty;
+- higher rungs are propagated by a monotonicity mechanism verified through rung 40;
+- the only remaining obligation for this link is certified enclosure replacing ordinary numerical quadrature.
+
+The live bottleneck K211 / BN5 therefore records the architectural state as
+
+`4 open analytic links + 1 finite certification job`.
+
+The mathematical contribution isolated here is the **collapse of one full link in a five-link sufficient RH architecture from an analytic theorem problem to a bounded certification problem**.
+
+A dedicated prior-art firewall is in
+
+`BRANCH-C-NOVELTY-AUDIT-2026-09-11.md`.
+
+That audit explicitly separates the present reduction from known low-degree Turán inequalities, Jensen/Laguerre programs, classical kernel concavity, and the 2026 Planat–Solé second-level-concavity theorem.
+
+## 3. Simple-zero proportion candidate
 
 Directory:
 
@@ -94,7 +122,7 @@ The packet includes:
 
 Accordingly this lane is a **machine-checked candidate extension pending independent reproduction / Arb rerun / expert review**.
 
-## 3. PTS / de Bruijn–Newman interval-certifier program
+## 4. PTS / de Bruijn–Newman interval-certifier program
 
 Directory:
 
@@ -122,11 +150,12 @@ During this public extraction the certifier's built-in self-test was rerun from 
 
 ## Repository status
 
-These three lanes form one coherent **Riemann-zeta research program** rather than archive debris:
+These four lanes form one coherent **Riemann-zeta research program** rather than archive debris:
 
 1. determinant / total positivity and fixed-slope curvature;
-2. simple-zero proportion computation;
-3. de Bruijn–Newman positive-time simplicity / interval certification.
+2. Branch C five-link sufficient reduction;
+3. simple-zero proportion computation;
+4. de Bruijn–Newman positive-time simplicity / interval certification.
 
 They have different proof obligations and evidence classes. They belong together at the subject level, but their claims must not be blended.
 
