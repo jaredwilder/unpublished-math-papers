@@ -1,0 +1,41 @@
+{
+  "campaign": "Riemann Hypothesis — Ten-Round Terminal Encirclement",
+  "date": "2026-08-11",
+  "court_disposition": "StrictFrontierTheorem",
+  "rh_closed": false,
+  "terminal_wall": "Compactified-Ratio Collective-Saddle Positivity for consecutive Toeplitz minors",
+  "claims": [
+    {"id":"R1-A","round":1,"status":"BANKED_WITH_TOPOLOGY_DEPENDENCY","authority":"proof sketch + standard Weil criterion","claim":"Countable dense Gram reduction; RH failure has finite rational negative witness after fixing a continuous Weil test space."},
+    {"id":"R1-X","round":1,"status":"KILLED","authority":"audit","claim":"Unjustified positive rank-one decomposition of the prime side."},
+    {"id":"R2-A","round":2,"status":"BANKED","authority":"exact algebra","claim":"Re rho=1/2 iff |(rho-1)/rho|=1."},
+    {"id":"R2-C","round":2,"status":"BANKED","authority":"proof in packet","claim":"Absolutely convergent weighted transformed-zero moments are bounded by M0 for all n iff RH."},
+    {"id":"R2-D","round":2,"status":"BANKED","authority":"proof in packet","claim":"Toeplitz PSD hierarchy from weighted moments is equivalent to RH."},
+    {"id":"R3-A","round":3,"status":"BANKED","authority":"standard complex analysis","claim":"xi(s)=F(s(1-s)); F entire of order 1/2, genus zero."},
+    {"id":"R3-B","round":3,"status":"BANKED_WITH_STANDARD_THEOREM","authority":"Stieltjes moment theorem + analytic continuation argument","claim":"RH iff transformed power-sum sequence is Stieltjes."},
+    {"id":"R3-D","round":3,"status":"BANKED","authority":"exact calculus","claim":"h(x)=xi'(sigma)/[(2sigma-1)xi(sigma)] with sigma>1."},
+    {"id":"R4-P","round":4,"status":"BANKED","authority":"exact Laplace transform","claim":"Prime Gaussian heat kernel formula."},
+    {"id":"R4-X","round":4,"status":"KILLED","authority":"asymptotic diagnosis","claim":"Crude archimedean domination of prime kernel."},
+    {"id":"R5-X","round":5,"status":"KILLED","authority":"exact derivative sign","claim":"Atomwise complete monotonicity / literal prime SOS."},
+    {"id":"R5-A","round":5,"status":"BANKED_SUFFICIENT_LEMMA","authority":"Hurwitz/Rouche/Laguerre-Polya","claim":"Real-rooted locally-uniform approximants would imply RH."},
+    {"id":"R6-G","round":6,"status":"BANKED","authority":"exact zero dynamics","claim":"Adjacent heat-flow gap evolution identity."},
+    {"id":"R6-X","round":6,"status":"KILLED","authority":"explicit counterexample","claim":"Generic derivative-to-function hyperbolicity propagation."},
+    {"id":"R7-V","round":7,"status":"BANKED","authority":"exact calculus","claim":"Critical-value logarithmic derivative equals inverse-square zero energy."},
+    {"id":"R8-A","round":8,"status":"BANKED","authority":"exact algebraic/dynamical proof","claim":"R_j=|H_t(c_j)|/g_j^2 is strictly increasing while adjacent zeros are real and distinct."},
+    {"id":"R8-X","round":8,"status":"KILLED_AS_RH_CLOSE","authority":"genericity audit","claim":"R8-A alone prohibits Newman collision."},
+    {"id":"R9-A","round":9,"status":"BANKED","authority":"Desnanot-Jacobi","claim":"D_{r+1,k}D_{r-1,k}=D_{r,k}^2-D_{r,k-1}D_{r,k+1}."},
+    {"id":"R9-X","round":9,"status":"KILLED","authority":"exact algebra","claim":"Condensation alone propagates tail positivity inward."},
+    {"id":"T10-1","round":10,"status":"BANKED","authority":"exact series/integral interchange","claim":"G(z)=∫Phi(u) cosh(u sqrt(z)) du; each fixed-u atom is PF_infinity."},
+    {"id":"T10-3","round":10,"status":"BANKED","authority":"determinant multilinearity","claim":"Exact positive-measure determinant lift for D_{r,k}."},
+    {"id":"T10-4","round":10,"status":"BANKED_NO_GO","authority":"exact r=2 algebra","claim":"Natural symmetrized determinant integrand has both signs."},
+    {"id":"T10-6","round":10,"status":"BANKED_STANDARD","authority":"Jacobi-Trudi","claim":"D_{r,k} is the rectangular Schur value s_(k^r) under h_n=a_n."},
+    {"id":"T10-8","round":10,"status":"BANKED","authority":"exact change of measure","claim":"Normalized block entries are gamma ratios times full MGF of X_k=2 log U under the k-tilted Phi measure."},
+    {"id":"CSP","round":10,"status":"UNPROVED_CANDIDATE","authority":"none","claim":"Uniform compactified-ratio collective-saddle positivity would close all sufficiently high orders; an additional effective all-k closure for the finitely many residual orders is required before RH follows."}
+  ],
+  "external_receipts": [
+    {"ref":"arXiv:2607.16795","claim":"D_{r,k}>0 for r>=2 and k>=10^18 r^3; critical complementary region open."},
+    {"ref":"arXiv:2602.20313v2","claim":"Certified negative 5x5 Toeplitz minor for continuous de Bruijn-Newman kernel; stronger v1 threshold claims partly withdrawn."},
+    {"ref":"arXiv:2602.04022","claim":"Finite prime-derived Weil approximants lie on critical line; convergence strategy remains open."},
+    {"ref":"arXiv:1801.05914","claim":"de Bruijn-Newman constant Lambda >= 0."},
+    {"ref":"Clay Mathematics Institute","claim":"Riemann Hypothesis remains a Millennium Prize Problem."}
+  ]
+}
