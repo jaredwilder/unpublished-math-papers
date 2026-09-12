@@ -1,117 +1,146 @@
-# Branch C — historical reduction and decisive refutation
+# Branch C — determinant criterion: readjudicated and open as a route
 
 **Author:** Jared Wilder  
-**Historical intermediate state:** 2026-09-11 / epoch 20  
-**Refutation:** 2026-09-12 / epoch 23
+**Historical reduction:** 2026-09-11 / epochs 20–22  
+**Erroneous retraction:** 2026-09-12 / epoch 23  
+**Readjudication:** 2026-09-12
 
 ## Current verdict
 
-**Branch C is closed as a route to the Riemann Hypothesis.**
+**Branch C is not refuted by the epoch-23 finite-polynomial falsifier. It is also not a proof of RH.**
 
-The earlier campaign successfully reduced and certified a substantial determinant/coefficient criterion, including kernel-checked algebra, exact rational interval certification, and a finite first-rung reduction. That mathematics remains valid at its stated scope.
+The current state is sharper:
 
-What failed was the top implication:
+1. the global determinant criterion used by the branch is a valid sufficient criterion for the Riemann target when applied to the infinite xi coefficient sequence with `a_k>0` for every `k`;
+2. the epoch-23 `1686/3059` and `1445/2284` counterexamples are finite-support objects tested only on an interior lattice and therefore lie outside the load-bearing strict/infinite hypothesis;
+3. the campaign nevertheless did **not** prove the global criterion for the xi coefficients, because several analytic reductions remained measured or open and were later promoted too aggressively to a certificate.
 
-> the certified criterion does **not** imply real-rootedness / RH.
+The full readjudication is in:
 
-The failure is explicit and reproducible.
+`BRANCH-C-READJUDICATION-2026-09-12.md`
 
-## Exact falsifier
+## The global criterion
 
-The criterion under test was the full square-free lattice inequality
-
-\[
-rD_{r,k-1}D_{r,k+1}\le kD_{r+1,k}D_{r-1,k}.
-\]
-
-A family was constructed by multiplying positive linear factors by one irreducible quadratic
+For consecutive Toeplitz minors
 
 \[
-1+pz+qz^2,
-\qquad p^2<4q,
+D_{r,k}=\det[a_{k+j-i}]_{i,j=0}^{r-1},
+\qquad a_n=0\ (n<0),
 \]
 
-so every test object contains a provably non-real conjugate pair while retaining nonnegative coefficients.
-
-Fresh rerun from the 2026-09-12 session export:
-
-- 3,059 non-real-rooted polynomials tested;
-- **1,686 satisfy the criterion anyway**.
-
-A second audit removed the three strongest objections simultaneously:
-
-- demand the criterion at every available determinant order;
-- keep shifts in the interior of the finite coefficient window;
-- test both the square-free reduction and the original entry form.
-
-Result:
-
-- 2,284 non-real-rooted polynomials tested at full available depth;
-- **1,445 satisfy the square-free criterion**;
-- **the same 1,445 satisfy the original entry form**.
-
-Therefore the criterion is a genuine necessary condition on the intended real-rooted family, but it is **not sufficient**.
-
-An explicit degree-five witness is
+Branch C studies
 
 \[
-a=(1,113/12,2549/72,1265/16,32629/288,1615/24),
+\boxed{
+(k+r)D_{r,k-1}D_{r,k+1}\le kD_{r,k}^2
+}
+\qquad(r,k\ge1),
 \]
 
-coming from a factor with
+or equivalently, using Desnanot–Jacobi,
 
 \[
-p=4/3,\qquad q=19/4,\qquad p^2-4q=-155/9<0.
+\boxed{
+rD_{r,k-1}D_{r,k+1}
+\le kD_{r+1,k}D_{r-1,k}.}
 \]
 
-It contains a non-real conjugate pair and passes both criterion forms at every admissible interior lattice entry.
+If `a_k>0` for every `k`, the original form gives
 
-Reproducibility files in this directory:
+\[
+D_{r+1,k}D_{r-1,k}
+\ge \frac{r}{k+r}D_{r,k}^2>0.
+\]
 
-- `criterion_is_not_sufficient.py`
-- `criterion_is_not_sufficient.out.txt`
-- `criterion_kill_audit.py`
-- `criterion_kill_audit.out.txt`
+Starting from `D_{0,k}=1` and `D_{1,k}=a_k>0`, two-step induction in `r` yields strict positivity of every consecutive minor. The `k=0` blocks are triangular and have determinant `a_0^r>0`.
 
-## What survives
+A classical consecutive-minor criterion, explicitly quoted as Theorem D and in Toeplitz-sequence form as Lemma 3 in Katkova's 2005 paper *Multiple positivity and the Riemann zeta-function*, promotes strict consecutive-minor positivity to the relevant `PF_m` property for every finite `m`, hence to `PF_infinity`.
 
-The refutation does **not** invalidate the lower mathematics developed while studying the criterion. In particular, the following remain valid at their own scope:
+Source: https://arxiv.org/html/math/0505174v1
 
-- Desnanot–Jacobi identities and rearrangements;
+For the transformed xi generating function, `PF_infinity` is the classical Laguerre–Pólya/ASWE condition equivalent to RH.
+
+So the top implication is real.
+
+## Why the epoch-23 kill fails
+
+The old audit deliberately restricted to the interior of a finite polynomial coefficient window:
+
+```python
+if k+r+1>=N: continue
+```
+
+Every test object is a polynomial. Hence after its last coefficient,
+
+\[
+a_N=0,
+\qquad D_{1,N}=0.
+\]
+
+It therefore cannot satisfy the infinite positive-coefficient / strict-consecutive-minor hypothesis of the Riemann sequence.
+
+The fresh exact re-audit reproduces the historical counts and records the domain failure:
+
+```text
+seeded non-real-rooted polynomials tested: 2284
+interior hits for original criterion: 1445
+hits violating everywhere-positive coefficient premise: 1445
+```
+
+See:
+
+- `branchc_reaudit_20260912.py`
+- `branchc_reaudit_20260912.out.txt`
+
+The small sequence `a=(1,0,0,0,0,1)` remains a valid counterexample to **nonnegative** consecutive-minor positivity implying total positivity. It does not refute the **strict** criterion.
+
+## What remains genuinely proved or certified
+
+The readjudication does not disturb the standalone mathematics accumulated by the branch, including:
+
+- Desnanot–Jacobi identities and exact rearrangements;
 - determinant/curvature normalizations;
-- exact first-rung algebraic reductions;
-- exact rational interval certifications of the theta-kernel inequalities;
-- kernel-checked equivalences and obstruction lemmas;
-- the multiplicity-blindness theorem for consecutive Toeplitz minors;
-- the August Encirclement II–V determinant geometry.
+- exact factorial/exponential benchmark identities;
+- the exact first-rung/corner reductions;
+- rational interval certifications of theta-kernel inequalities;
+- the Gaussian-normalized moment formulation;
+- the exact theta-tail enclosure;
+- recovered kernel-checked algebraic receipts;
+- the August determinant geometry, boundary comparison and Schur/phase results.
 
-Those results are mathematical assets. They simply do not close RH through this criterion.
+Those objects retain their stated scope.
 
-## Historical intermediate state
+## What is *not* proved
 
-At epoch 20 the live state had reached a real reduction:
+The epoch-22 sentence that the criterion's “lower half is complete” does not survive dependency-level review.
 
-- five-link chain formalized;
-- one link reduced to a first-rung quadratic;
-- numerical sign settled with large margin;
-- finite certification remaining.
+Load-bearing unresolved steps include:
 
-That intermediate state was published before the later sufficiency falsifier was run. The later test is decisive and supersedes the RH-route interpretation of that snapshot.
+- **order/local ascent:** the campaign measured the determinant-lattice order step but explicitly left its proof open;
+- **exact order-arm reduction:** the identification of the order-arm residue with the tilted-log variance was numerical/asymptotic with exact error terms left open;
+- **variance comparison:** the theta tilted-log variance was measured below the Gaussian/trigamma target, not proved globally;
+- **localization:** the tilted density is log-convex in a far-left region, so global Brascamp–Lieb cannot be invoked as written;
+- **mode curvature is not variance control:** the reciprocal curvature at the mode was observed to track the variance from below. Proving a lower bound on curvature at one point cannot by itself provide the required global upper bound on variance.
 
-## Campaign lesson
+The campaign itself had correctly identified the need for a restricted-measure/localization repair before later skipping it.
 
-The route was killed by a test that should precede expensive certification:
+## Correct frontier
 
-> **Before proving a criterion on the target object, first test whether the criterion can hold on an explicit family for which the target property is false.**
+Branch C is therefore a **live sufficient-criterion route with a real analytic gap**, not a dead route and not a solved one.
 
-One counterexample refutes the implication. Here there are more than a thousand.
+The decisive remaining tasks are:
 
-## Current campaign map
-
-As of the 2026-09-12 export:
-
-- **Branch A:** active, but its best candidate quantities were successively falsified or rendered uninformative;
-- **Branch B:** screened and passing the campaign's three evidence laws, but otherwise untouched;
-- **Branch C:** **closed as dead**.
+1. prove or refute the order/local-ascent statement on the actual xi determinant lattice;
+2. establish an exact localization/variance inequality for the tilted theta measure, including the non-log-concave far-left tail and its contribution;
+3. reconstruct an exact implication from those analytic statements to the determinant criterion at every order and shift;
+4. then apply the strict consecutive-minor theorem.
 
 RH remains open.
+
+## Historical record
+
+The epoch-23 falsifier sources and outputs remain in this directory. They should now be read as a negative-control lesson:
+
+> a false-target test only refutes an implication when the false-target object satisfies the **same global hypotheses** as the intended theorem.
+
+The earlier campaign checked an interior finite analogue and silently dropped the infinite-support/strictness hypothesis. The readjudication corrects that scope error without deleting the original evidence.
