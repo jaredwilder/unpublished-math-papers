@@ -1,0 +1,7 @@
+non-real-rooted polynomials tested at FULL depth and interior shift: 2284
+satisfying the square-free criterion : 1445
+satisfying the ORIGINAL entry form   : 1445
+
+THE KILL SURVIVES the audit at full depth, interior shifts, and both forms.
+
+Fresh rerun during public extraction on 2026-09-12: exit 0, identical counts.
