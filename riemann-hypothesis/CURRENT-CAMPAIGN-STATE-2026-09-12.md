@@ -1,131 +1,126 @@
-# RH campaign state — 2026-09-12 export
+# RH campaign state — 2026-09-12 forensic readjudication
 
 **Author:** Jared Wilder  
-**Snapshot:** active session export at absolute MSL round 647
+**Source snapshot:** active session export through absolute MSL round 647  
+**Readjudication:** full-dump forensic pass, 2026-09-12
 
-This note records the campaign's current mathematical state after the 2026-09-12 export. It supersedes the earlier screenshot-era Branch C status.
+This note supersedes the earlier same-day status that called Branch C dead.
 
 ## Headline
 
-The current campaign has **no live RH route**.
+**RH remains open. Branch C is a live sufficient-criterion route, but its global analytic proof is incomplete.**
 
-- **Branch C:** closed as a route after an exact counterexample audit proved its determinant criterion insufficient for real-rootedness.
-- **Branch A:** active in principle, but its best computable candidate quantities were successively falsified or rendered uninformative.
-- **Branch B:** the only lane that passed the campaign's current screening laws; it had not yet been attacked beyond a finite Chebyshev-error probe.
+- **Branch C:** reopened after the epoch-23 falsifier was found to test finite terminating polynomials outside the infinite positive-coefficient / strict-minor hypothesis. The classical top implication is valid. The remaining gap is below it: the campaign did not prove the full determinant inequality for every order and shift.
+- **Branch A:** its pair-energy and natural polynomial-truncation/Hermite candidates were falsified or rendered uninformative; its numerical heat-flow instrument remains useful at finite scope.
+- **Branch B:** screened and arithmetically clean, but only probed finitely through `x=200000` in this export.
 
-RH remains open.
+## Branch C — corrected adjudication
 
-## Branch C — decisive refutation
-
-The determinant criterion
+The determinant criterion is
 
 \[
-rD_{r,k-1}D_{r,k+1}\le kD_{r+1,k}D_{r-1,k}
+(k+r)D_{r,k-1}D_{r,k+1}\le kD_{r,k}^2,
+\qquad r,k\ge1.
 \]
 
-was tested on polynomials containing an explicit irreducible quadratic factor and hence a provably non-real conjugate pair.
-
-Fresh rerun from the exported source:
-
-- 3,059 non-real-rooted polynomials tested;
-- 1,686 satisfy the criterion.
-
-Full-depth audit:
-
-- 2,284 non-real-rooted polynomials tested;
-- 1,445 satisfy the square-free criterion;
-- the same 1,445 satisfy the original entry form.
-
-The route's lower identities and certifications survive, but the criterion cannot imply real-rootedness.
-
-A second sufficiency screen tested five nearby coefficient criteria on 900 non-real-rooted positive-coefficient polynomials:
-
-| criterion | admitted false-target objects |
-|---|---:|
-| ordinary Newton/log-concavity | 899 / 900 |
-| sharp Newton | 169 / 900 |
-| Hankel depth 3 | 846 / 900 |
-| sharp Newton + Hankel depth 3 | 169 / 900 |
-| sharp Newton + derivative condition | 169 / 900 |
-
-On this constructed family, stacking the last two conditions adds no exclusion beyond sharp Newton.
-
-## Branch A — heat-flow instruments built and killed
-
-Branch A works directly with the de Bruijn–Newman deformation, so its terminal criterion is equivalent to the target by construction.
-
-### Pair-energy experiment
-
-The campaign constructed a flat-cost moment-series evaluator and derived a precision rule for cancellation. A sized run produced seven zeros at each of `t=0.2,0,-0.2` and found the pair energy
+Equivalently by Desnanot–Jacobi,
 
 \[
-E(t)=\sum_{i<j}\frac1{(z_i-z_j)^2}
+rD_{r,k-1}D_{r,k+1}
+\le kD_{r+1,k}D_{r-1,k}.
 \]
 
-rising as the deformation parameter decreased:
+For an infinite coefficient sequence with `a_k>0` for every `k`, the original form gives
 
-- six-zero truncation: `0.09964308 -> 0.10092331 -> 0.10241583`;
-- all seven zeros: `0.13036998 -> 0.13159389 -> 0.13301904`.
+\[
+D_{r+1,k}D_{r-1,k}
+\ge \frac{r}{k+r}D_{r,k}^2>0.
+\]
 
-A 64-piece rigorous moment envelope then bounded the zero displacement caused by truncation; at the hardest reported point `z=85` the shift bound was about `0.001998`, versus spacing of order six.
+Starting from `D_{0,k}=1` and `D_{1,k}=a_k>0`, induction gives strict positivity of every consecutive Toeplitz minor. The `k=0` minors equal `a_0^r`.
 
-### Why pair energy died
+Katkova's 2005 paper *Multiple positivity and the Riemann zeta-function* explicitly quotes the classical strict-consecutive-minor criterion (Theorem D) and a Toeplitz-sequence form (Lemma 3) that promote these minors to `PF_m`; applying this for every finite `m` gives `PF_infinity`. For the transformed xi generating function, the classical ASWE/Laguerre–Pólya equivalence identifies that with RH.
 
-The quantity is not sufficient for real-rootedness. Exact finite atomic controls show:
+Source: https://arxiv.org/html/math/0505174v1
 
-- all-real controls can have positive energy (`1.4635`, `5.9258`, ...);
-- an all-complex control can have energy exactly `0`.
+### Why the epoch-23 falsifier does not apply
 
-The campaign also observed the energy rise as a pair approached an edge and then collapse after the pair left, making the proposed ceiling anti-correlated with the desired property.
+The historical falsifier constructed finite non-real-rooted polynomials and skipped the terminating boundary with
 
-### Hermite-sequence route
+```python
+if k+r+1>=N: continue
+```
 
-A Hermite/minor criterion cleanly separated finite all-real controls from finite complex controls and was non-tautological on that bench.
+A finite polynomial has `a_N=0`, hence `D_{1,N}=0`; it cannot satisfy the everywhere-positive infinite-support premise used above.
 
-Applied to polynomial truncations of the actual entire function, however, it failed uniformly: the truncations themselves contain many spurious complex roots. After normalization, the reported truncations had only `0/10`, `2/16`, `2/22`, `2/26`, `2/30`, and `4/34` real roots, and the Hermite minors remained negative.
+A fresh exact seeded re-audit reproduces the historical count:
 
-Thus the test is uninformative on this approximation sequence even if the underlying entire function were real-rooted.
+```text
+2284 tested
+1445 interior hits
+1445/1445 violate the everywhere-positive coefficient premise
+```
+
+Therefore the old `1445/2284` screen is not a counterexample to the global theorem.
+
+See `branch-c-five-link-reduction/BRANCH-C-READJUDICATION-2026-09-12.md`.
+
+## Why this still does not prove RH
+
+The epoch-22 “lower half complete” label also fails forensic review.
+
+The archive itself records the missing steps:
+
+1. **Order/local-ascent proof missing.** `K347` is `COMPUTATION_SUPPORTED` and explicitly leaves the order-step proof open.
+2. **Exact order-arm reduction missing.** `K384` identifies the order-arm residue with the tilted-log variance only numerically/asymptotically and leaves exact error terms open.
+3. **Variance inequality unproved.** `K385` measures the theta tilted-log variance below the Gaussian/trigamma target and explicitly records the variance comparison as open.
+4. **Global curvature hypothesis false.** `K308` finds a far-left region where the tilted density is log-convex, so a global Brascamp–Lieb application is unavailable.
+5. **Localization repair incomplete.** `K310` proposes restricting away the bad region but leaves the crossing location, discarded mass, and exact induced variance error to be proved.
+6. **Mode-curvature promotion is invalid as stated.** `K389` says reciprocal curvature at the mode tracks variance from below; that direction cannot upper-bound the variance. `K390` correctly says a localization estimate is required. `K391` then nevertheless promotes a mode-curvature bound to the whole criterion.
+7. **The final certificate inherited computation-supported ancestors.** `K428` labels the lower half a certificate even though its transitive dependency graph contains the unresolved nodes above.
+
+The correct live Branch C obligation is therefore an exact global implication
+
+\[
+\text{theta-kernel analysis}
+\Longrightarrow
+\text{determinant criterion for every }(r,k),
+\]
+
+with no empirical monotonicity and no unproved variance/localization substitution.
+
+## Branch A — heat-flow instruments and obstructions
+
+The campaign's pair energy
+
+\[
+E(t)=\sum_{i<j}(z_i-z_j)^{-2}
+\]
+
+is not a sufficient statistic for real-rootedness: exact complex-root controls can have energy zero while real controls have positive energy.
+
+The Hermite/minor separator works on exact finite controls but becomes uninformative on natural polynomial truncations of the target entire function because those truncations themselves carry many spurious complex roots.
+
+A 64-piece truncation envelope did validate the finite numerical zero window used by the branch; the obstruction is the statistic/approximant logic, not merely bad numerics.
 
 ## Branch B — screened, not solved
 
-The remaining untouched lane is the classical arithmetic Chebyshev-error formulation of RH.
+The arithmetic Chebyshev-error lane was only probed directly from prime powers through `x=200000`. Those finite values make no asymptotic RH claim.
 
-The campaign's finite probe computed `psi(x)-x` exactly from prime powers through `x=200000`:
-
-| x | psi(x)-x | |err|/sqrt(x) |
-|---:|---:|---:|
-| 1,000 | -3.3190878 | 0.10495877 |
-| 10,000 | 13.396693 | 0.13396693 |
-| 50,000 | -14.042261 | 0.062798898 |
-| 100,000 | 51.564026 | 0.16305977 |
-| 200,000 | 26.938798 | 0.060236983 |
-
-These finite values prove nothing about RH. Their purpose was only to verify that Branch B passes the campaign's three methodological screens:
-
-1. the criterion is genuinely sufficient/equivalent rather than merely necessary;
-2. it transports the problem into a different arithmetic quantity rather than restating the answer;
-3. the quantity can be computed directly rather than inferred from a contaminated approximant.
-
-Branch B is therefore the next campaign lane, not a solved or even substantially advanced RH argument.
-
-## Methodological theorem bank produced by the campaign
-
-The campaign also formalized several reusable laws:
-
-- one false-target witness satisfying a proposed criterion refutes the entire implication;
-- a finite sum of nonnegative terms dominates each term;
-- removing a positive term lowers such an energy;
-- a separator equivalent to the target property adds no information;
-- a test constant across every approximant in a family discriminates nothing about the limiting target.
-
-These are proof-engineering laws, not facts about zeta.
+Branch B remains a clean alternative lane, but Branch C is no longer excluded.
 
 ## Current handoff
 
-At the export boundary:
+The corrected state is
 
 \[
-\boxed{\text{Branch C dead; Branch A without a usable sufficient quantity; Branch B screened and untouched.}}
+\boxed{
+\begin{array}{ll}
+\text{Branch A:}&\text{useful finite instrument; proposed certificates failed;}\\
+\text{Branch B:}&\text{screened and largely untouched;}\\
+\text{Branch C:}&\text{valid sufficient criterion, analytic proof incomplete;}\\
+\text{RH:}&\text{open.}
+\end{array}}
 \]
 
-The next mathematical work should begin from Branch B or from a genuinely new criterion that passes a false-target sufficiency screen before expensive certification is attempted.
+The highest-value Branch C work is now adversarial and specific: prove or kill the order/local-ascent law and the tilted-theta localization/variance inequality, then rebuild the exact dependency chain to every determinant entry before any closure claim is entertained.
