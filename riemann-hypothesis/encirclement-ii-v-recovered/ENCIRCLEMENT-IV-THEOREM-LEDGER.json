@@ -1,0 +1,25 @@
+{
+  "campaign": "RH Encirclement IV — internal ten rounds",
+  "date": "2026-08-11",
+  "rh_closed": false,
+  "disposition": "MajorReduction / StrictFrontier",
+  "exact_assets": [
+    "Bessel PF-infinity comparison family curvature formula",
+    "de Bruijn-Newman coefficient heat equation",
+    "adaptive harmonic equation for d/dt log determinant ratio",
+    "superharmonic second-time derivative equation",
+    "primal/dual Jacobi-Trudi determinant identity",
+    "Vandermonde sign cancellation for reciprocal-pole asymptotics"
+  ],
+  "new_theorems": [
+    "No bounded first nucleation under positive-boundary homotopy",
+    "Dual verified-pole eventual positivity at fixed original shift"
+  ],
+  "killed": [
+    "Hoggatt-2 is uniquely selected by leading curvature",
+    "Any fixed Bessel order is the terminal moving-saddle benchmark",
+    "A finite bounded lattice point can be the first global PF-infinity loss"
+  ],
+  "live_terminal_gate": "No-Escape fixed-slope Phragmen-Lindelof / growth theorem for heat-flow harmonic velocity",
+  "candidate_model": "Lambert-W Riemann-zero-density canonical PF-infinity product"
+}
