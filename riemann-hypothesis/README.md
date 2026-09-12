@@ -1,12 +1,10 @@
-# Riemann zeta research program — determinant curvature, Branch C reduction, simple-zero bounds, and de Bruijn–Newman simplicity
+# Riemann zeta research program — determinant geometry, Branch C reduction, simple-zero bounds, and de Bruijn–Newman simplicity
 
 **Author:** Jared Wilder  
 **Campaign dates:** 2026-08-11 and 2026-09-11  
 **Public extraction:** 2026-09-11
 
-This directory exposes **four distinct research lanes** around the Riemann zeta function. None is presented as a proof of the Riemann Hypothesis.
-
-The point of this front door is to make the mathematics discoverable without asking a reader to infer status from historical workflow filenames or from whether a larger conjecture remains open.
+This directory is the public subject home for the RH/zeta mathematics recovered from the current release estate.
 
 ## 1. Determinant / total-positivity program
 
@@ -14,57 +12,51 @@ Primary historical record:
 
 `RH-TERMINAL-ENCIRCLEMENT-2026-08-11.md`
 
-Adversarial extraction from the 2026-09-11 MSL snapshot:
+Recovered Encirclement II–V theorem spine:
+
+`encirclement-ii-v-recovered/`
+
+2026-09-11 determinant-curvature extraction:
 
 `determinant-curvature-2026-09-11/`
 
-Additional exact bridge recovered from live result W131:
+Additional exact quartic/Gamma bridge:
 
 `gamma-theta-quartic-bridge/`
 
-The program studies
+### Exact determinant geometry now public
 
-`G(z) = (1/8) xi(1/2 + sqrt(z)/2)`
+- Desnanot–Jacobi gives `R+A=1` for the two normalized neighboring-minor ratios.
+- The induced nonlinear odds lattice admits the exact rational family
+  `Y_(r,k)=(r+mu)/(k+nu)`; the Toeplitz boundary selects the factorial orbit `Y*=r/k`.
+- For the factorial comparison determinant,
+  `D0_(r,k)=prod_{j=0}^{r-1} j!/(k+j)!`.
+- Writing `U=log(D/B)` against any positive comparison determinant array gives the exact nonlinear comparison equation
+  `R_B exp(Delta_k^2 U) + A_B exp(Delta_r^2 U) = 1`.
+- On finite lattice domains this equation has a strong maximum/comparison principle and a boundary-homotopy positivity theorem.
+- Along the de Bruijn–Newman coefficient flow, `V=partial_t U` satisfies the exact adaptive harmonic equation
+  `R_D Delta_k^2 V + A_D Delta_r^2 V = 0`, while `partial_t^2 U` is superharmonic with an explicit negative quadratic source.
+- Consequently a first loss of consecutive-minor positivity cannot nucleate at a bounded lattice point with positive surrounding boundary; any first-loss sequence must escape in index space.
+- Dual Jacobi–Trudi gives an exact order/shift swap through the reciprocal series.
+- In the real-zero phase, consecutive minors are rectangular Schur polynomials. Their normalized zero-parameter sensitivities satisfy `0 <= p_j <= 1/k` and sum to one.
+- Sparse complex angular defects obey the exact phase criterion
+  `r * sum |theta_j| < pi/2  =>  D_(r,k) > 0`.
+- For a single conjugate pair, any detecting determinant order must satisfy
+  `r >= pi/(2|theta|)`.
 
-through its moment coefficients and consecutive Toeplitz determinants
+The recovered verifier packets report **7/7 + 5/5 + 6/6 + 6/6** successful algebraic/combinatorial checks across Encirclement II–V. See `encirclement-ii-v-recovered/VERIFIER-SUMMARY.md`.
 
-`D_{r,k} = det[a_{k+j-i}]`.
+### 2026-09-11 curvature results
 
-### Exact results now surfaced
+- exact curvature reparameterization `Z=(r/k) Q/(1-Q)`;
+- exact reciprocal duality `Z_a(r,k) Z_b(k,r)=1`;
+- strict positivity of every consecutive Toeplitz minor does **not** imply simple zeros: `(1+z)^2 e^z` has a double zero at `-1` while all consecutive minors are strictly positive;
+- rigorous order-one corridor
+  `1/[k(exp(4/k)-1)] < Z_(1,k) < 1/[k(exp(1/(2k))-1)]`;
+- reproduced fixed-slope data at `theta=1/2, 2/3, 3/4` strongly select a positive-limit model on the available tails;
+- five successful kernel-checked Lean fragments from the exported run.
 
-- **Desnanot–Jacobi curvature identity**
-  `Z = (r/k) Q/(1-Q)`.
-- **Reciprocal/Jacobi–Trudi duality**
-  `Z_a(r,k) Z_b(k,r) = 1`, exchanging compactified ratio `theta` with `1-theta`.
-- **Gamma–theta quartic coordinate bridge.** The substitution `y=pi x^4` maps the normalized quartic theta density `exp(-pi x^4)` exactly to a `Gamma(1/4,1)` law. The campaign's numerical proportionality constant `1.3313353638...` is exactly `pi^(1/4)`. Its squared-variable dispersion is the closed form
-  `Gamma(1/4)^2/[4 Gamma(3/4)^2]-1 = 1.188439615226... < 2`.
-  The same calculation gives dispersion `5` for an exponential density and exactly `2` for the Gaussian case, proving that ordinary log concavity alone is not the relevant sufficient property. See `gamma-theta-quartic-bridge/`.
-- **Strict consecutive Toeplitz positivity does not imply simple zeros.** The explicit entire function
-  `(1+z)^2 e^z`
-  has a double zero at `-1`, yet every consecutive Toeplitz minor is strictly positive. The global proof is in
-  `determinant-curvature-2026-09-11/MULTIPLICITY-BLINDNESS-THEOREM.md`.
-- **Rigorous order-one curvature anchor.** Combining the exact curvature identity with Michalowski's published coefficient-curvature window gives, for every `k>=2`,
-  `1/[k(exp(4/k)-1)] < Z_{1,k} < 1/[k(exp(1/(2k))-1)]`,
-  so asymptotically the order-one corridor lies between `1/4` and `2`. See
-  `determinant-curvature-2026-09-11/ORDER-ONE-CURVATURE-COROLLARY.md`.
-- Five successful kernel-checked Lean fragments from the exported campaign, including an empty-axiom abstract falsifier for a universal “determinant positivity implies simplicity” implication.
-
-### Computational frontier
-
-The extracted fixed-slope computation was independently rerun against its carried coefficient cache. At `theta=1/2, 2/3, 3/4`, a positive-limit model strongly out-fits a vanishing-limit model on the available finite tails, with residual ratios about `169`, `159`, and `137` respectively.
-
-That is finite numerical evidence, not an asymptotic theorem. The live target is still ratio-uniform control as `r,k` grow together.
-
-### Audit corrections
-
-The source state was not accepted as an authority ledger without review. In particular:
-
-- a gamma-factor envelope had been promoted to a global pointwise asymptotic without controlling the zeta factor;
-- a tested lowest-zero velocity sign had been promoted beyond what its derivation established;
-- an exact curvature equivalence had been marked stale only because of a non-load-bearing dependency on a retracted fit;
-- a finite tested repeated-zero example had been promoted to a universal theorem without proof — the missing all-minors proof has now been supplied separately.
-
-The corrected release keeps the exact reusable mathematics and drops the overclaims.
+The fixed-slope numerical extrapolation remains a computational frontier; the exact identities above are independent of that extrapolation.
 
 ## 2. Branch C — five-link sufficient reduction
 
@@ -72,27 +64,20 @@ Directory:
 
 `branch-c-five-link-reduction/`
 
-The live Branch C program is organized as a **five-link sufficient chain to RH**. Its current state records the following reduction:
+The live Branch C state records a five-link sufficient chain to RH and the following reduction of its third link:
 
-- the five-link implication chain is sealed in the formal layer (`epoch_twenty_chain_sealed`, K172, recorded `CLOSED` / `KERNEL_CHECKED`);
-- the third link was recast after an earlier dispersion formulation was rejected;
-- its surviving first rung was reduced algebraically to a quadratic (`first_rung_is_a_quadratic`, K208, `CLOSED`);
-- the first-rung numerical content was settled to 22 digits with a large sign margin (`first_rung_numbers_settled`, K210, `CLOSED`);
-- the run records an analytic tail below the displayed numerical uncertainty;
-- higher rungs are propagated by a monotonicity mechanism verified through rung 40;
-- the only remaining obligation for this link is certified enclosure replacing ordinary numerical quadrature.
+- `epoch_twenty_chain_sealed` — CLOSED / KERNEL_CHECKED;
+- the earlier dispersion formulation was recast;
+- `first_rung_is_a_quadratic` — CLOSED;
+- `first_rung_numbers_settled` — CLOSED, 22-digit numerical settlement with large sign margin;
+- higher-rung propagation is supported by a monotonicity computation through rung 40;
+- the remaining obligation for that link is a certified enclosure replacing ordinary quadrature.
 
-The live bottleneck K211 / BN5 therefore records the architectural state as
+The live bottleneck K211 / BN5 therefore records:
 
 `4 open analytic links + 1 finite certification job`.
 
-The mathematical contribution isolated here is the **collapse of one full link in a five-link sufficient RH architecture from an analytic theorem problem to a bounded certification problem**.
-
-A dedicated prior-art firewall is in
-
-`BRANCH-C-NOVELTY-AUDIT-2026-09-11.md`.
-
-That audit explicitly separates the present reduction from known low-degree Turán inequalities, Jensen/Laguerre programs, classical kernel concavity, and the 2026 Planat–Solé second-level-concavity theorem.
+The dedicated novelty audit is `BRANCH-C-NOVELTY-AUDIT-2026-09-11.md`.
 
 ## 3. Simple-zero proportion candidate
 
@@ -100,9 +85,7 @@ Directory:
 
 `simple-zero-67.301545-candidate/`
 
-This is a computer-assisted extension of a seven-point Gram-stability argument for simple zeros.
-
-The recovered verifier establishes the finite local inequality for
+The recovered verifier establishes the local inequality for
 
 `q = 29/100000`, `L = 341/100000`
 
@@ -110,17 +93,9 @@ on two independent subdivision grids. The exact propagation algebra then gives t
 
 `0.673015452606376894...`
 
-for the simple-zero proportion in the precise framework of the underlying stability argument.
+for the simple-zero proportion within the stated seven-point stability framework.
 
-The packet includes:
-
-- the generalized seven-point block lemma;
-- the exact transfer formula
-  `kappa(q,L,m) = [m H_MT - 6q(m-1)] / [m - L(m-6)]`;
-- two successful outward-rounded interval-verifier runs;
-- an Arb/python-flint verifier adapted for a second trust base, written and syntax-checked but not executed in the source environment.
-
-Accordingly this lane is a **machine-checked candidate extension pending independent reproduction / Arb rerun / expert review**.
+The packet includes the generalized block lemma, the exact transfer formula, two successful outward-rounded interval runs, and an Arb/python-flint second-trust-base verifier that was written but not executed in the source environment.
 
 ## 4. PTS / de Bruijn–Newman interval-certifier program
 
@@ -128,37 +103,14 @@ Directory:
 
 `pts-terminal-close/`
 
-This lane was entirely absent from the earlier public front door and was recovered from the 2026-09-11 session export.
-
-Its frozen target is:
+Frozen target:
 
 > For every real `x` and every `t in (0,0.2]`, if `H_t(x)=0`, then `H_t'(x) != 0`.
 
-In words: every real zero of the heat-evolved xi flow is simple throughout that positive-time interval.
+Recovered material includes the frozen implication chain, ten-mechanism close anatomy, the interval-arithmetic certifier, and the direct-quadrature scaling wall.
 
-The internal program labels this statement **PTS** and treats it as a terminal sufficient theorem for its de Bruijn–Newman route. PTS remains **unproved**.
+During public extraction the certifier's built-in self-test was rerun from the exported source and passed **8/8, exit 0**. The original export did not carry the complete historical 23-receipt bundle, so the historical finite certificate claims remain distinguished from freshly reproduced receipts.
 
-The recovered material includes:
+## 5. Release reading rule
 
-- the frozen terminal-close record and explicit implication chain;
-- a ten-mechanism close-anatomy campaign contract;
-- the recovered interval-arithmetic certifier, preserved with source hashes and deterministic reconstruction instructions;
-- historical records of three point certificates at `t=0.2` and three uniform t-box certificates over `t in [0.1,0.2]`;
-- a direct-quadrature scaling wall and the resulting large-x representation problem.
-
-During this public extraction the certifier's built-in self-test was rerun from the exported source and passed **8/8, exit 0**. The export did not carry all 23 historical receipt JSONs as named public artifacts, so those finite certificate claims are preserved as source-campaign records rather than falsely described as freshly reproduced here.
-
-## Repository status
-
-These four lanes form one coherent **Riemann-zeta research program** rather than archive debris:
-
-1. determinant / total positivity and fixed-slope curvature;
-2. Branch C five-link sufficient reduction;
-3. simple-zero proportion computation;
-4. de Bruijn–Newman positive-time simplicity / interval certification.
-
-They have different proof obligations and evidence classes. They belong together at the subject level, but their claims must not be blended.
-
-## Reading rule
-
-Use the exact theorem, computation, candidate, or target statement you are citing. A large RH-related campaign does not upgrade a candidate into a theorem. Conversely, the fact that RH remains open does not erase exact determinant identities, proven structural separations, kernel-checked fragments, finite certified inequalities, or a reproducible certifier that survives its stated tests.
+Use each result at its actual mathematical scope. Exact determinant identities, comparison theorems, Schur bounds, formal fragments, finite certified inequalities, computational asymptotics and open terminal lemmas are different evidence classes; none needs to be rhetorically shrunk merely because RH itself remains open.
