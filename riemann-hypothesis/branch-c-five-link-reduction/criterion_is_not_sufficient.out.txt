@@ -1,0 +1,13 @@
+polynomials with a CONJUGATE PAIR of non-real zeros, tested against the criterion
+(1 + p z + q z^2) has non-real zeros iff p^2 < 4q
+HIT: p=7/3 q=28/5 (p^2-4q=-763/45<0), degree 9
+HIT: p=5/3 q=1 (p^2-4q=-11/9<0), degree 9
+HIT: p=4/3 q=19/4 (p^2-4q=-155/9<0), degree 5
+
+polynomials with a non-real conjugate pair tested: 3059
+satisfying the criterion anyway: 1686
+
+THE CRITERION IS STRICTLY WEAKER than real-rootedness.
+The route is not circular; the criterion cannot imply the target.
+
+Fresh rerun during public extraction on 2026-09-12: exit 0, identical counts.
