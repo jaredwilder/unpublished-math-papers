@@ -1,25 +1,93 @@
-# Riemann zeta research program — determinant geometry, live branch audit, simple-zero bounds, and de Bruijn–Newman simplicity
+# Riemann zeta research program — audited public record
 
 **Author:** Jared Wilder  
-**Campaign dates:** 2026-08-11 through 2026-09-12
+**Campaign dates:** 2026-08-11 through 2026-09-12  
+**Last forensic update:** 2026-09-12
 
-This directory is the public subject home for the RH/zeta mathematics recovered from the release estate.
+This directory is the public subject home for the RH/zeta mathematics recovered from a large research campaign and its subsequent full-estate audits.
 
-> **2026-09-12 forensic correction:** the earlier same-day statement that Branch C was dead has been superseded. The epoch-23 finite-polynomial falsifier does not satisfy the infinite positive-coefficient / strict-minor hypothesis needed by the global criterion. Branch C is therefore reopened as a valid sufficient-criterion route. **RH remains open** because the campaign did not prove that criterion globally for the xi coefficients; the remaining gaps are analytic and are now stated explicitly below.
+## Current headline
 
-See:
+**There is no proof of the Riemann Hypothesis in this repository. RH remains open.**
 
-- `CURRENT-CAMPAIGN-STATE-2026-09-12.md`
-- `branch-c-five-link-reduction/BRANCH-C-READJUDICATION-2026-09-12.md`
+The later forensic process is deliberately separating:
 
-## Current live campaign state
+- exact generic mathematics;
+- zeta-specific finite certificates;
+- computational evidence;
+- formal proof plumbing;
+- open sufficient criteria;
+- failed routes and negative theorems.
 
-The 2026-09-12 export reaches absolute MSL round 647. After full-dump readjudication:
+A 100-round raw-estate ingest traversed **1,476 / 1,476 unique SHA-256 objects** and independently recovered **4,475 raw MSL theorem/state blocks**. That audit found a real auxiliary-mathematics estate, but no new proved theorem about the zeta function itself that should be advertised as major RH progress.
 
-- **Branch C:** valid sufficient criterion, but global analytic proof incomplete;
-- **Branch A:** finite heat-flow instrumentation survives, but its pair-energy and natural polynomial-truncation/Hermite certificate candidates failed;
-- **Branch B:** screened and arithmetically clean, but otherwise largely untouched;
-- **RH:** open.
+The audit is still being re-mined. The first adjudication was a compression layer, not an exhaustive mathematical inventory.
+
+---
+
+## New theorem / structure releases from repeated re-mining
+
+### Finite even-moment rigidity
+
+Directory:
+
+`finite-moment-rigidity-2026-09-12/`
+
+For `Q` reflection/conjugation off-line quadruples
+
+\[
+\frac12\pm d_j\pm i t_j
+\]
+
+versus `2Q` critical-line conjugate pairs, equality of the first `2Q` raw even power sums forces
+
+\[
+\{y_1^2,\dots,y_{2Q}^2\}
+=
+\{(t_j+i d_j)^2,(t_j-i d_j)^2:1\le j\le Q\}.
+\]
+
+Newton identities then force every `d_j=0` if the comparison heights are real. This is a finite algebraic rigidity theorem, not an RH theorem. Exact symbolic sanity checks for `Q=1,2,3,4` are included. Literature novelty remains under review.
+
+### Tilted-theta CGF / Toeplitz coordinate
+
+Directory:
+
+`theta-cgf-toeplitz-coordinate-2026-09-12/`
+
+Under the coefficient-tilted theta measure
+
+\[
+d\nu_k(u)=\frac{u^{2k}\Phi(u)}{m_{2k}}du,
+\qquad X_k=2\log U,
+\]
+
+every normalized Toeplitz entry is a factorial/gamma correction times the moment-generating function of the **same** random variable:
+
+\[
+\frac{a_{k+s}}{a_k}
+=
+\frac{\Gamma(2k+1)}{\Gamma(2k+2s+1)}
+\mathbb E e^{sX_k}.
+\]
+
+Thus the full normalized consecutive determinant is encoded by one cumulant-generating function `K_k(s)`. This identifies the campaign's earlier variance/Turán work as the local-shift face of the same object whose macroscopic shifts govern fixed-slope determinants. This is published as an exact structural synthesis; novelty is not asserted.
+
+### Natural determinant-integral sign obstruction
+
+Directory:
+
+`determinant-integral-sign-no-go-2026-09-12/`
+
+The exact positive-measure multilinear lift of a consecutive Toeplitz determinant does **not** have a pointwise-positive inner kernel. At order two the symmetrized kernel contains
+
+\[
+u^2v^2-\frac{c_k}{2}(u^4+v^4),
+\]
+
+which is positive on the diagonal and negative for sufficiently large `u/v`. This kills the most direct pointwise-positivity shortcut while leaving cancellation-based integral methods open.
+
+---
 
 ## 1. Determinant / total-positivity mathematics
 
@@ -39,154 +107,128 @@ Exact theta-kernel certificates recovered from epochs 20–22:
 
 `theta-kernel-certificates/`
 
-Additional exact quartic/Gamma bridge:
+Additional quartic/Gamma bridge:
 
 `gamma-theta-quartic-bridge/`
 
-### Exact determinant geometry now public
+Surviving exact structural results include:
 
-- Desnanot–Jacobi gives `R+A=1` for the two normalized neighboring-minor ratios.
-- The nonlinear odds lattice admits the exact rational family `Y_(r,k)=(r+mu)/(k+nu)`; the Toeplitz boundary selects `Y*=r/k`.
-- For the factorial comparison determinant,
-  `D0_(r,k)=prod_{j=0}^{r-1} j!/(k+j)!`.
-- Writing `U=log(D/B)` against a positive comparison determinant array gives the exact nonlinear comparison equation
-  `R_B exp(Delta_k^2 U) + A_B exp(Delta_r^2 U) = 1`.
-- On finite lattice domains this equation has a strong maximum/comparison principle and a boundary-homotopy positivity theorem under the stated positivity hypotheses.
-- Along the de Bruijn–Newman coefficient flow, `V=partial_t U` satisfies a weighted discrete harmonic equation while `partial_t^2 U` has the recorded quadratic-source structure.
-- Dual Jacobi–Trudi gives an exact order/shift swap through the reciprocal series.
-- In the real-zero phase, consecutive minors are rectangular Schur polynomials; their normalized zero-parameter sensitivities satisfy the recorded occupancy bounds.
-- Sorted angular defects satisfy the top-k sufficient phase criterion
-  `r * sum_{j=1}^k theta_j < pi/2  =>  D_(r,k) > 0`
-  under the conjugation/reality assumptions of the application.
-- Under the stated verified reciprocal-pole hypotheses, fixed-shift dual determinants are eventually strictly positive; combined with the primal large-shift frontier, a hypothetical escaping failure must enter a two-scale regime.
+- the Desnanot–Jacobi normalized determinant identities;
+- the rational odds-orbit family and factorial benchmark;
+- a normalized nonlinear comparison equation for two positive determinant arrays;
+- a finite-domain comparison/maximum principle and boundary-homotopy consequence under their stated positivity hypotheses;
+- adaptive harmonic/superharmonic identities obtained by differentiating the normalized determinant equation along a coefficient flow;
+- dual Jacobi–Trudi order/shift symmetry;
+- rectangular-Schur occupancy and angular phase bounds;
+- the top-`k` sufficient angular budget
+  \[
+  r\sum_{j=1}^k\theta_j<\frac\pi2\Longrightarrow D_{r,k}>0
+  \]
+  under its stated conjugation/reality hypotheses.
 
-Fresh public reruns of the recovered Encirclement II–V source verifiers gave
+The recovered Encirclement II–V algebra verifiers freshly reproduced **24/24** stated checks. These verifiers establish their own algebraic claims, not RH.
 
-**7/7 + 5/5 + 6/6 + 6/6 = 24/24 successful algebraic checks.**
+---
 
-These verifiers establish their stated algebra/finite identities, not RH.
-
-### Strict versus nonnegative consecutive minors
-
-The sequence
-
-`a=(1,0,0,0,0,1)`
-
-has nonnegative consecutive minors in the tested hierarchy but a negative non-consecutive Toeplitz minor. It therefore refutes the **nonnegative** shortcut
-
-> consecutive nonnegativity => total positivity.
-
-It does **not** refute the classical **strict** consecutive-minor criterion.
-
-For an everywhere-positive infinite coefficient sequence satisfying the Branch C inequality globally, Desnanot–Jacobi inductively forces every consecutive minor to be strictly positive. Schoenberg's strict-consecutive-minor theorem, quoted explicitly as Theorem D and in Toeplitz-sequence form as Lemma 3 in Katkova's 2005 paper, then promotes those minors to total positivity / `PF_m` at every finite order.
-
-Source: https://arxiv.org/html/math/0505174v1
-
-## 2. Branch C — readjudicated: valid criterion, incomplete analytic proof
+## 2. Branch C — valid sufficient criterion, analytic proof incomplete
 
 Directory:
 
 `branch-c-five-link-reduction/`
 
-The global criterion is
+The global weighted determinant criterion is
 
 \[
-(k+r)D_{r,k-1}D_{r,k+1}\le kD_{r,k}^2
-\qquad(r,k\ge1),
+(k+r)D_{r,k-1}D_{r,k+1}\le kD_{r,k}^2.
 \]
 
-or equivalently
+For an everywhere-positive infinite coefficient sequence, a global proof of this inequality would inductively force all consecutive minors positive; the classical strict-consecutive-minor theorem then feeds the `PF_\infty` / Laguerre–Pólya route.
+
+The historical finite-polynomial falsifier did **not** satisfy the complete infinite/everywhere-positive hypothesis, so it does not kill this global sufficient route.
+
+But the criterion has **not** been proved for the actual xi coefficient sequence. The surviving analytic gaps include determinant-lattice transport, tilted-measure variance/large-deviation control, and the fixed-slope region not covered by existing tail results.
+
+Current status:
+
+> **valid sufficient criterion; open analytic target; not an RH result.**
+
+---
+
+## 3. Important literature correction — the order-one moment row is classical
+
+Repeated re-mining found that the campaign's binding order-one theta-moment inequality
 
 \[
-rD_{r,k-1}D_{r,k+1}\le kD_{r+1,k}D_{r-1,k}.
+\frac{m_{2k-2}m_{2k+2}}{m_{2k}^2}
+\le
+\frac{2k+1}{2k-1}
 \]
 
-For `a_k>0` at every index, it implies
+is not a new campaign theorem. It is the classical Turán moment inequality proved for the Riemann `Xi` kernel by **George Csordas and Richard S. Varga, _Moment Inequalities and the Riemann Hypothesis_, Constructive Approximation 4 (1988), 175–198**, in a stronger deformed-family setting.
 
-\[
-D_{r+1,k}D_{r-1,k}\ge \frac{r}{k+r}D_{r,k}^2>0,
-\]
+Consequences:
 
-so every consecutive minor is strictly positive by induction. Combined with the classical strict-consecutive-minor theorem and the ASWE/Laguerre–Pólya characterization, this is a genuine sufficient route to RH.
+- the campaign's finite first-row certificates remain reproducibility artifacts;
+- they are **not** a novelty headline;
+- earlier language calling this row “sub-Gaussianity” was too strong: it is a Turán/fourth-moment statement, not an MGF or tail-domination theorem.
 
-### Why the epoch-23 retraction was wrong
+---
 
-The historical falsifier constructed finite non-real-rooted polynomials and explicitly discarded the terminating boundary. A fresh exact rerun reproduces its `1445/2284` interior hits and shows **1445/1445** have finite support and therefore violate the everywhere-positive coefficient premise.
-
-The historical falsifier is preserved as a negative-control lesson; it is no longer the current Branch C verdict.
-
-### Why Branch C still does not prove RH
-
-The epoch-22 “lower half complete” label also overreached. The archive itself preserves unresolved steps:
-
-- the determinant-lattice order/local-ascent law was measured, not proved;
-- the order-arm identification with the tilted-log variance had exact error terms left open;
-- the theta-vs-Gaussian variance comparison was measured, not proved;
-- the tilted density is log-convex in a far-left region, invalidating a naive global Brascamp–Lieb argument;
-- the proposed restricted-tail repair did not rigorously close its crossing/mass/error terms;
-- curvature at the moving mode does not by itself control global variance, yet the later chain promoted such a mode-curvature estimate to the whole criterion.
-
-Therefore the current Branch C status is:
-
-> **valid sufficient criterion; exact theta-kernel and determinant mathematics survives; global proof of the criterion for every `(r,k)` remains open.**
-
-## 3. Branch A — de Bruijn–Newman heat-flow instruments
+## 4. Branch A — de Bruijn–Newman heat-flow instruments
 
 Directory:
 
 `branch-a-heat-flow-audit/`
 
-The campaign built a flat-cost moment-series evaluator, derived a cancellation precision rule, and rigorously validated a finite zero window with a 64-piece truncation envelope.
+The campaign built several useful finite heat-flow instruments and falsified multiple candidate sufficient statistics.
 
-Its first candidate quantity, pair energy
+### Forensic correction to the truncation claim
 
-`E(t)=sum_{i<j} 1/(z_i-z_j)^2`,
+An earlier version of this README said that a 64-piece truncation envelope **rigorously validated a finite zero window**. That statement was too strong and is retracted.
 
-was falsified as a sufficient statistic: an exact complex-root control has energy zero while real controls can have substantially larger energy.
+The source code computes the per-cell quantity called a maximum by evaluating the kernel on a **finite grid of 41 sample points** with ordinary `mpmath` arithmetic. It does not supply interval enclosures of the true cell suprema. The subsequent derivative and zero-shift calculations are likewise floating-point computations.
 
-A Hermite/minor separator calibrates correctly on exact finite controls but becomes uninformative on the natural polynomial truncations of the entire function because those truncations themselves carry many spurious complex roots.
+Therefore that packet is useful **numerical evidence / instrumentation**, but it is **not a rigorous zero-localization certificate** in its present form.
 
-The directory records the finite data and control source.
+A rigorous replacement would need, at minimum, certified interval bounds for each cell supremum (or an analytic monotonicity bound), directed-rounding control of the moments/tail, and a certified lower bound for the derivative on the localization interval.
 
-## 4. Branch B — arithmetic Chebyshev-error lane
+The pair-energy statistic was also falsified as a sufficient statistic, and the natural polynomial-truncation/Hermite route became uninformative because the truncations introduced spurious complex roots.
+
+---
+
+## 5. Branch B — arithmetic Chebyshev-error lane
 
 Directory:
 
 `branch-b-chebyshev-handoff/`
 
-The current export contains only a finite prime-power probe through `x=200000`; those values are not evidence for RH beyond their stated finite range.
+The export contains finite prime-power probes only. They do not establish an asymptotic theorem and are not RH evidence beyond their finite ranges.
 
-Branch B remains a clean alternative lane, not a solved result.
+---
 
-## 5. Formal epoch-22/23 layer
+## 6. Formal layer
 
 Directory:
 
 `formal-epoch22-23/`
 
-This is the recovered Lean layer from the final two epochs. It contains algebraic and logical campaign lemmas and negative-control logic.
+The full estate contains **181 unique Lean source files** after alias-aware deduplication. Source audit found no `sorry`, `sorryAx`, `nativeDecide`, or `ofReduceBool` in the audited set, but it also found **zero files directly formalizing analytic `RiemannZeta`**.
 
-The formal files do **not** prove RH facts by themselves. In particular, a formally correct generic statement that a genuine counterexample refutes an implication does not establish that the epoch-23 finite polynomial satisfied the global hypotheses of the implication; the readjudication found that it did not.
+The formal estate is therefore useful algebraic/logical infrastructure, not a formal proof of RH.
 
-## 6. Simple-zero proportion candidate
+---
+
+## 7. Simple-zero proportion candidate
 
 Directory:
 
 `simple-zero-67.301545-candidate/`
 
-The recovered verifier records the local inequality for
+This remains a historical/certificate-method asset. Its heavy certifiers did not freshly complete under the bounded hostile replay used in the 100-round audit, and its numerical headline has been overtaken by later 2026 claims. It is not the current front-page result.
 
-`q = 29/100000`, `L = 341/100000`
+---
 
-on two subdivision grids. The exact propagation algebra gives the candidate lower bound
-
-`0.673015452606376894...`
-
-for the simple-zero proportion within the stated seven-point stability framework.
-
-This is a standalone analytic-number-theory candidate, not an RH claim. Its historical novelty/priority must be judged against the fast-moving 2026 simple-zero literature by exact date and proof status.
-
-## 7. PTS / de Bruijn–Newman interval-certifier program
+## 8. PTS / de Bruijn–Newman interval-certifier program
 
 Directory:
 
@@ -196,17 +238,30 @@ Frozen target:
 
 > For every real `x` and every `t in (0,0.2]`, if `H_t(x)=0`, then `H_t'(x) != 0`.
 
-Recovered material includes the target chain and interval-certifier source. During the forensic pass the certifier self-test again passed **8/8**. The original full receipt bundle is not present in this export, and a fresh full certification run exceeded the current execution window, so the historical point/t-box certificates remain distinguished from fresh reproduction.
+The finite/local certification machinery contains real algebra and useful interval ideas. The global all-`x`, all-`t` PTS statement remains **unproved**.
 
-PTS remains unproved.
+---
 
-## 8. Full-dump reading rule
+## 9. Public-reading rule
 
-Use each result at its actual mathematical scope. Exact determinant identities, comparison theorems, Schur bounds, formal fragments, finite certifications, negative theorems, computational asymptotics and open analytic lemmas are different evidence classes.
+Use every item at its actual scope.
 
-Two corrections from this audit are especially important:
+A public theorem note may be:
 
-1. **A false-target test only refutes a theorem when the test object satisfies the theorem's complete hypotheses.**
-2. **A certificate cannot inherit stronger status than unresolved empirical or analytic steps in its dependency chain.**
+- a generic exact theorem motivated by RH;
+- a zeta-specific finite certificate;
+- a negative theorem killing a route;
+- a structural reformulation;
+- an open sufficient criterion.
 
-The continuing forensic audit is extracting every surviving theorem, obstruction and reproducibility artifact from the 1,284-file export rather than treating the session summary as the mathematics.
+Those are not interchangeable.
+
+The release doctrine after the 100-round audit is:
+
+1. source-replay the claim;
+2. attack its hypotheses and boundary cases;
+3. perform a targeted prior-art check;
+4. publish surviving mathematics promptly with exact scope and provenance;
+5. keep re-mining the estate, because no single adjudication sweep is treated as exhaustive.
+
+The goal of this directory is now a **correct, timestamped mathematical record**, not a dramatic RH headline.
