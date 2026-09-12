@@ -284,7 +284,52 @@ Applying (12) to the complete budget (11) gives the global barrier (3).
 
 The theorem is uniform in the shift `k`: no bounded determinant order can detect the hypothetical threshold arbitrarily close from below.
 
-## 7. Relation to Positive-Time Simplicity
+## 7. Corollary — every fixed order cap stays positive below a hypothetical threshold
+
+Fix any finite integer `R>=1`.
+
+Because
+
+\[
+\Theta(t)\to0
+\qquad(t\uparrow\Lambda),
+\]
+
+there exists
+
+\[
+\varepsilon_R>0
+\]
+
+such that
+
+\[
+R\Theta(t)<\frac\pi2
+\qquad
+\text{whenever }
+\Lambda-\varepsilon_R<t<\Lambda.
+\]
+
+Therefore, under the hypothesis `Lambda>0`,
+
+\[
+\boxed{
+D_{r,k}(t)>0
+\quad
+\text{for every }1\le r\le R,
+\text{ every shift }k,
+\text{ and every }t\in(\Lambda-\varepsilon_R,\Lambda).
+}
+\tag{13}
+\]
+
+This is stronger conceptually than saying that a detector order diverges. It says that **every finite truncation in determinant order is eventually completely positive on the wrong side of a hypothetical positive Newman threshold**.
+
+Consequently, no proof strategy that inspects only a fixed finite set of determinant orders—no matter how completely it checks all shifts at those orders—can exclude a positive `Lambda` by detecting sign loss arbitrarily near the threshold. Any successful determinant proof must contain genuinely uniform-in-order information.
+
+This is a structural no-escape statement, not a claim that a positive threshold exists.
+
+## 8. Relation to Positive-Time Simplicity
 
 A separate finite-attainment lemma shows
 
@@ -300,7 +345,7 @@ Positive-Time Simplicity attacks the same hypothetical obstruction in the physic
 
 The present theorem explains why a direct bounded-order determinant search is intrinsically badly conditioned near that same event: its possible sign witness is forced to infinity in determinant order.
 
-## 8. External literature boundary
+## 9. External literature boundary
 
 The proof uses published/classical ingredients:
 
@@ -312,7 +357,7 @@ Recent work also studies Toeplitz/Pólya-frequency properties of the **de Bruijn
 
 A targeted search did not locate the exact global theorem (3), which transports the complete finite threshold collision set into a coefficient-Schur determinant-order escape law. This negative search is not proof of historical novelty, so priority remains unresolved.
 
-## 9. What is not claimed
+## 10. What is not claimed
 
 This note does **not** claim:
 
