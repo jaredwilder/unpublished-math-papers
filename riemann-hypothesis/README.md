@@ -34,6 +34,10 @@ Recovered Encirclement II–V theorem spine:
 
 `determinant-curvature-2026-09-11/`
 
+Exact theta-kernel certificates recovered from epochs 20–22:
+
+`theta-kernel-certificates/`
+
 Additional exact quartic/Gamma bridge:
 
 `gamma-theta-quartic-bridge/`
@@ -54,6 +58,7 @@ Additional exact quartic/Gamma bridge:
 - Sorted angular defects satisfy the sharper top-k criterion
   `r * sum_{j=1}^k theta_j < pi/2  =>  D_(r,k) > 0`.
 - Under verified reciprocal-pole hypotheses, fixed-shift dual determinants are eventually strictly positive; combined with the primal large-shift frontier, any hypothetical escaping failure must have both `r -> infinity` and `k -> infinity`.
+- Consecutive-minor nonnegativity does **not** imply total positivity: `a=(1,0,0,0,0,1)` has a negative non-consecutive Toeplitz minor.
 
 Fresh public reruns of the recovered Encirclement II–V source verifiers give
 
@@ -70,7 +75,7 @@ Fresh public reruns of the recovered Encirclement II–V source verifiers give
   `1/[k(exp(4/k)-1)] < Z_(1,k) < 1/[k(exp(1/(2k))-1)]`;
 - reproduced fixed-slope finite data at `theta=1/2, 2/3, 3/4` favor a positive-limit model on the available tails.
 
-These exact identities and negative theorems remain valid even though the later Branch C sufficiency criterion was refuted.
+These exact identities, certificates and negative theorems remain valid even though the later Branch C sufficiency criterion was refuted.
 
 ## 2. Branch C — historical reduction, now refuted as an RH route
 
@@ -87,7 +92,13 @@ So the criterion is necessary in the intended real-rooted family but **not suffi
 
 The exact falsifier scripts and outputs are published in the directory. The earlier five-link novelty audit has been superseded accordingly.
 
+The exact theta-kernel inequalities proved while pursuing this dead route have been separated into `theta-kernel-certificates/` so valid mathematics is not discarded with a failed implication.
+
 ## 3. Branch A — de Bruijn–Newman heat-flow instruments
+
+Directory:
+
+`branch-a-heat-flow-audit/`
 
 The current campaign built a flat-cost moment-series evaluator, derived a cancellation precision rule, and rigorously validated a finite zero window with a 64-piece truncation envelope.
 
@@ -95,19 +106,35 @@ Its first candidate quantity, pair energy
 
 `E(t)=sum_{i<j} 1/(z_i-z_j)^2`,
 
-was then falsified as a sufficient statistic: exact complex-root controls can have energy zero, and the quantity can fall after a pair leaves the real axis.
+was falsified as a sufficient statistic: an exact complex-root control has energy zero while real controls can have substantially larger energy.
 
-A Hermite/minor separator passed finite exact controls but became uninformative on the natural polynomial truncations of the entire function because the truncations themselves carry many spurious complex roots.
+A Hermite/minor separator calibrates correctly on exact finite controls but becomes uninformative on the natural polynomial truncations of the entire function because those truncations themselves carry many spurious complex roots.
 
-See `CURRENT-CAMPAIGN-STATE-2026-09-12.md` for the exact finite results.
+The directory records the exact finite data and publishes the control source.
 
 ## 4. Branch B — arithmetic Chebyshev-error lane
+
+Directory:
+
+`branch-b-chebyshev-handoff/`
 
 Branch B is the only one of the three current lanes that survives the campaign's sufficiency / non-tautology / informativeness screens.
 
 The current export contains only a finite prime-power probe through `x=200000`; those values are not evidence for RH beyond their stated finite range. The lane is the current handoff, not a solved result.
 
-## 5. Simple-zero proportion candidate
+The direct finite probe source is public in the directory.
+
+## 5. Formal epoch-22/23 campaign layer
+
+Directory:
+
+`formal-epoch22-23/`
+
+This is the recovered clean Lean layer from the final two epochs. It contains algebraic and logical campaign lemmas, including the formal generic sufficiency falsifier used to validate the Branch C counterexample logic.
+
+These files do **not** prove RH facts; their role is to seal the algebraic/proof-engineering layer around the computations and refutations.
+
+## 6. Simple-zero proportion candidate
 
 Directory:
 
@@ -123,7 +150,7 @@ on two independent subdivision grids. The exact propagation algebra then gives t
 
 for the simple-zero proportion within the stated seven-point stability framework.
 
-## 6. PTS / de Bruijn–Newman interval-certifier program
+## 7. PTS / de Bruijn–Newman interval-certifier program
 
 Directory:
 
