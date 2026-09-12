@@ -1,15 +1,38 @@
-# Critical-value / adjacent-gap monotonicity under the heat flow
+# Critical-value / adjacent-gap monotonicity under a real-rooted heat flow
 
 **Author:** Jared Wilder  
-**Recovered from:** RH Terminal Encirclement, Rounds 6–8
+**Recovered from:** RH Terminal Encirclement, Rounds 6–8  
+**Forensic scope correction:** 2026-09-12
 
-Let `H_t` be a real entire solution of the heat equation
+## Hypotheses
+
+Let `H_t` solve the backward heat equation
 
 \[
-\partial_t H_t=-\partial_x^2H_t
+\partial_tH_t=-\partial_x^2H_t
 \]
 
-at a time for which the relevant zeros are real and simple.
+on a time interval on which the zeros under discussion are real and simple.
+
+Assume, in addition, that the standard zero-dynamics and logarithmic-derivative identities are valid with convergent (or canonically symmetric) sums:
+
+\[
+\boxed{
+x_j'(t)=2\sum_{k\ne j}\frac1{x_j-x_k},
+}
+\]
+
+and, at a nonzero critical value `c` with `H_t'(c)=0`,
+
+\[
+\boxed{
+-\frac{H_t''(c)}{H_t(c)}
+=
+\sum_k\frac1{(c-x_k)^2}.
+}
+\]
+
+These identities are automatic for the corresponding finite polynomial heat flow. They also hold in the standard de Bruijn–Newman real-zero setting under the usual canonical-product/summation conventions used in the zero-dynamics literature. They are **not** asserted here for an arbitrary real entire heat solution without such hypotheses.
 
 Let adjacent zeros be
 
@@ -29,13 +52,15 @@ Let `c_j(t)` be the critical point between them,
 H_t'(c_j)=0,
 \]
 
-and set
+and assume its critical value
 
 \[
-V_j(t)=H_t(c_j(t)).
+V_j(t)=H_t(c_j(t))
 \]
 
-Define the renormalized critical-value ratio
+is nonzero (automatic between distinct consecutive simple real zeros in the real-rooted polynomial/canonical-product setting).
+
+Define
 
 \[
 \boxed{
@@ -43,16 +68,9 @@ R_j(t)=\frac{|V_j(t)|}{g_j(t)^2}.
 }
 \]
 
-## 1. Zero dynamics
+## 1. Adjacent-gap dynamics
 
-For a simple real zero,
-
-\[
-\boxed{
-x_j'(t)=2\sum_{k\ne j}\frac1{x_j-x_k}.}
-\]
-
-Consequently the adjacent-gap square satisfies
+From the zero ODE,
 
 \[
 \boxed{
@@ -66,6 +84,16 @@ Consequently the adjacent-gap square satisfies
 }
 \]
 
+Indeed,
+
+\[
+g_j'
+=
+\frac4{g_j}
+-2g_j\sum_{k\ne j,j+1}
+\frac1{(x_j-x_k)(x_{j+1}-x_k)}.
+\]
+
 ## 2. Critical-value dynamics
 
 Since `H_t'(c_j)=0`, differentiating `V_j(t)=H_t(c_j(t))` gives
@@ -76,7 +104,7 @@ V_j'(t)=-H_t''(c_j(t)).
 }
 \]
 
-For real-rooted `H_t`, the logarithmic derivative at the critical value is
+Using the stated logarithmic-derivative identity,
 
 \[
 \boxed{
@@ -125,25 +153,21 @@ The nearest-pair term factors exactly as
 }
 \]
 
-For every outer zero `x_k`, the factors
+For every outer zero `x_k`, adjacency implies that
 
 \[
 x_j-x_k,\qquad x_{j+1}-x_k
 \]
 
-have the same sign, so
+have the same sign. Hence
 
 \[
 \frac4{(x_j-x_k)(x_{j+1}-x_k)}>0,
-\]
-
-while
-
-\[
+\qquad
 \frac1{(c_j-x_k)^2}>0.
 \]
 
-Hence every outer-zero summand is strictly positive. Therefore
+Therefore every outer-zero summand is strictly positive, and
 
 \[
 \boxed{
@@ -151,20 +175,27 @@ R_j'(t)>0
 }
 \]
 
-whenever the adjacent zeros remain distinct and real.
+whenever the hypotheses above hold and the adjacent zeros remain distinct and real.
 
 ## Interpretation
 
-The quantity
+Within the real-zero phase of a heat flow for which the stated canonical-product dynamics are valid, the quantity
 
 \[
-|H_t(c_j)|/g_j^2
+\boxed{
+\frac{|H_t(c_j)|}{(x_{j+1}-x_j)^2}
+}
 \]
 
-is strictly increasing along the real-rooted heat-flow phase.
+is strictly increasing in `t`.
 
-Equivalently, after normalizing the critical-value height by the square of the neighboring zero gap, the normalized barrier grows monotonically.
+The theorem is exact once the zero-dynamics/log-derivative hypotheses are available. It is not, by itself, an obstruction to a later collision and contains no Riemann-specific arithmetic input.
 
-This is a generic exact heat-flow theorem; no Riemann-specific arithmetic input is used in the proof.
+## Scope note
 
-The theorem therefore does not by itself prevent a positive-time collision. Its value is as a reusable exact coordinate for collision geometry and as part of the larger RH heat-flow architecture.
+The previous public version described this as a theorem for a generic “real entire solution” of the heat equation. That wording was too broad. The proof uses the zero-sum identities displayed at the beginning, so the correct theorem class is:
+
+- finite real-rooted polynomial heat flows; and
+- infinite canonical-product heat flows, including the de Bruijn–Newman family in the real-zero phase, when those sums and identities are justified.
+
+No claim is made outside that class.
