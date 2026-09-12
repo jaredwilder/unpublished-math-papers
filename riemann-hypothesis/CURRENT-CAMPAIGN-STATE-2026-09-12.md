@@ -2,7 +2,8 @@
 
 **Author:** Jared Wilder  
 **Source snapshot:** active session export through absolute MSL round 647  
-**Readjudication:** full-dump forensic pass, 2026-09-12
+**Readjudication:** full-dump forensic pass, 2026-09-12  
+**Evidence-level correction:** 2026-09-12
 
 This note supersedes the earlier same-day status that called Branch C dead.
 
@@ -11,7 +12,7 @@ This note supersedes the earlier same-day status that called Branch C dead.
 **RH remains open. Branch C is a live sufficient-criterion route, but its global analytic proof is incomplete.**
 
 - **Branch C:** reopened after the epoch-23 falsifier was found to test finite terminating polynomials outside the infinite positive-coefficient / strict-minor hypothesis. The classical top implication is valid. The remaining gap is below it: the campaign did not prove the full determinant inequality for every order and shift.
-- **Branch A:** its pair-energy and natural polynomial-truncation/Hermite candidates were falsified or rendered uninformative; its numerical heat-flow instrument remains useful at finite scope.
+- **Branch A:** its pair-energy and natural polynomial-truncation/Hermite candidates were falsified or rendered uninformative; its heat-flow computations remain useful exploratory numerics, but a later source audit found that the historical 64-piece envelope was **not** a rigorous interval certificate.
 - **Branch B:** screened and arithmetically clean, but only probed finitely through `x=200000` in this export.
 
 ## Branch C — corrected adjudication
@@ -101,7 +102,24 @@ is not a sufficient statistic for real-rootedness: exact complex-root controls c
 
 The Hermite/minor separator works on exact finite controls but becomes uninformative on natural polynomial truncations of the target entire function because those truncations themselves carry many spurious complex roots.
 
-A 64-piece truncation envelope did validate the finite numerical zero window used by the branch; the obstruction is the statistic/approximant logic, not merely bad numerics.
+### Correction: the historical 64-piece envelope is numerical, not rigorous
+
+The source code used to justify the truncation envelope computes each quantity called a cell maximum by sampling only 41 equally spaced points in that cell:
+
+```python
+PM = [
+    max(abs(Phi(edges[p] + (edges[p+1]-edges[p])*i/40)) for i in range(41))
+    for p in range(P)
+]
+```
+
+That is not an enclosure of the true supremum. The moment, derivative and zero-shift calculations also use ordinary `mpmath` floating-point arithmetic rather than directed-rounding interval arithmetic.
+
+Therefore the historical tail/zero-shift table is **numerical evidence only**. It does not rigorously validate the finite zero window.
+
+A rigorous replacement would require certified cell suprema (or proved analytic monotonicity bounds), directed-rounding control of the tail/moments, a certified derivative lower bound, and a root-existence/uniqueness argument converting those enclosures into a zero interval.
+
+See `branch-a-heat-flow-audit/README.md` for the corrected evidence-level statement.
 
 ## Branch B — screened, not solved
 
@@ -116,7 +134,7 @@ The corrected state is
 \[
 \boxed{
 \begin{array}{ll}
-\text{Branch A:}&\text{useful finite instrument; proposed certificates failed;}\\
+\text{Branch A:}&\text{useful exploratory finite numerics; proposed certificates failed;}\\
 \text{Branch B:}&\text{screened and largely untouched;}\\
 \text{Branch C:}&\text{valid sufficient criterion, analytic proof incomplete;}\\
 \text{RH:}&\text{open.}
