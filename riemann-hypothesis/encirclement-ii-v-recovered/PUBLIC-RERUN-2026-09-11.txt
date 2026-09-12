@@ -1,0 +1,43 @@
+Fresh rerun from the exact verifier source bytes recovered from session-export-04e7fd63-20260911-102113.zip.
+
+Encirclement II
+source sha256: 79cc831f345da7bc7f6084fd5f6064e4a930fc19d1afac77d52b36bf2f4cc44b
+PASS check_rational_orbit
+PASS check_factorial_determinant
+PASS check_factorial_odds
+PASS check_fixed_slope_solution
+PASS check_next_correction
+PASS check_raw_jacobian
+PASS check_quadratic_layer_third_correction
+PASS 7/7 terminal algebra checks
+
+Encirclement III
+source sha256: f96d364072b1cf23c6559ebdbea21642924c648a9bbb8c94c1fe8830b16af5f3
+PASS check_factorial_benchmark
+PASS check_hoggatt2_curvature
+PASS check_shifted_rational_interior
+PASS check_shifted_boundary_selection
+PASS check_normalized_equation_algebra
+PASS 5/5 exact algebra checks
+
+Encirclement IV
+source sha256: 9e059164c1dba2cd7a9e8fc7269acde45ec458ebdef81d288e4d32a42dff9e5b
+PASS check_bessel_curvature
+PASS check_heat_coefficient_pde
+PASS check_dynamic_harmonicity
+PASS check_second_time_identity
+PASS check_dual_jacobi_trudi
+PASS check_vandermonde_sign_cancellation
+PASS 6/6 algebraic checks
+
+Encirclement V
+source sha256: 325a63cf9530dcf6a08637ee23330365cafd047aff3e9cba658083565efdf775
+PASS check_reciprocal_heat_pde
+PASS check_bilinear_harmonic
+PASS check_nonreversible_pf_example
+PASS check_dual_jt_schur_numeric
+PASS check_phase_budget_example
+PASS check_occupancy_cap_bruteforce
+PASS 6/6 algebraic/combinatorial checks
+
+All four verifier programs exited successfully in the extraction environment.
