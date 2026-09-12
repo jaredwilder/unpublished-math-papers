@@ -18,6 +18,10 @@ Adversarial extraction from the 2026-09-11 MSL snapshot:
 
 `determinant-curvature-2026-09-11/`
 
+Additional exact bridge recovered from live result W131:
+
+`gamma-theta-quartic-bridge/`
+
 The program studies
 
 `G(z) = (1/8) xi(1/2 + sqrt(z)/2)`
@@ -32,6 +36,9 @@ through its moment coefficients and consecutive Toeplitz determinants
   `Z = (r/k) Q/(1-Q)`.
 - **Reciprocal/Jacobi–Trudi duality**
   `Z_a(r,k) Z_b(k,r) = 1`, exchanging compactified ratio `theta` with `1-theta`.
+- **Gamma–theta quartic coordinate bridge.** The substitution `y=pi x^4` maps the normalized quartic theta density `exp(-pi x^4)` exactly to a `Gamma(1/4,1)` law. The campaign's numerical proportionality constant `1.3313353638...` is exactly `pi^(1/4)`. Its squared-variable dispersion is the closed form
+  `Gamma(1/4)^2/[4 Gamma(3/4)^2]-1 = 1.188439615226... < 2`.
+  The same calculation gives dispersion `5` for an exponential density and exactly `2` for the Gaussian case, proving that ordinary log concavity alone is not the relevant sufficient property. See `gamma-theta-quartic-bridge/`.
 - **Strict consecutive Toeplitz positivity does not imply simple zeros.** The explicit entire function
   `(1+z)^2 e^z`
   has a double zero at `-1`, yet every consecutive Toeplitz minor is strictly positive. The global proof is in
