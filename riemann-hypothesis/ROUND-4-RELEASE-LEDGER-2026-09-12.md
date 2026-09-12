@@ -311,11 +311,32 @@ Thus every fixed-order truncation of the coefficient determinant hierarchy becom
 
 ---
 
-## R4-8 — public hygiene / killed route check
+## R4-8 — source-audit correction: Polymath 15 main term
 
-The PTS source packet records that an older Encirclement-VIII `value–torque` / `Hardy tangency` route used an incorrect conjugation pattern in the Polymath-15 main term. The exact `y=0` formula has the second finite sum proportional to the same sum rather than its conjugate.
+A contradiction was found between two internal PTS source audits. The earlier `RH_CLOSE_PROOF_ATTEMPT.md` claimed that at `y=0` the second finite Dirichlet polynomial in Polymath 15 Theorem 1.3 uses the same exponent as the first and therefore carries **no conjugation**. That correction is itself **wrong**.
 
-A public-repository search during this pass found no live theorem note carrying the killed `value–torque` / `Hardy tangency` language, so no correction commit was needed in the public tree.
+The later ten-round source audit and the published Polymath formula agree that the second sum uses the conjugated exponent. Schematically,
+
+\[
+f_t(x+iy)
+=
+\sum_{n\le N}\frac{b_n^t}{n^{s_*}}
++
+\gamma_t(x+iy)
+\sum_{n\le N}n^y\frac{b_n^t}{n^{\overline{s_*}+\kappa}},
+\]
+
+so at `y=0`, where `kappa=0`,
+
+\[
+\boxed{
+f_t(x)=S_t(x)+\gamma_t(x)\overline{S_t(x)}.
+}
+\]
+
+Therefore the Round-4 statement that the old `value–torque` / `Hardy tangency` route was killed *because the conjugation was absent* is retracted. This correction does **not** establish that route as a proof of PTS; it only restores the correct main-term anatomy. Any surviving use of that route still owes its own quantitative error and transversality estimates.
+
+The public record is corrected here rather than silently rewriting history.
 
 ---
 
