@@ -2,7 +2,8 @@
 
 **Author:** Jared Wilder  
 **First public timestamp:** 2026-09-10  
-**Release-day expansion:** 2026-09-11
+**Release-day expansion:** 2026-09-11  
+**Routing/source-state refresh:** 2026-09-14
 
 This repository is the **provenance and intake archive** for pure mathematics extracted from a much larger research estate.
 
@@ -12,7 +13,7 @@ For organization decisions, start with [`SUBJECT-ROUTING.md`](SUBJECT-ROUTING.md
 
 ## The rule
 
-The release now uses this hierarchy:
+The release uses this hierarchy:
 
 > **focused problem/subject repository → compact theorem/records bank → provenance archive**
 
@@ -20,88 +21,96 @@ A problem does not have to be solved before its research program deserves a cohe
 
 This archive should answer “where did this come from?” It should not force readers to learn the entire estate before they can understand one piece of mathematics.
 
-## Repository-scale programs temporarily mirrored here
-
-Several subjects inside this archive are already larger than an intake folder should be.
+## Large programs mirrored here for provenance
 
 ### Erdős #738 / triangle-free induced-tree frontier
 
-A large theorem/frontier bank with dozens of proved-in-packet statements, explicit targets, recursive data, cross-theorems, a finite verifier and semantic review. A dedicated shell exists at `jaredwilder/erdos738-triangle-free-induced-trees` but currently has no initial commit.
+The dedicated public home is now [`jaredwilder/erdos738-triangle-free-induced-trees`](https://github.com/jaredwilder/erdos738-triangle-free-induced-trees). It contains the 174-claim research bank, human theorem map, fresh finite verifiers, and the sharp T06–T09 type-support theorem with its parity extremizer. The parent problem remains open.
 
 ### Erdős–Gyárfás power-of-two cycles
 
-A **202-card** research bank across ten mathematical families, containing proved statements, exact computation, negative theorems, refuted routes and explicit targets.
+The focused home is [`jaredwilder/erdos-gyarfas-power-of-two-cycles`](https://github.com/jaredwilder/erdos-gyarfas-power-of-two-cycles). The public program contains a **202-card** research bank across ten mathematical families. Its reader-facing structural spine now exposes the cubic-surplus identity, bounded defect kernel, fixed-surplus exceptional core, quotient cycle doubling, and exact elimination of the first two ratio branches. The flagship remains open.
 
 ### Caccetta–Häggkvist
 
-A multi-round directed-triangle program with a 23KB theorem ledger and terminal-defect package covering exact-boundary kernels, escape/bridge/fan structure, fourth-moment machinery and correction history.
+The focused home is [`jaredwilder/caccetta-haggkvist-triangles`](https://github.com/jaredwilder/caccetta-haggkvist-triangles). The source program includes exact-boundary kernels, escape/bridge/fan structure, fourth-moment machinery and correction history. The source-supported exact-boundary `C4` lower-bound chain is reader-facing; independent replay/novelty work remains separate and the conjecture remains open.
 
 ### Fiber coherence / cycle rank / rank-three kernel
 
-A **216-record** program across relational coherence, CSP structure, unicyclic/cactus kernels, theta collisions and finite cycle-rank classification. The focused rank-three layer classifies the reduced kernels into `Q4`, `T221`, `D22`, and `K4` and records the associated fixed-rank complexity boundary.
+The focused home is [`jaredwilder/fiber-coherence-cycle-rank`](https://github.com/jaredwilder/fiber-coherence-cycle-rank). The program contains relational coherence, CSP structure, unicyclic/cactus kernels, theta collisions and finite cycle-rank classification.
+
+The pure rank-three topology `Q4/T221/D22/K4` is useful infrastructure, but the strongest distinctive source theorem is the exact K4-free relation/CSP realization layer: arbitrary finite binary relations admit K4-free fiber strips, and every finite binary CSP admits a polynomial-size exact K4-free fiber-coherence realization. Historical novelty remains unresolved.
 
 ### Erdős #77 / diagonal Ramsey exponential limit
 
-A 23-asset theorem/negative-theorem program around thin off-diagonal corridors, inverse homogeneous-set formulations, tensor/rank identities, polarity/mixer constructions and exact route barriers.
+The focused public home is [`jaredwilder/diagonal-ramsey-corridor`](https://github.com/jaredwilder/diagonal-ramsey-corridor), a 23-card theorem/negative-theorem program around thin off-diagonal corridors, inverse homogeneous-set formulations, tensor/rank identities, polarity/mixer constructions and exact route barriers. The parent problem is not claimed solved.
 
 ### P6 Erdős–Hajnal
 
-A substantial structural program with 30 theorem assets, crown/defect normal forms, pure-pair statements, candidate/negative banks and bounded exhaustive checks.
+The focused home is [`jaredwilder/p6-erdos-hajnal`](https://github.com/jaredwilder/p6-erdos-hajnal). It contains the 30 Court theorems, negative/candidate banks and the exact local crown-classification chain. Bounded verification is regression evidence, not a proof of the global Erdős–Hajnal target.
 
 ### Erdős #142 / progression-free sets
 
-A 53-round audit reconstructing 124 raw records into exact convex-level and mixed-radix constructions, several architecture-specific barriers, a dyadic reciprocal-sum implication and a finite certificate target.
+The focused home is [`jaredwilder/erdos142-progression-free`](https://github.com/jaredwilder/erdos142-progression-free), with the reconstructed theorem/route program, exact constructions, barriers and finite certificate targets.
 
 ### Erdős #1061 / sigma and aliquot-square solutions
 
-Beyond the compact `(a,2a)` family, the archive contains a primitive-seed generator, ray-scaling theorem, **152,803-seed** exact certificate bank, integer verifier, a second large search and rigorous released lower-bound coefficients.
+The focused home is [`jaredwilder/erdos1061-aliquot-square`](https://github.com/jaredwilder/erdos1061-aliquot-square). Beyond the compact `(a,2a)` family, the estate contains a primitive-seed generator, ray-scaling theorem, integer verifier, a second large search and rigorous lower-bound coefficients.
+
+The exact **152,803-row primitive-seed CSV** has been recovered locally and hash-matched to the public manifest, but its exact ~17 MB bytes are still awaiting transport into the public subject tree. Do not substitute regenerated bytes for the recovered object.
 
 ### Erdős #271 / Stanley sequences and Erdős #500 / Turán (3,4)
 
-The Stanley program has a **184-entry** audited ledger. The Turán program has a **76-record** theorem/finite-target surface. Both are mirrored elsewhere in the estate and are tracked for canonical consolidation.
+The Stanley program is focused at [`jaredwilder/erdos271-stanley-sequences`](https://github.com/jaredwilder/erdos271-stanley-sequences); its reader-facing endpoint is the exact mean-reflection-multiplicity growth dictionary. The Turán program is focused at [`jaredwilder/erdos500-turan34`](https://github.com/jaredwilder/erdos500-turan34), with its inheritance/deletion/excitation/extension/integrality structure. Both parent problems remain open at their stated frontiers.
 
 ### Lonely Runner — 13 effective speeds
 
-A late-round theorem bank, terminal normal form, supplements and deeper provenance that now exceed the compact earlier collection in `combinatorial-records`.
+The focused home is [`jaredwilder/lonely-runner-13`](https://github.com/jaredwilder/lonely-runner-13). Its root now surfaces the exact closed large-prime canonical residue class and the `F_13 → parity certificates → 2-adic descent` proof architecture. Full LRC(13) remains open.
 
 ### R(5,5) 41-vertex circulant structure
 
-A structural program around the 41-vertex circulant Ramsey graph: affine/multiplier classification, exact graph invariants, automorphisms, one-vertex nonextension, fixed-`k` extension criteria and SAT interface.
+The focused home is [`jaredwilder/ramsey-r55-circulant-41`](https://github.com/jaredwilder/ramsey-r55-circulant-41). The underlying 41-vertex graph is classical. The estate release concerns its exact internal structure, including the one-affine-class result, explicit self-complementation, exact invariants, and the structural theorem that the order-41 circulant core cannot be retained intact after adding one arbitrary vertex to form an order-42 `(5,5)` Ramsey graph. This is not a new Ramsey lower bound.
 
 ## Paper programs
 
 ### EG203 / Kummer obstruction program
 
-The canonical paper-series home is `jaredwilder/eg203-kummer-papers`.
+The canonical paper-series home is [`jaredwilder/eg203-kummer-papers`](https://github.com/jaredwilder/eg203-kummer-papers).
 
-Archive material includes recovered analytic-route papers and three formerly anonymous `notes/` TeX sources: the multi-manuscript program roadmap, exact Gamma-fiber local-density note, and a Stepanov auxiliary-polynomial note. These are now indexed from the paper-series repository.
+Archive material includes recovered analytic-route papers and formerly anonymous TeX sources. Later authority audits separate exact local/formal theorems and bounded certificates from analytic claims whose proof/citation status needs correction. Do not inherit authority from an unrelated Lean kernel into an analytic paper claim.
 
 ### EG203 V-family sieve draft — audit-first
 
 `sieve-preprint/` is a substantial analytic-number-theory draft, but the release audit found a load-bearing local-density mismatch: the exact triggered density is `1/H_p`, while the draft uses a `1/H_p^2` scale in the thin-sieve argument. Its front-door README records the defect and blocks accidental promotion of the current EG203-closure headline.
 
-### Riemann-zeta research program
+### Riemann-hypothesis research program
 
-`riemann-hypothesis/` contains two distinct lanes: a determinant/total-positivity program ending in a precise open collective-saddle target, and a machine-checked **67.3015452606...%** simple-zero candidate extension whose Arb cross-check remains to be run independently. The directory now has a human root README explaining both lanes.
+The canonical subject home is [`jaredwilder/riemann-hypothesis`](https://github.com/jaredwilder/riemann-hypothesis).
 
-## Focused subjects that can remain here for now
+The current public reading surface includes exact generic method-obstruction theorems, finite-spectrum reconstruction, finite-variable Schur/Toeplitz auxiliary mathematics, finite-polynomial heat-flow dynamics, and explicitly conditional cross-representation results. The canonical forensic court does **not** classify the estate as an RH breakthrough. No generic auxiliary theorem is promoted into a theorem about the actual zeta zeros without the missing zeta-specific bridge.
 
-Not every useful result needs another repository.
+## Focused subjects that can remain archive-first
 
-Examples:
+Not every useful result needs another repository. Compact child theorems can remain routed through `erdos-proved-lemmas`, exact finite classifications through `combinatorial-records`, and provenance copies here.
 
-- `polynomial-dynamics-coordinates/` — a coherent 12-result recurrence/coordinate note;
-- `sums-three-cubes-114/` — exact modular/CRT structure for `a^3+b^3+c^3=114`, plus a recorded 15-theorem Lean inventory whose source still needs recovery;
-- compact child theorems already routed to `erdos-proved-lemmas`;
-- exact finite classifications already routed to `combinatorial-records`.
+The sums-of-three-cubes `k=114` program is no longer a source-recovery example: the historical `S3C_Oracle_114.lean` module has been recovered and published in [`jaredwilder/sums-three-cubes-114`](https://github.com/jaredwilder/sums-three-cubes-114). The equation itself remains open and the historical PARI/raw-search artifacts are still incomplete.
 
 ## Source recovery
 
 Some summaries refer to proof/code/certificate artifacts that are not yet present in the public canonical tree. Those are tracked centrally in:
 
-`jaredwilder/open-math-frontier/SOURCE-RECOVERY-QUEUE.md`.
+[`jaredwilder/open-math-frontier/SOURCE-RECOVERY-QUEUE.md`](https://github.com/jaredwilder/open-math-frontier/blob/main/SOURCE-RECOVERY-QUEUE.md).
 
-Current examples include the prime-gap admissibility Lean source, the `k=114` three-cubes Lean module, the full Erdős #1005 Farey packet, and the 17MB Erdős #1061 seed CSV.
+Current high-confidence examples include:
+
+- the complete original **Erdős #1005 Farey** source packet, whose surviving summary contains a truncated load-bearing identity;
+- the exact **Erdős #1061** `ERDOS1061_PRIMITIVE_SEEDS_200K.csv` public transport;
+- the historical standalone verifier/receipts for the **conference-switching Ramsey-book** campaign;
+- the original **CP-SAT / PySAT models and receipts** for the seven-modulus Erdős–Selfridge finite obstruction.
+
+The **PrimeGap Lean source** and the **`k=114` sums-of-three-cubes Lean module** were recovered and published on 2026-09-14; they are no longer missing-source examples.
+
+An earlier queue item for `AGI-ZETA-BOUNDED-CLOSE-2026-08-14.zip` was also removed after later Library inspection showed that `AGI-ζ` was an unrelated bounded cross-domain learning packet, not missing Riemann-zeta mathematics.
 
 A historical source can be missing without the theorem statement being meaningless, but the release should say so explicitly and keep trying to recover the evidence.
 
@@ -117,6 +126,8 @@ Examples include:
 - #595 triangle-cover theory → `jaredwilder/erdos595-barrier-tower`;
 - #835 SQS(20) theory → `jaredwilder/erdos835-lean-audit`;
 - Kirkman/Steiner Lean formalization → `jaredwilder/lean-contributions`;
+- PrimeGap finite-admissibility formalization → `jaredwilder/prime-gap-admissibility`;
+- sums of three cubes `k=114` formal core → `jaredwilder/sums-three-cubes-114`;
 - EG203 paper program → `jaredwilder/eg203-kummer-papers`.
 
 Archive copies remain public so the release chronology is not rewritten after the fact.
